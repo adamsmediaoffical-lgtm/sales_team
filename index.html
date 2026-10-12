@@ -323,6 +323,9 @@ const SERVICES=['إدارة سوشيال ميديا','إعلانات ممولة'
 const NEXT=['اتصال تاني','ابعت عرض سعر','ابعت سابقة أعمال على واتساب','اجتماع أونلاين','اجتماع في المقر','زيارة للعميل','مفيش'];
 const AV_COLORS=['#6B2BD6','#C2378F','#2B6CC4','#1E8A7A','#D9822B','#8B5E3C','#4E7A2B','#5C5C8A'];
 const DEF={company:'وكالتي',team:[],dailyTarget:30};
+const CALLS_COLLECTION='calls_data';
+const SETTINGS_COLLECTION='system_config';
+const SETTINGS_DOCUMENT='settings';
 const LS='calls_log_v1';
 
 const ICON={
@@ -376,29 +379,35 @@ const lsSet=(k,v)=>{try{localStorage.setItem(k,v)}catch(e){}};
    الحالة والتخزين
    ========================================================= */
 const S={calls:{},settings:{...DEF},loaded:new Set()};
-const ui={view:'day',date:today(),q:'',agent:'',status:'',me:lsGet('calls_me',''),fAgent:'',cq:'',period:'week',ready:false};
+const ui={view:'day',date:today(),q:'',agent:'',status:'',me:lsGet('calls_me',''),fAgent:'',cq:'',period:'week',ready:true};
 try{const v=lsGet('calls_view','');if(VIEWS.some(x=>x[0]===v))ui.view=v}catch(e){}
+
 const Store={
   mode:'local',db:null,subs:{},canWrite:true,
   lsLoad(){try{const o=JSON.parse(lsGet(LS,'null'));if(o){S.calls=o.calls||{};S.settings={...DEF,...(o.settings||{})}}}catch(e){}},
   lsSave(){if(this.mode==='local')lsSet(LS,JSON.stringify({calls:S.calls,settings:S.settings}))},
-  err(e){const c=e&&e.code;
-    if(c==='invalid_argument'||c==='permission-denied')toast('معندكش صلاحية تعدّل. تأكد من إعدادات الـ Rules في Firebase');
-    else if(c==='quota_exceeded'||c==='resource-exhausted')toast('مساحة التخزين ممتلئة أو استهلاك عالي، استنى ثواني');
-    else toast('تعذر الحفظ، حاول تاني')},
-  col(ym){return this.db.collection('months').doc(ym).collection('calls')},
+  err(e){
+    console.error("Firestore Error:", e);
+    const c=e&&e.code;
+    if(c==='permission-denied')toast('معندكش صلاحية تعدّل، راجع الـ Rules في Firebase');
+    else toast('تعذر الاتصال بالسيرفر، شغال محلياً مؤقتاً');
+  },
+  col(ym){return this.db.collection(CALLS_COLLECTION).doc(ym).collection('records')},
+  settingsDoc(){return this.db.collection(SETTINGS_COLLECTION).doc(SETTINGS_DOCUMENT)},
   ensure(ym){
-    if(this.mode!=='db'){S.loaded.add(ym);return}
+    if(this.mode!=='db'||!this.db)return;
     if(this.subs[ym])return;
-    this.subs[ym]=this.col(ym).onSnapshot(s=>{
-      for(const id in S.calls)if(S.calls[id].ym===ym)delete S.calls[id];
-      s.docs.forEach(d=>{S.calls[d.id]={...d.data(),id:d.id,ym}});
-      S.loaded.add(ym);scheduleRender();
-    },()=>{S.loaded.add(ym);scheduleRender()});
+    try{
+      this.subs[ym]=this.col(ym).onSnapshot(s=>{
+        for(const id in S.calls)if(S.calls[id].ym===ym)delete S.calls[id];
+        s.docs.forEach(d=>{S.calls[d.id]={...d.data(),id:d.id,ym}});
+        S.loaded.add(ym);scheduleRender();
+      },err=>{console.warn("Sub error:", err);scheduleRender();});
+    }catch(e){console.warn("Sub error:", e)}
   },
   async put(c,prev){
     const ym=ymOf(c.date);const rec={...c,ym};S.calls[c.id]=rec;scheduleRender();
-    if(this.mode!=='db'){this.lsSave();return true}
+    if(this.mode!=='db'||!this.db){this.lsSave();return true}
     const {id,ym:_y,...body}=rec;
     try{
       if(prev&&prev.ym&&prev.ym!==ym)await this.col(prev.ym).doc(id).delete();
@@ -407,13 +416,13 @@ const Store={
   },
   async del(c){
     delete S.calls[c.id];scheduleRender();
-    if(this.mode!=='db'){this.lsSave();return true}
+    if(this.mode!=='db'||!this.db){this.lsSave();return true}
     try{await this.col(c.ym).doc(c.id).delete();return true}catch(e){this.err(e);S.calls[c.id]=c;scheduleRender();return false}
   },
   async putSettings(p){
     S.settings={...S.settings,...p};scheduleRender();
-    if(this.mode!=='db'){this.lsSave();return}
-    try{await this.db.doc('config/settings').set(S.settings)}catch(e){this.err(e)}
+    if(this.mode!=='db'||!this.db){this.lsSave();return}
+    try{await this.settingsDoc().set(S.settings)}catch(e){this.err(e)}
   }
 };
 
@@ -453,7 +462,6 @@ function render(){
   const a=document.activeElement;const fid=a&&a.id&&$('#main').contains(a)?a.id:null;let sel=null;try{if(fid&&a.selectionStart!=null)sel=[a.selectionStart,a.selectionEnd]}catch(e){}
   renderTop();
   const m=$('#main');
-  if(!ui.ready){m.innerHTML='<div class="empty">جاري تحميل السجل…</div>';return}
   if(ui.view==='day')Store.ensure(ymOf(ui.date));
   m.innerHTML=({day:vDay,follow:vFollow,clients:vClients,reports:vReports,guide:vGuide,settings:vSettings}[ui.view]||vDay)();
   $('#fab').hidden=!Store.canWrite||ui.view==='guide'||ui.view==='settings';
@@ -489,7 +497,6 @@ function statusSelect(c){
 function vDay(){
   const d=ui.date,t=today();
   const ym=ymOf(d);
-  const loading=Store.mode==='db'&&!S.loaded.has(ym);
   const list0=dayCalls(d);
   const list=list0.filter(c=>(!ui.agent||c.agent===ui.agent)&&(!ui.status||c.status===ui.status)&&(!ui.q||[c.client,c.company,c.phone,c.notes,c.agent].some(v=>String(v||'').toLowerCase().includes(ui.q.toLowerCase()))));
   const sm=summary(ui.agent?list0.filter(c=>c.agent===ui.agent):list0);
@@ -523,7 +530,7 @@ function vDay(){
       <div class="tally"><span class="big num">${sm.total}<small>مكالمة${ui.agent?' لـ '+esc(ui.agent):''}</small></span><span class="rate">ردوا <b>${sm.answered}</b> (${pct(sm.answered,sm.total)}%) — متابعات اتحددت <b>${sm.followSet}</b></span></div>
       ${sm.total?`<div class="strip" role="img" aria-label="نتايج المكالمات">${segs}</div><div class="legend">${legend}</div>`:''}
     </section>
-    <div class="head"><div><h1>مكالمات ${d===t?'النهارده':'يوم '+esc(fdate(d))}</h1><p>${loading?'جاري التحميل…':'سجّل كل مكالمة أول ما تخلّصها، والتقرير بيتجمع لوحده'}</p></div>
+    <div class="head"><div><h1>مكالمات ${d===t?'النهارده':'يوم '+esc(fdate(d))}</h1><p>سجّل كل مكالمة أول ما تخلّصها، والتقرير بيتجمع لوحده</p></div>
       <div class="actions">${Store.canWrite?`<button class="btn primary" data-act="add">${ico('plus')}تسجيل مكالمة</button>`:''}<button class="btn wa" data-act="pdf" data-id="day">${ico('dl')}PDF للجروب</button><button class="btn" data-act="report">${ico('send')}رسالة واتساب</button><button class="btn" data-act="export-day">${ico('dl')}Excel</button></div></div>
     <div class="kpis">
       <div class="kpi"><span>إجمالي</span><b>${sm.total}</b><small>مكالمة</small></div>
@@ -854,7 +861,7 @@ const PHEAT={hot:PC.bad,warm:PC.warn,cold:PC.info};
 const FD='"Readex Pro","IBM Plex Sans Arabic",Tahoma,Arial,sans-serif',FB='"IBM Plex Sans Arabic",Tahoma,Arial,sans-serif';
 const PG={W:794,H:1123,M:34,S:2,FOOT:34};
 const pf=(w,s,d)=>`${w} ${s}px ${d?FD:FB}`;
-function rr(c,x,y,w,h,r){r=Math.min(r,h/2,w/2);c.beginPath();c.moveTo(x+r,y);c.arcTo(x+w,y,x+w,y+h,r);c.arcTo(x+w,y+h,x,y+h,r);c.arcTo(x,y+h,x,y,r);c.arcTo(x,y+h,x,y,r);c.closePath()}
+function rr(c,x,y,w,h,r){r=Math.min(r,h/2,w/2);c.beginPath();c.moveTo(x+r,y);c.arcTo(x+w,y,x+w,y+h,r);c.arcTo(x+w,y+h,x,y+h,r);c.arcTo(x,y+h,x,y,r);c.arcTo(x,y+x+w,y,r);c.closePath()}
 function tx(c,s,x,y,font,color,align='right'){c.font=font;c.fillStyle=color;c.textAlign=align;c.direction='rtl';c.textBaseline='alphabetic';c.fillText(String(s),x,y)}
 function tw(c,s,font){c.font=font;return c.measureText(String(s)).width}
 function wrapT(c,s,font,maxW,maxLines){
@@ -1159,7 +1166,7 @@ document.addEventListener('click',async e=>{
     case 'follow-tomorrow':{const c=S.calls[id];if(c){const {ym,...b}=c;await Store.put({...b,followDate:addDays(today(),1)},{...c});toast('اتأجلت لبكرة')}break}
     case 'log-follow':{const c=S.calls[id];if(c)openCall(null,{client:c.client,company:c.company,phone:c.phone,industry:c.industry,source:c.source,city:c.budget,services:c.services||[],heat:c.heat,linkFrom:c.id,agent:ui.me||c.agent});break}
     case 'copy':{const v=el.dataset.v||'';try{await navigator.clipboard.writeText(v);toast('اتنسخ الرقم')}catch(err){toast('علّم الرقم وانسخه من الجهاز')}break}
-    case 'save-settings':await Store.putSettings({company:$('#setCo').value.trim()\vert{}\vert{}'وكالتي',dailyTarget:Number($('#setTarget').value)||0});toast('اتحفظت الإعدادات');break;
+    case 'save-settings':await Store.putSettings({company:$('#setCo').value.trim()||'وكالتي',dailyTarget:Number($('#setTarget').value)||0});toast('اتحفظت الإعدادات');break;
     case 'add-member':{const n=$('#newMember').value.trim();if(!n){toast('اكتب الاسم');break}if(team().some(m=>m.name===n)){toast('الاسم ده موجود');break}await Store.putSettings({team:[...team(),{id:uid(),name:n}]});toast('اتضاف '+n);break}
     case 'del-member':await Store.putSettings({team:team().filter(m=>m.id!==id)});toast('اتشال الاسم. مكالماته القديمة زي ما هي');break;
     case 'seed':seedDemo();break;
@@ -1186,7 +1193,10 @@ setInterval(()=>{const a=document.activeElement;if(!dlg.open&&!dlg2.open&&!(a&&/
    ========================================================= */
 try{const th=lsGet('calls_theme','');if(th)document.documentElement.dataset.theme=th}catch(e){}
 
-async function init(){
+function init(){
+  ui.ready=true;
+  render();
+
   let db=null;
   if(typeof firebase!=='undefined'&&firebaseConfig.projectId){
     try{
@@ -1201,8 +1211,7 @@ async function init(){
     Store.mode='local';
     Store.lsLoad();
     for(const id in S.calls) S.calls[id].ym=ymOf(S.calls[id].date);
-    ui.ready=true;
-    render();
+    scheduleRender();
     return;
   }
 
@@ -1210,40 +1219,25 @@ async function init(){
   Store.db=db;
   Store.canWrite=true;
 
-  // مؤقت أمان لضمان ظهور الصفحة فوراً مهما كانت حالة الشبكة
-  const safetyTimer = setTimeout(()=>{
-    if(!ui.ready){
-      ui.ready=true;
-      render();
-    }
-  }, 2000);
-
-  let loadedCount = 0;
-  const finishLoading = () => {
-    loadedCount++;
-    if(loadedCount >= 2 && !ui.ready){
-      clearTimeout(safetyTimer);
-      ui.ready=true;
+  // متابعة الإعدادات السحابية
+  try{
+    Store.settingsDoc().onSnapshot(s=>{
+      S.settings=s.exists?{...DEF,...s.data()}:{...DEF};
       scheduleRender();
-    }
-  };
+    }, err=>{
+      console.warn("Settings error:", err);
+      scheduleRender();
+    });
+  }catch(e){console.warn("Settings error:", e)}
 
-  db.doc('config/settings').onSnapshot(s=>{
-    S.settings={...DEF,...(s.exists?s.data():{})};
-    finishLoading();
-  }, err=>{
-    console.warn("Settings error:", err);
-    finishLoading();
-  });
-
+  // الاشتراك اللحظي في مكالمات الشهور
   const cur=ymOf(today());
   Store.ensure(cur);
   Store.ensure(addMonthsYM(cur,-1));
-  finishLoading();
 }
 
+// بدء التشغيل
 init();
-render();
 </script>
 
 </body></html>
