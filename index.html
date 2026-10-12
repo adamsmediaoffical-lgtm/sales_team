@@ -4,6 +4,11 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600&family=Readex+Pro:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- مكتبات Firebase السحابية للربط اللحظي بين كل أجهزة التيم -->
+<script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
+
 <style>
 /* Layout: deep-violet header with the day's call-result strip as the signature element; light working surface below; bottom tab bar on phones */
 :root{
@@ -282,6 +287,19 @@ dialog::backdrop{background:rgba(20,8,36,.55)}
 
 <script>
 /* =========================================================
+   إعدادات Firebase المشتركة الحقيقية لمشروع salesteam12
+   ========================================================= */
+const firebaseConfig = {
+  apiKey: "AIzaSyBUUs2LbizHHvCCMTGjVo2k-3JfMpMHF0",
+  authDomain: "salesteam12-71de1.firebaseapp.com",
+  projectId: "salesteam12-71de1",
+  storageBucket: "salesteam12-71de1.firebasestorage.app",
+  messagingSenderId: "603741572183",
+  appId: "1:603741572183:web:c8fbd406f8b401c9db2712",
+  measurementId: "G-W1GNMLTXY6"
+};
+
+/* =========================================================
    ثوابت
    ========================================================= */
 const STATUSES=[
@@ -365,11 +383,10 @@ const Store={
   lsLoad(){try{const o=JSON.parse(lsGet(LS,'null'));if(o){S.calls=o.calls||{};S.settings={...DEF,...(o.settings||{})}}}catch(e){}},
   lsSave(){if(this.mode==='local')lsSet(LS,JSON.stringify({calls:S.calls,settings:S.settings}))},
   err(e){const c=e&&e.code;
-    if(c==='invalid_argument')toast('معندكش صلاحية تعدّل. اطلب صلاحية تعديل على اللينك');
-    else if(c==='quota_exceeded')toast('مساحة التخزين ممتلئة. صدّر الشهور القديمة وامسحها');
-    else if(c==='resource_exhausted')toast('طلبات كتير ورا بعض، استنى ثواني');
+    if(c==='invalid_argument'||c==='permission-denied')toast('معندكش صلاحية تعدّل. تأكد من إعدادات الـ Rules في Firebase');
+    else if(c==='quota_exceeded'||c==='resource-exhausted')toast('مساحة التخزين ممتلئة أو استهلاك عالي، استنى ثواني');
     else toast('تعذر الحفظ، حاول تاني')},
-  col(ym){return this.db.collection('months/'+ym+'/calls')},
+  col(ym){return this.db.collection('months').doc(ym).collection('calls')},
   ensure(ym){
     if(this.mode!=='db'){S.loaded.add(ym);return}
     if(this.subs[ym])return;
@@ -422,7 +439,7 @@ function summary(list){
 function periodRange(p){
   const t=today();const d=parseD(t);
   if(p==='today')return [t,t];
-  if(p==='week'){const dow=d.getDay();const back=(dow+1)%7;return [addDays(t,-back),t]} // الأسبوع بيبدأ السبت
+  if(p==='week'){const dow=d.getDay();const back=(dow+1)%7;return [addDays(t,-back),t]}
   if(p==='month')return [t.slice(0,8)+'01',t];
   if(p==='lastmonth'){const ym=addMonthsYM(ymOf(t),-1);const e=new Date(Number(ym.slice(0,4)),Number(ym.slice(5)),0);return [ym+'-01',iso(e)]}
   return [t,t];
@@ -478,7 +495,6 @@ function vDay(){
   const sm=summary(ui.agent?list0.filter(c=>c.agent===ui.agent):list0);
   const segs=STATUSES.filter(s=>sm.by[s.id]).map(s=>`<i style="--c:${s.c};flex:${sm.by[s.id]}" title="${s.l}: ${sm.by[s.id]}"></i>`).join('');
   const legend=STATUSES.filter(s=>sm.by[s.id]).map(s=>`<span style="--c:${s.c}">${s.l} <b>${sm.by[s.id]}</b></span>`).join('');
-  // حسب التيم
   const per={};list0.forEach(c=>{const k=c.agent||'من غير اسم';per[k]=per[k]||{n:0,a:0};per[k].n++;if(isAnswered(c))per[k].a++});
   const target=Number(S.settings.dailyTarget)||0;
   const agents=Object.entries(per).sort((a,b)=>b[1].n-a[1].n).map(([n,v])=>`<button class="agent" data-act="agent-filter" data-id="${esc(n)}" aria-pressed="${ui.agent===n}">${av(n)}<span>${esc(n)}</span><b>${v.n}</b>${target?`<span class="prog" title="من تارجت ${target}"><i style="width:${Math.min(100,v.n/target*100)}%"></i></span>`:''}</button>`).join('');
@@ -563,7 +579,6 @@ function vClients(){
 /* ---------- التقارير ---------- */
 function vReports(){
   const [a,b]=periodRange(ui.period);
-  // تأكد إن الشهور اللازمة متحمّلة
   for(let ym=ymOf(a);ym<=ymOf(b);ym=addMonthsYM(ym,1))Store.ensure(ym);
   const list=all().filter(c=>c.date>=a&&c.date<=b);
   const sm=summary(list);
@@ -691,7 +706,6 @@ function openCall(id,pre){
   f.querySelectorAll('[data-follow]').forEach(b=>b.onclick=()=>{followTouched=true;setFollow(Number(b.dataset.follow))});
   fd.addEventListener('input',()=>followTouched=true);
   f.querySelectorAll('input[name=status]').forEach(r=>r.addEventListener('change',()=>{const s=ST[r.value];if(!followTouched&&s){setFollow(s.follow);if(s.follow===0&&!f.nextStep.value)f.nextStep.value='مفيش'}}));
-  // تاريخ العميل
   const showHist=()=>{const k=pkey(f.phone.value);const box=dlg.querySelector('#histBox');if(k.length<8){box.innerHTML='';return}
     const prev=callsOfKey(k).filter(x=>!c||x.id!==c.id);if(!prev.length){box.innerHTML='';return}
     const l=prev[prev.length-1];
@@ -832,7 +846,7 @@ function openReport(){
 }
 
 /* =========================================================
-   PDF بنفس شكل الصفحة (بيتعمل جوه الصفحة وينزل على طول)
+   PDF بنفس شكل الصفحة
    ========================================================= */
 const PC={ink:'#1D1428',muted:'#665B77',line:'#E3DCEE',bg:'#F4F1F9',card:'#FFFFFF',soft:'#F8F6FC',deep:'#271245',dInk:'#F2ECFC',dMuted:'#B9A8D8',violet:'#6B2BD6',good:'#1E8A5C',bad:'#C03C4A',warn:'#B8650F',info:'#2B6CC4'};
 const PST={interested:'#2E9E66',proposal:'#6B2BD6',followup:'#2B6CC4',deal:'#0E7A4F',notint:'#8C84A0',busy:'#C98A12',noanswer:'#DE7A2C',closed:'#C03C4A',wrong:'#86303B'};
@@ -840,7 +854,7 @@ const PHEAT={hot:PC.bad,warm:PC.warn,cold:PC.info};
 const FD='"Readex Pro","IBM Plex Sans Arabic",Tahoma,Arial,sans-serif',FB='"IBM Plex Sans Arabic",Tahoma,Arial,sans-serif';
 const PG={W:794,H:1123,M:34,S:2,FOOT:34};
 const pf=(w,s,d)=>`${w} ${s}px ${d?FD:FB}`;
-function rr(c,x,y,w,h,r){r=Math.min(r,h/2,w/2);c.beginPath();c.moveTo(x+r,y);c.arcTo(x+w,y,x+w,y+h,r);c.arcTo(x+w,y+h,x,y+h,r);c.arcTo(x,y+h,x,y,r);c.arcTo(x,y,x+w,y,r);c.closePath()}
+function rr(c,x,y,w,h,r){r=Math.min(r,h/2,w/2);c.beginPath();c.moveTo(x+r,y);c.arcTo(x+w,y,x+w,y+h,r);c.arcTo(x+w,y+h,x,y+h,r);c.arcTo(x,y+h,x,y,r);c.arcTo(x,y+h,x,y,r);c.closePath()}
 function tx(c,s,x,y,font,color,align='right'){c.font=font;c.fillStyle=color;c.textAlign=align;c.direction='rtl';c.textBaseline='alphabetic';c.fillText(String(s),x,y)}
 function tw(c,s,font){c.font=font;return c.measureText(String(s)).width}
 function wrapT(c,s,font,maxW,maxLines){
@@ -861,7 +875,6 @@ function pav(c,name,xR,cy,r){c.fillStyle=agentColor(name);c.beginPath();c.arc(xR
 const PERIODS={today:'النهارده',week:'الأسبوع ده',month:'الشهر ده',lastmonth:'الشهر اللي فات'};
 const pdfOpts=()=>({phones:lsGet('pdf_phones','1')==='1'});
 
-/* بيانات كل نوع تقرير */
 function pdfDoc(kind){
   const o=pdfOpts();const t=today();const ag=ui.agent;
   const perAgent=list=>{const per={};list.forEach(c=>{const k=c.agent||'من غير اسم';const v=per[k]=per[k]||{n:0,a:0,i:0,p:0,d:0,days:new Set()};v.n++;v.days.add(c.date);if(isAnswered(c))v.a++;if(['interested','proposal','followup','deal'].includes(c.status))v.i++;if(c.status==='proposal')v.p++;if(c.status==='deal')v.d++});return Object.entries(per).sort((a,b)=>b[1].n-a[1].n)};
@@ -897,7 +910,6 @@ function pdfDoc(kind){
 }
 function pdfItems(c,m){
   const {W,M}=PG;const R=W-M,CW=W-2*M;const items=[];const t=today();
-  // ---- الهيدر ----
   const sm=summary(m.stats);const legend=STATUSES.filter(s=>sm.by[s.id]);
   const legLines=[];{let line=[],w=0;legend.forEach(s=>{const lw=tw(c,`${s.l} ${sm.by[s.id]}`,pf(500,12.5))+30;if(w+lw>CW&&line.length){legLines.push(line);line=[];w=0}line.push(s);w+=lw});if(line.length)legLines.push(line)}
   const hH=170+(sm.total?30+legLines.length*22:0);
@@ -917,7 +929,6 @@ function pdfItems(c,m){
       legLines.forEach((line,li)=>{let lx=R;const ly=sy+40+li*22;line.forEach(s=>{c.fillStyle=PST[s.id];rr(c,lx-10,ly-10,10,10,3);c.fill();const lbl=s.l+' ';tx(c,lbl,lx-16,ly,pf(400,12.5),PC.dMuted);tx(c,String(sm.by[s.id]),lx-16-tw(c,lbl,pf(400,12.5)),ly,pf(600,12.5,true),PC.dInk);lx-=tw(c,`${s.l} ${sm.by[s.id]}`,pf(500,12.5))+30})});
     }
   }});
-  // ---- الأرقام ----
   if(m.kpis){
     const kp=[['إجمالي',sm.total,'مكالمة',PC.ink],['ردوا',sm.answered,pct(sm.answered,sm.total)+'%',PC.good],['مردوش / مغلق',sm.by.noanswer+sm.by.closed+sm.by.wrong,'منهم '+sm.by.closed+' مغلق',PST.noanswer],['مهتمين',sm.by.interested+sm.by.proposal+sm.by.followup,sm.hot+' حار',PST.interested],['عروض أسعار',sm.by.proposal,'طلبوا عرض',PST.proposal],['صفقات',sm.by.deal,'اتفقنا',PST.deal]];
     items.push({h:84,gap:14,draw:(c,y)=>{
@@ -926,7 +937,6 @@ function pdfItems(c,m){
         tx(c,l,xr-14,y+24,pf(400,12),PC.muted);tx(c,String(v),xr-14,y+54,pf(600,22,true),col);tx(c,s,xr-14,y+72,pf(400,11),PC.muted)});
     }});
   }
-  // ---- حسب التيم (شيبس) ----
   if(m.agents&&m.agents.length){
     const chips=m.agents.map(([n,v])=>({n,t:`${n} — ${nCalls(v.n)}، ردوا ${v.a}، مهتمين ${v.i}`}));
     const lines=[];{let line=[],w=0;chips.forEach(ch=>{const cw=tw(c,ch.t,pf(500,12.5))+48;if(w+cw>CW&&line.length){lines.push(line);line=[];w=0}ch.w=cw;line.push(ch);w+=cw+8});if(line.length)lines.push(line)}
@@ -935,7 +945,6 @@ function pdfItems(c,m){
       lines.forEach((line,li)=>{let x=R;const cy=y+30+li*38;line.forEach(ch=>{c.fillStyle=PC.card;rr(c,x-ch.w,cy,ch.w,30,15);c.fill();c.strokeStyle=PC.line;c.stroke();pav(c,ch.n,x-4,cy+15,11);tx(c,ch.t,x-32,cy+20,pf(500,12.5),PC.ink);x-=ch.w+8})});
     }});
   }
-  // ---- جدول أداء التيم ----
   if(m.agentTable&&m.agentTable.length){
     const ac=[['العضو',200],['مكالمات',84],['متوسط في اليوم',100],['ردوا',100],['مهتمين',80],['عروض أسعار',80],['صفقات',78]];
     const acR=[];{let x=R;ac.forEach(([,w])=>{acR.push(x);x-=w})}
@@ -949,7 +958,6 @@ function pdfItems(c,m){
     }}));
     items.push({h:14,draw:()=>{}});
   }
-  // ---- جداول المكالمات ----
   const cols=[['العميل',166],['النتيجة',132],['ملاحظات العميل',206],['المتابعة',106],['من التيم',112]];
   const colR=[];{let x=R;cols.forEach(([,w])=>{colR.push(x);x-=w})}
   const head={h:34,table:true,isHead:true,draw:(c,y)=>{c.fillStyle=PC.soft;rr(c,M,y,CW,34,10);c.fill();cols.forEach(([n],i)=>tx(c,n,colR[i]-10,y+22,pf(500,12),PC.muted))}};
@@ -1149,9 +1157,9 @@ document.addEventListener('click',async e=>{
     case 'my-follows':ui.fAgent=ui.fAgent===ui.me?'':ui.me;render();break;
     case 'follow-done':{const c=S.calls[id];if(c){const {ym,...b}=c;await Store.put({...b,followDone:true,followDoneAt:Date.now()},{...c});toast('المتابعة اتقفلت')}break}
     case 'follow-tomorrow':{const c=S.calls[id];if(c){const {ym,...b}=c;await Store.put({...b,followDate:addDays(today(),1)},{...c});toast('اتأجلت لبكرة')}break}
-    case 'log-follow':{const c=S.calls[id];if(c)openCall(null,{client:c.client,company:c.company,phone:c.phone,industry:c.industry,source:c.source,city:c.city,budget:c.budget,services:c.services||[],heat:c.heat,linkFrom:c.id,agent:ui.me||c.agent});break}
+    case 'log-follow':{const c=S.calls[id];if(c)openCall(null,{client:c.client,company:c.company,phone:c.phone,industry:c.industry,source:c.source,city:c.budget,services:c.services||[],heat:c.heat,linkFrom:c.id,agent:ui.me||c.agent});break}
     case 'copy':{const v=el.dataset.v||'';try{await navigator.clipboard.writeText(v);toast('اتنسخ الرقم')}catch(err){toast('علّم الرقم وانسخه من الجهاز')}break}
-    case 'save-settings':await Store.putSettings({company:$('#setCo').value.trim()||'وكالتي',dailyTarget:Number($('#setTarget').value)||0});toast('اتحفظت الإعدادات');break;
+    case 'save-settings':await Store.putSettings({company:$('#setCo').value.trim()\vert{}\vert{}'وكالتي',dailyTarget:Number($('#setTarget').value)||0});toast('اتحفظت الإعدادات');break;
     case 'add-member':{const n=$('#newMember').value.trim();if(!n){toast('اكتب الاسم');break}if(team().some(m=>m.name===n)){toast('الاسم ده موجود');break}await Store.putSettings({team:[...team(),{id:uid(),name:n}]});toast('اتضاف '+n);break}
     case 'del-member':await Store.putSettings({team:team().filter(m=>m.id!==id)});toast('اتشال الاسم. مكالماته القديمة زي ما هي');break;
     case 'seed':seedDemo();break;
@@ -1174,22 +1182,66 @@ dlg.addEventListener('click',e=>{if(e.target===dlg)dlg.close()});
 setInterval(()=>{const a=document.activeElement;if(!dlg.open&&!dlg2.open&&!(a&&/INPUT|TEXTAREA|SELECT/.test(a.tagName))&&ui.view==='follow')render()},60000);
 
 /* =========================================================
-   التشغيل
+   التشغيل والربط السحابي مع Firebase
    ========================================================= */
 try{const th=lsGet('calls_theme','');if(th)document.documentElement.dataset.theme=th}catch(e){}
+
 async function init(){
-  let db=null,user=null;
-  if(window.claude&&typeof window.claude.use==='function'){try{[db,user]=await Promise.all([window.claude.use('db'),window.claude.use('user')])}catch(e){}}
-  if(!db){Store.lsLoad();for(const id in S.calls)S.calls[id].ym=ymOf(S.calls[id].date);ui.ready=true;render();return}
-  Store.mode='db';Store.db=db;
-  if(user){try{const w=await user.can('data.write');Store.canWrite=w!==false}catch(e){}}
-  let got=0;const done=()=>{if(++got>=3&&!ui.ready){ui.ready=true}scheduleRender()};
-  db.doc('config/settings').onSnapshot(s=>{S.settings={...DEF,...(s.exists?s.data():{})};done()},()=>done());
+  let db=null;
+  if(typeof firebase!=='undefined'&&firebaseConfig.projectId){
+    try{
+      if(!firebase.apps.length) firebase.initializeApp(firebaseConfig);
+      db = firebase.firestore();
+    }catch(e){
+      console.warn("Firebase failed to init, falling back to local:", e);
+    }
+  }
+
+  if(!db){
+    Store.mode='local';
+    Store.lsLoad();
+    for(const id in S.calls) S.calls[id].ym=ymOf(S.calls[id].date);
+    ui.ready=true;
+    render();
+    return;
+  }
+
+  Store.mode='db';
+  Store.db=db;
+  Store.canWrite=true;
+
+  // مؤقت أمان لضمان ظهور الصفحة فوراً مهما كانت حالة الشبكة
+  const safetyTimer = setTimeout(()=>{
+    if(!ui.ready){
+      ui.ready=true;
+      render();
+    }
+  }, 2000);
+
+  let loadedCount = 0;
+  const finishLoading = () => {
+    loadedCount++;
+    if(loadedCount >= 2 && !ui.ready){
+      clearTimeout(safetyTimer);
+      ui.ready=true;
+      scheduleRender();
+    }
+  };
+
+  db.doc('config/settings').onSnapshot(s=>{
+    S.settings={...DEF,...(s.exists?s.data():{})};
+    finishLoading();
+  }, err=>{
+    console.warn("Settings error:", err);
+    finishLoading();
+  });
+
   const cur=ymOf(today());
-  const subMonth=ym=>{Store.subs[ym]=Store.col(ym).onSnapshot(s=>{for(const id in S.calls)if(S.calls[id].ym===ym)delete S.calls[id];s.docs.forEach(d=>{S.calls[d.id]={...d.data(),id:d.id,ym}});const first=!S.loaded.has(ym);S.loaded.add(ym);if(first)done();else scheduleRender()},()=>{if(!S.loaded.has(ym)){S.loaded.add(ym);done()}})};
-  subMonth(cur);subMonth(addMonthsYM(cur,-1));
-  setTimeout(()=>{if(!ui.ready){ui.ready=true;render()}},8000);
+  Store.ensure(cur);
+  Store.ensure(addMonthsYM(cur,-1));
+  finishLoading();
 }
+
 init();
 render();
 </script>
