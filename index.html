@@ -6,8 +6,8 @@
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600&family=Readex+Pro:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <!-- مكتبات Firebase السحابية للربط اللحظي بين كل أجهزة التيم -->
-<script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
+<script defer src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+<script defer src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
 
 <style>
 /* Layout: deep-violet header with the day's call-result strip as the signature element; light working surface below; bottom tab bar on phones */
@@ -198,7 +198,7 @@ table.t tbody tr:hover{background:var(--surface-2)}
 /* ---------- guide ---------- */
 .guide{max-width:820px}
 .guide section{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:20px 22px;margin-bottom:12px}
-.guide h2{font-family:var(--display);font-weight:600;font-size:18px;margin:0 0 8px}
+.guide h2{font-family:var(--display);font-weight:600;font-size:18px}
 .guide p{margin:0 0 10px}.guide p:last-child{margin-bottom:0}
 .guide ol,.guide ul{margin:6px 0 8px;padding-inline-start:22px}
 .guide li{margin-bottom:6px}
@@ -323,10 +323,9 @@ const SERVICES=['إدارة سوشيال ميديا','إعلانات ممولة'
 const NEXT=['اتصال تاني','ابعت عرض سعر','ابعت سابقة أعمال على واتساب','اجتماع أونلاين','اجتماع في المقر','زيارة للعميل','مفيش'];
 const AV_COLORS=['#6B2BD6','#C2378F','#2B6CC4','#1E8A7A','#D9822B','#8B5E3C','#4E7A2B','#5C5C8A'];
 const DEF={company:'وكالتي',team:[],dailyTarget:30};
+const LS='calls_log_v1';
 const CALLS_COLLECTION='calls_data';
 const SETTINGS_COLLECTION='system_config';
-const SETTINGS_DOCUMENT='settings';
-const LS='calls_log_v1';
 
 const ICON={
   day:'<rect x="3.5" y="5" width="17" height="15" rx="2"/><path d="M3.5 9.5h17M8 3v4M16 3v4"/>',
@@ -390,10 +389,10 @@ const Store={
     console.error("Firestore Error:", e);
     const c=e&&e.code;
     if(c==='permission-denied')toast('معندكش صلاحية تعدّل، راجع الـ Rules في Firebase');
-    else toast('تعذر الاتصال بالسيرفر، شغال محلياً مؤقتاً');
+    else toast('تعذر الاتصال بالسيرفر');
   },
   col(ym){return this.db.collection(CALLS_COLLECTION).doc(ym).collection('records')},
-  settingsDoc(){return this.db.collection(SETTINGS_COLLECTION).doc(SETTINGS_DOCUMENT)},
+  settingsDoc(){return this.db.collection(SETTINGS_COLLECTION).doc('settings')},
   ensure(ym){
     if(this.mode!=='db'||!this.db)return;
     if(this.subs[ym])return;
@@ -403,21 +402,23 @@ const Store={
         s.docs.forEach(d=>{S.calls[d.id]={...d.data(),id:d.id,ym}});
         S.loaded.add(ym);scheduleRender();
       },err=>{console.warn("Sub error:", err);scheduleRender();});
-    }catch(e){console.warn("Sub error:", e)}
+    }catch(err){console.warn("Sub setup error:", err)}
   },
   async put(c,prev){
     const ym=ymOf(c.date);const rec={...c,ym};S.calls[c.id]=rec;scheduleRender();
     if(this.mode!=='db'||!this.db){this.lsSave();return true}
     const {id,ym:_y,...body}=rec;
     try{
-      if(prev&&prev.ym&&prev.ym!==ym)await this.col(prev.ym).doc(id).delete();
+      const prevYm=prev?(prev.ym||ymOf(prev.date)):null;
+      if(prevYm&&prevYm!==ym)await this.col(prevYm).doc(id).delete();
       await this.col(ym).doc(id).set(body);this.ensure(ym);return true;
     }catch(e){this.err(e);if(prev)S.calls[c.id]=prev;else delete S.calls[c.id];scheduleRender();return false}
   },
   async del(c){
+    const rec={...c,ym:c.ym||ymOf(c.date)};
     delete S.calls[c.id];scheduleRender();
     if(this.mode!=='db'||!this.db){this.lsSave();return true}
-    try{await this.col(c.ym).doc(c.id).delete();return true}catch(e){this.err(e);S.calls[c.id]=c;scheduleRender();return false}
+    try{await this.col(rec.ym).doc(c.id).delete();return true}catch(e){this.err(e);S.calls[c.id]=rec;scheduleRender();return false}
   },
   async putSettings(p){
     S.settings={...S.settings,...p};scheduleRender();
@@ -771,7 +772,7 @@ function openClient(id){
     dlg.innerHTML=`<div class="dh"><h3>${esc(l.client||'—')}${l.company?` <span class="muted" style="font-size:15px;font-weight:400">— ${esc(l.company)}</span>`:''}</h3>${xBtn}</div>
     <div class="db">
       <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:10px"><b class="phone" style="font-size:18px;user-select:all">${esc(l.phone||'')}</b>${l.phone?`<button class="btn sm" data-act="copy" data-v="${esc(l.phone)}">${ico('copy')}نسخ الرقم</button><a class="btn sm" href="https://wa.me/${esc(waNum(l.phone))}" target="_blank" rel="noopener">واتساب</a>`:''}</div>
-      <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px">${l.industry?`<span class="chip">${esc(l.industry)}</span>`:''}${l.source?`<span class="chip">${esc(l.source)}</span>`:''}${l.city?`<span class="chip">${esc(l.city)}</span>`:''}${heatChip(l.heat)}<span class="chip violet">${list.length} ${list.length===1?'مكالمة':'مكالمات'}</span></div>
+      <div style="display:gap:8px;flex-wrap:wrap;margin-bottom:14px">${l.industry?`<span class="chip">${esc(l.industry)}</span>`:''}${l.source?`<span class="chip">${esc(l.source)}</span>`:''}${l.city?`<span class="chip">${esc(l.city)}</span>`:''}${heatChip(l.heat)}<span class="chip violet">${list.length} ${list.length===1?'مكالمة':'مكالمات'}</span></div>
       <div class="tl">${list.map(x=>`<div class="it" style="--c:${ST[x.status]?.c||'var(--line)'}"><div style="display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap"><span>${stChip(x.status)}</span><span class="csub">${esc(fdayY(x.date))}${x.time?' — '+t12(x.time):''} — ${esc(x.agent||'')}</span></div>${x.notes?`<div style="white-space:pre-wrap;margin-top:4px">${esc(x.notes)}</div>`:''}${x.internal?`<div class="csub">داخلي: ${esc(x.internal)}</div>`:''}${x.followDate?`<div class="csub">المتابعة: ${followTxt(x)}</div>`:''}${(x.services||[]).length?`<div class="csub">${esc(x.services.join('، '))}${x.budget?' — ميزانية: '+esc(x.budget):''}</div>`:''}</div>`).join('')}</div>
     </div>
     <div class="df">${Store.mode==='db'&&k?'<button class="btn sm ghost" data-old>'+ico('history')+'دوّر في الشهور القديمة</button>':''}<div class="r">${Store.canWrite?`<button class="btn primary" data-new>${ico('phone')}سجّل مكالمة جديدة معاه</button>`:''}</div></div>`;
@@ -861,7 +862,7 @@ const PHEAT={hot:PC.bad,warm:PC.warn,cold:PC.info};
 const FD='"Readex Pro","IBM Plex Sans Arabic",Tahoma,Arial,sans-serif',FB='"IBM Plex Sans Arabic",Tahoma,Arial,sans-serif';
 const PG={W:794,H:1123,M:34,S:2,FOOT:34};
 const pf=(w,s,d)=>`${w} ${s}px ${d?FD:FB}`;
-function rr(c,x,y,w,h,r){r=Math.min(r,h/2,w/2);c.beginPath();c.moveTo(x+r,y);c.arcTo(x+w,y,x+w,y+h,r);c.arcTo(x+w,y+h,x,y+h,r);c.arcTo(x,y+h,x,y,r);c.arcTo(x,y+x+w,y,r);c.closePath()}
+function rr(c,x,y,w,h,r){r=Math.min(r,h/2,w/2);c.beginPath();c.moveTo(x+r,y);c.arcTo(x+w,y,x+w,y+h,r);c.arcTo(x+w,y+h,x,y+h,r);c.arcTo(x,y+h,x,y,r);c.arcTo(x,y,x+w,y,r);c.closePath()}
 function tx(c,s,x,y,font,color,align='right'){c.font=font;c.fillStyle=color;c.textAlign=align;c.direction='rtl';c.textBaseline='alphabetic';c.fillText(String(s),x,y)}
 function tw(c,s,font){c.font=font;return c.measureText(String(s)).width}
 function wrapT(c,s,font,maxW,maxLines){
@@ -1035,9 +1036,15 @@ function pdfPaginate(items,head,m){
   return pages;
 }
 async function pdfFonts(){
-  if(!document.fonts||!document.fonts.load)return;
-  const want=['400 14px "IBM Plex Sans Arabic"','500 14px "IBM Plex Sans Arabic"','600 14px "IBM Plex Sans Arabic"','400 20px "Readex Pro"','600 20px "Readex Pro"','700 20px "Readex Pro"'];
-  try{await Promise.race([Promise.all(want.map(f=>document.fonts.load(f,'تقرير 123'))),new Promise(r=>setTimeout(r,3000))])}catch(e){}
+  if(!document.fonts||!document.fonts.ready)return;
+  try{
+    await Promise.race([
+      Promise.resolve(document.fonts.ready),
+      new Promise(r=>setTimeout(r,800))
+    ]);
+  }catch(e){
+    console.warn("PDF font loading bypassed; using available Arabic fallback fonts:", e);
+  }
 }
 async function renderDoc(m){
   await pdfFonts();
@@ -1055,7 +1062,28 @@ async function renderDoc(m){
     return cv;
   });
 }
-function cvJpeg(cv){return new Promise((res,rej)=>cv.toBlob(b=>{if(!b){rej(new Error('jpeg'));return}b.arrayBuffer().then(a=>res(new Uint8Array(a)),rej)},'image/jpeg',0.9))}
+async function cvJpeg(cv){
+  const fallback=()=>{
+    const dataUrl=cv.toDataURL('image/jpeg',0.85);
+    const encoded=dataUrl.split(',')[1];
+    if(!encoded)throw new Error("Canvas returned an invalid JPEG data URL");
+    const bin=atob(encoded);
+    const arr=new Uint8Array(bin.length);
+    for(let i=0;i<bin.length;i++)arr[i]=bin.charCodeAt(i);
+    return arr;
+  };
+  try{
+    const blob=await new Promise((resolve,reject)=>{
+      try{cv.toBlob(resolve,'image/jpeg',0.85)}catch(err){reject(err)}
+    });
+    if(!blob)return fallback();
+    try{return new Uint8Array(await blob.arrayBuffer())}
+    catch(err){console.warn("Canvas JPEG Blob read failed; using data URL fallback:",err);return fallback()}
+  }catch(err){
+    console.warn("Canvas JPEG Blob encoding failed; using data URL fallback:",err);
+    return fallback();
+  }
+}
 async function pagesToPdf(canvases){
   const enc=new TextEncoder();const chunks=[];let len=0;const offs=[];
   const push=x=>{const b=typeof x==='string'?enc.encode(x):x;chunks.push(b);len+=b.length};
@@ -1076,24 +1104,41 @@ async function pagesToPdf(canvases){
   push(x);push(`trailer\n<< /Size ${size} /Root 1 0 R >>\nstartxref\n${xref}\n%%EOF`);
   return new Blob(chunks,{type:'application/pdf'});
 }
-/* تنزيل أي ملف: من الصفحة على طول */
 async function saveBlob(name,data,type){
   const blob=data instanceof Blob?data:new Blob([data],{type:type||'text/csv;charset=utf-8'});
-  let dl=null;try{dl=window.claude&&window.claude.use?await window.claude.use('downloads'):null}catch(e){}
-  if(dl){try{await dl.save({filename:name,data:blob});return 'saved'}catch(e){if(e&&e.code==='declined')return 'declined'}}
-  try{const u=URL.createObjectURL(blob);const a=document.createElement('a');a.href=u;a.download=name;a.rel='noopener';document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(u),60000);return 'saved'}catch(e){return 'failed'}
+  try{
+    const url=URL.createObjectURL(blob);
+    const a=document.createElement('a');
+    a.href=url;
+    a.download=name;
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    setTimeout(()=>URL.revokeObjectURL(url),60000);
+    return 'saved';
+  }catch(e){
+    console.error("Save error:", e);
+    return 'failed';
+  }
 }
 let pdfBusy=false;
 async function exportPdf(kind,btn){
   if(pdfBusy)return;pdfBusy=true;
   const old=btn?btn.innerHTML:'';if(btn){btn.disabled=true;btn.textContent='بيتجهز…'}
   try{
-    const m=pdfDoc(kind);const pages=await renderDoc(m);const blob=await pagesToPdf(pages);
+    const m=pdfDoc(kind);
+    const pages=await renderDoc(m);
+    const blob=await pagesToPdf(pages);
     const r=await saveBlob(m.fname,blob,'application/pdf');
     if(r==='saved')toast(`اتنزّل الـ PDF (${pages.length===1?'صفحة واحدة':pages.length===2?'صفحتين':pages.length+' صفحات'})`);
-    else if(r==='failed')toast('تعذر تنزيل الملف، حاول تاني');
-  }catch(e){toast('تعذر تجهيز الـ PDF، حاول تاني')}
-  finally{pdfBusy=false;if(btn){btn.disabled=false;btn.innerHTML=old}}
+    else toast('تعذر تنزيل الملف، حاول تاني');
+  }catch(e){
+    console.error("Detailed PDF Export Error:", e);
+    toast('تعذر تجهيز الـ PDF، حاول تاني');
+  }finally{
+    pdfBusy=false;
+    if(btn){btn.disabled=false;btn.innerHTML=old}
+  }
 }
 
 /* =========================================================
@@ -1189,54 +1234,50 @@ dlg.addEventListener('click',e=>{if(e.target===dlg)dlg.close()});
 setInterval(()=>{const a=document.activeElement;if(!dlg.open&&!dlg2.open&&!(a&&/INPUT|TEXTAREA|SELECT/.test(a.tagName))&&ui.view==='follow')render()},60000);
 
 /* =========================================================
-   التشغيل والربط السحابي مع Firebase
+   التشغيل المباشر والربط السحابي
    ========================================================= */
 try{const th=lsGet('calls_theme','');if(th)document.documentElement.dataset.theme=th}catch(e){}
 
-function init(){
-  ui.ready=true;
-  render();
-
+function initFirebase(){
   let db=null;
-  if(typeof firebase!=='undefined'&&firebaseConfig.projectId){
-    try{
-      if(!firebase.apps.length) firebase.initializeApp(firebaseConfig);
-      db = firebase.firestore();
-    }catch(e){
-      console.warn("Firebase failed to init, falling back to local:", e);
-    }
-  }
-
-  if(!db){
-    Store.mode='local';
-    Store.lsLoad();
-    for(const id in S.calls) S.calls[id].ym=ymOf(S.calls[id].date);
-    scheduleRender();
-    return;
-  }
-
-  Store.mode='db';
-  Store.db=db;
-  Store.canWrite=true;
-
-  // متابعة الإعدادات السحابية
   try{
-    Store.settingsDoc().onSnapshot(s=>{
-      S.settings=s.exists?{...DEF,...s.data()}:{...DEF};
-      scheduleRender();
-    }, err=>{
-      console.warn("Settings error:", err);
-      scheduleRender();
-    });
-  }catch(e){console.warn("Settings error:", e)}
+    if(typeof firebase!=='undefined'&&firebaseConfig.projectId){
+      if(!firebase.apps.length) firebase.initializeApp(firebaseConfig);
+      db=firebase.firestore();
+    }
+  }catch(err){
+    console.warn("Firebase Init fallback:", err);
+  }
 
-  // الاشتراك اللحظي في مكالمات الشهور
-  const cur=ymOf(today());
-  Store.ensure(cur);
-  Store.ensure(addMonthsYM(cur,-1));
+  if(db){
+    Store.mode='db';
+    Store.db=db;
+    Store.canWrite=true;
+
+    try{
+      Store.settingsDoc().onSnapshot(s=>{
+        S.settings=s.exists?{...DEF,...s.data()}:{...DEF};
+        scheduleRender();
+      },err=>console.warn("Settings error:", err));
+    }catch(err){console.warn("Settings listener setup error:", err)}
+
+    const cur=ymOf(today());
+    Store.ensure(cur);
+    Store.ensure(addMonthsYM(cur,-1));
+  }else{
+    console.warn("Firebase unavailable; continuing with local storage.");
+  }
 }
 
-// بدء التشغيل
+function init(){
+  ui.ready=true;
+  Store.lsLoad();
+  for(const id in S.calls)if(S.calls[id].date)S.calls[id].ym=ymOf(S.calls[id].date);
+  render();
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',initFirebase,{once:true});
+  else initFirebase();
+}
+
 init();
 </script>
 
