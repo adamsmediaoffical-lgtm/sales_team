@@ -1,0 +1,1485 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>adam's advertising agency | وكالة آدم للدعاية والإعلان والطباعة والأوت دور</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              yellow: '#FFDE00',
+              yellowHover: '#E5C700',
+              yellowLight: '#FFF9CC',
+              dark: '#111111',
+              charcoal: '#1A1A1A',
+              cardDark: '#1E1E22',
+              pink: '#E91E63',
+              pinkHover: '#D81557',
+              borderDark: '#2D2D33'
+            }
+          },
+          fontFamily: {
+            sans: ['Cairo', 'Inter', 'sans-serif'],
+            en: ['Inter', 'Cairo', 'sans-serif']
+          },
+          animation: {
+            'marquee': 'marquee 25s linear infinite',
+            'marquee-reverse': 'marqueeRev 25s linear infinite',
+            'pulse-subtle': 'pulseSubtle 2.5s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+            'ping-slow': 'ping 2s cubic-bezier(0, 0, 0.2, 1) infinite'
+          },
+          keyframes: {
+            marquee: {
+              '0%': { transform: 'translateX(0%)' },
+              '100%': { transform: 'translateX(-50%)' }
+            },
+            marqueeRev: {
+              '0%': { transform: 'translateX(-50%)' },
+              '100%': { transform: 'translateX(0%)' }
+            },
+            pulseSubtle: {
+              '0%, 100%': { opacity: 1, transform: 'scale(1)' },
+              '50%': { opacity: 0.92, transform: 'scale(1.03)' }
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    .brand-tape {
+      background: repeating-linear-gradient(
+        -45deg,
+        #FFDE00,
+        #FFDE00 24px,
+        #111111 24px,
+        #111111 48px
+      );
+    }
+    
+    .text-stroke-yellow {
+      -webkit-text-stroke: 1.5px #FFDE00;
+      color: transparent;
+    }
+    
+    .yellow-glow {
+      box-shadow: 0 0 35px -5px rgba(255, 222, 0, 0.35);
+    }
+
+    .pink-glow {
+      box-shadow: 0 0 30px -5px rgba(233, 30, 99, 0.45);
+    }
+
+    @keyframes radar-pulse {
+      0% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
+      }
+      70% {
+        transform: scale(1);
+        box-shadow: 0 0 0 20px rgba(37, 211, 102, 0);
+      }
+      100% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+      }
+    }
+    .whatsapp-radar {
+      animation: radar-pulse 2.2s infinite;
+    }
+
+    ::-webkit-scrollbar {
+      width: 10px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #111111;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #FFDE00;
+      border-radius: 5px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #E5C700;
+    }
+  </style>
+</head>
+<body class="bg-[#0D0D10] text-gray-100 font-sans antialiased selection:bg-brand-yellow selection:text-brand-dark overflow-x-hidden">
+
+  <div class="bg-brand-yellow text-brand-dark text-xs sm:text-sm font-black py-2 px-4 shadow-sm z-50 relative border-b border-yellow-400">
+    <div class="max-w-7xl mx-auto flex items-center justify-between">
+      <div class="flex items-center gap-2 overflow-hidden">
+        <span class="inline-block bg-brand-pink text-white px-2 py-0.5 rounded text-[11px] font-black uppercase tracking-wider animate-pulse">
+          توسع 2026-2027
+        </span>
+        <span class="truncate font-bold">
+          الوكيل الإعلاني الحصري لحي أول المدينة • طباعة، أوت دور ويافطات، ديجيتال وتغليف
+        </span>
+      </div>
+      <div class="hidden md:flex items-center gap-6 text-xs font-black">
+        <span class="flex items-center gap-1.5"><i class="fa-solid fa-location-dot text-brand-pink"></i> المحلة الكبرى - الغربية</span>
+        <span class="flex items-center gap-1.5"><i class="fa-solid fa-calendar-check text-brand-pink"></i> منذ 2009</span>
+        <a href="https://wa.me/201229949595?text=Hello,%20I%20would%20like%20to%20inquire%20about%20your%20services" target="_blank" class="text-brand-dark hover:text-brand-pink underline font-bold transition">
+          +20 155 751 2789
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <header class="sticky top-0 z-40 bg-[#121216]/95 backdrop-blur-md border-b border-brand-borderDark transition-all duration-300" id="mainHeader">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      
+      <a href="#hero" class="flex items-center gap-3.5 group focus:outline-none" aria-label="adam's advertising agency - الصفحة الرئيسية">
+        <img src="https://i.ibb.co/tTG9rrnh/logo.png" alt="شعار وكالة آدم للدعاية والإعلان والطباعة بالمحلة الكبرى" class="h-20 sm:h-22 w-auto object-contain transition-transform group-hover:scale-105">
+        <div class="hidden sm:flex flex-col text-right">
+          <span class="text-base sm:text-lg font-black tracking-tight text-[#FFDE00] font-sans leading-none">
+            adam's agency
+          </span>
+          <span class="text-[11px] font-bold text-gray-400 mt-1">
+            دعاية وإعلان • طباعة • أوت دور
+          </span>
+        </div>
+      </a>
+
+      <nav class="hidden lg:flex items-center gap-7 text-sm font-bold text-gray-300">
+        <a href="index.html" class="hover:text-brand-yellow transition">الرئيسية</a>
+        <a href="#about" class="hover:text-brand-yellow transition">من نحن</a>
+        <a href="#services" class="hover:text-brand-yellow transition">خدماتنا</a>
+        <a href="#group" class="hover:text-brand-yellow transition">المجموعة الثلاثية</a>
+        <a href="#workflow" class="hover:text-brand-yellow transition">آلية العمل</a>
+        <a href="#comparison" class="hover:text-brand-yellow transition">لماذا آدم؟</a>
+        <a href="#leadership" class="hover:text-brand-yellow transition">القيادة</a>
+      </nav>
+
+      <div class="hidden sm:flex items-center gap-3">
+        <button onclick="openQuoteModal()" class="bg-brand-yellow hover:bg-brand-yellowHover text-brand-dark px-5 py-2.5 rounded-xl text-sm font-extrabold flex items-center gap-2 shadow-lg transition duration-200 transform hover:-translate-y-0.5">
+          <i class="fa-solid fa-bolt text-brand-dark"></i>
+          <span>طلب عرض سعر في 24 ساعة</span>
+        </button>
+      </div>
+
+      <button onclick="toggleMobileMenu()" class="lg:hidden p-2 text-gray-300 hover:text-brand-yellow focus:outline-none">
+        <i id="mobileMenuIcon" class="fa-solid fa-bars text-2xl"></i>
+      </button>
+    </div>
+
+    <div id="mobileMenu" class="hidden lg:hidden bg-brand-charcoal border-b border-brand-borderDark px-6 py-6 transition-all">
+      <nav class="flex flex-col gap-4 text-base font-bold text-gray-300">
+        <a href="index.html" onclick="toggleMobileMenu()" class="hover:text-brand-yellow py-1 border-b border-gray-800">الرئيسية</a>
+        <a href="#about" onclick="toggleMobileMenu()" class="hover:text-brand-yellow py-1 border-b border-gray-800">من نحن (17 سنة خبرة)</a>
+        <a href="#services" onclick="toggleMobileMenu()" class="hover:text-brand-yellow py-1 border-b border-gray-800">خدمات الطباعة والأوت دور</a>
+        <a href="#group" onclick="toggleMobileMenu()" class="hover:text-brand-yellow py-1 border-b border-gray-800">علامات المجموعة (Pack / Media / Agency)</a>
+        <a href="#workflow" onclick="toggleMobileMenu()" class="hover:text-brand-yellow py-1 border-b border-gray-800">الشغلانة بتمشي إزاي</a>
+        <a href="#comparison" onclick="toggleMobileMenu()" class="hover:text-brand-yellow py-1 border-b border-gray-800">الفرق بيننا وبين أي مطبعة</a>
+        <a href="#leadership" onclick="toggleMobileMenu()" class="hover:text-brand-yellow py-1 border-b border-gray-800">قيادة الوكالة</a>
+        <div class="pt-3 flex flex-col gap-3">
+          <button onclick="openQuoteModal(); toggleMobileMenu();" class="w-full bg-brand-yellow text-brand-dark py-3 rounded-xl font-black text-center flex items-center justify-center gap-2">
+            <i class="fa-solid fa-calculator"></i> طلب تسعير أو معاينة
+          </button>
+          <button onclick="toggleLanguage()" class="w-full py-2.5 rounded-xl border border-brand-borderDark text-sm text-center font-bold">
+            <i class="fa-solid fa-globe text-brand-yellow mr-1"></i> تغيير اللغة إلى English
+          </button>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <section id="hero" class="relative pt-12 pb-20 lg:pt-20 lg:pb-32 overflow-hidden bg-gradient-to-b from-[#141418] via-[#0f0f13] to-[#0A0A0D]">
+    
+    <div class="absolute top-1/4 -right-40 w-96 h-96 bg-brand-yellow/10 rounded-full blur-3xl pointer-events-none"></div>
+    <div class="absolute bottom-10 -left-40 w-96 h-96 bg-brand-pink/10 rounded-full blur-3xl pointer-events-none"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brand-charcoal border border-yellow-500/30 text-brand-yellow text-xs sm:text-sm font-extrabold mb-8 shadow-sm">
+        <span class="w-2.5 h-2.5 rounded-full bg-brand-pink animate-ping"></span>
+        <span class="text-white">العرض الاستراتيجي وخطة التوسع</span>
+        <span class="bg-brand-yellow text-brand-dark px-2 py-0.5 rounded-full text-xs font-black">2026 - 2027</span>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+        
+        <div class="lg:col-span-7 space-y-6">
+          <h1 class="text-4xl sm:text-6xl lg:text-6xl font-black tracking-tight leading-[1.25]">
+            <span class="text-white">17 سنة في شوارع</span>
+            <span class="block text-brand-yellow mt-1">المحلة الكبرى.</span>
+            <span class="block text-2xl sm:text-4xl font-extrabold text-gray-300 mt-2">
+              بنملك الشارع • بنطبع صح • وبنركب صح
+            </span>
+          </h1>
+
+          <p class="text-base sm:text-lg text-gray-300 leading-relaxed max-w-2xl font-normal">
+            وكالة دعاية وإعلان وطباعة متكاملة من المحلة الكبرى منذ <strong class="text-brand-yellow font-black">2009</strong>. 
+            نوفر كل ما يحتاجه مشروعك تحت سقف واحد: من بطاقة العمل إلى أضخم بيلبورد، مع <span class="text-brand-pink font-bold">الامتياز الإعلاني الحصري لحي أول المحلة</span> وإنتاج داخلي يحكم الجودة والمواعيد بدقة.
+          </p>
+
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2">
+            <div class="bg-brand-charcoal/90 p-3.5 rounded-2xl border border-brand-borderDark hover:border-brand-yellow/50 transition">
+              <span class="block text-2xl font-black text-brand-yellow">17+</span>
+              <span class="text-xs text-gray-300 font-bold">سنة في نفس المدينة</span>
+            </div>
+            <div class="bg-brand-charcoal/90 p-3.5 rounded-2xl border border-brand-borderDark hover:border-brand-yellow/50 transition">
+              <span class="block text-2xl font-black text-brand-pink">حي أول</span>
+              <span class="text-xs text-gray-300 font-bold">امتياز إعلاني حصري</span>
+            </div>
+            <div class="bg-brand-charcoal/90 p-3.5 rounded-2xl border border-brand-borderDark hover:border-brand-yellow/50 transition">
+              <span class="block text-2xl font-black text-white">3 علامات</span>
+              <span class="text-xs text-gray-300 font-bold">دعاية + تغليف + ميديا</span>
+            </div>
+            <div class="bg-brand-charcoal/90 p-3.5 rounded-2xl border border-brand-borderDark hover:border-brand-yellow/50 transition">
+              <span class="block text-2xl font-black text-brand-yellow">100%</span>
+              <span class="text-xs text-gray-300 font-bold">إنتاج داخلي بلا وسيط</span>
+            </div>
+          </div>
+
+          <div class="pt-4 flex flex-wrap items-center gap-4">
+            <a href="https://wa.me/201229949595?text=Hello,%20I%20would%20like%20to%20inquire%20about%20your%20services" target="_blank" class="bg-brand-yellow hover:bg-brand-yellowHover text-brand-dark px-8 py-4 rounded-2xl font-black text-base flex items-center gap-3 shadow-xl transition transform hover:-translate-y-1">
+              <i class="fa-brands fa-whatsapp text-2xl"></i>
+              <span>اطلب معاينة أو عرض سعر (خلال 24 ساعة)</span>
+            </a>
+            
+            <a href="#services" class="bg-brand-charcoal hover:bg-gray-800 text-white border border-gray-700 px-6 py-4 rounded-2xl font-bold text-base flex items-center gap-2 transition">
+              <i class="fa-solid fa-layer-group text-brand-yellow"></i>
+              <span>استعراض الكتالوج والخدمات</span>
+            </a>
+          </div>
+
+          <p class="text-xs text-gray-400 flex items-center gap-2 pt-1">
+            <i class="fa-solid fa-shield-halved text-brand-pink"></i>
+            <span>القاعدة الأساسية لدينا: مفيش طباعة نهائية من غير بروفة وموافقة كتابية من العميل.</span>
+          </p>
+        </div>
+
+        <div class="lg:col-span-5 relative">
+          <div class="relative bg-gradient-to-br from-brand-charcoal to-[#15151a] p-6 sm:p-8 rounded-3xl border-2 border-brand-yellow/80 shadow-2xl yellow-glow">
+            
+            <div class="absolute -top-4 -left-4 bg-brand-pink text-white px-4 py-1.5 rounded-xl font-black text-xs shadow-lg uppercase tracking-wider flex items-center gap-1.5">
+              <i class="fa-solid fa-crown text-brand-yellow"></i>
+              الوكالة الأم منذ 2009
+            </div>
+
+            <div class="flex items-center justify-between pb-6 border-b border-gray-800">
+              <div class="flex items-center gap-3">
+                <div class="w-12 h-12 bg-brand-yellow text-brand-dark rounded-xl flex items-center justify-center font-black text-xl">
+                  a°
+                </div>
+                <div>
+                  <h3 class="font-extrabold text-lg text-white">adam's advertising agency</h3>
+                  <p class="text-xs text-gray-400">المحلة الكبرى - الامتياز الإعلاني</p>
+                </div>
+              </div>
+              <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-bold bg-green-900/50 text-green-300 border border-green-700/50">
+                <span class="w-1.5 h-1.5 rounded-full bg-green-400 ml-1.5 animate-pulse"></span> متاح لاستلام المشاريع
+              </span>
+            </div>
+
+            <div class="py-6 space-y-4">
+              <div class="p-3.5 bg-black/40 rounded-xl border border-gray-800 flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                  <div class="w-9 h-9 rounded-lg bg-yellow-400/20 text-brand-yellow flex items-center justify-center font-black">
+                    <i class="fa-solid fa-print"></i>
+                  </div>
+                  <div>
+                    <h4 class="text-sm font-bold text-white">طباعة أوفست وديجيتال</h4>
+                    <p class="text-xs text-gray-400">كتالوجات، علب، بروشورات، كروت</p>
+                  </div>
+                </div>
+                <span class="text-xs text-brand-yellow font-bold">إنتاج داخلي</span>
+              </div>
+
+              <div class="p-3.5 bg-black/40 rounded-xl border border-gray-800 flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                  <div class="w-9 h-9 rounded-lg bg-pink-500/20 text-brand-pink flex items-center justify-center font-black">
+                    <i class="fa-solid fa-city"></i>
+                  </div>
+                  <div>
+                    <h4 class="text-sm font-bold text-white">أوت دور ويافطات وبيلبورد</h4>
+                    <p class="text-xs text-gray-400">حي أول المدينة + واجهات كلادينج</p>
+                  </div>
+                </div>
+                <span class="text-xs text-brand-pink font-bold">امتياز حصري</span>
+              </div>
+
+              <div class="p-3.5 bg-black/40 rounded-xl border border-gray-800 flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                  <div class="w-9 h-9 rounded-lg bg-blue-500/20 text-blue-400 flex items-center justify-center font-black">
+                    <i class="fa-solid fa-cubes-stacked"></i>
+                  </div>
+                  <div>
+                    <h4 class="text-sm font-bold text-white">خدمات الميديا والتغليف</h4>
+                    <p class="text-xs text-gray-400">adam's pack + adam's media</p>
+                  </div>
+                </div>
+                <span class="text-xs text-blue-400 font-bold">منظومة موحدة</span>
+              </div>
+            </div>
+
+            <button onclick="scrollToId('estimator')" class="w-full py-3 bg-brand-yellow hover:bg-brand-yellowHover text-brand-dark rounded-xl font-black text-sm flex items-center justify-center gap-2 transition">
+              <i class="fa-solid fa-calculator"></i>
+              احسب تكلفة مشروعك أو باقتك الآن
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <div class="relative bg-brand-yellow text-brand-dark font-black text-sm sm:text-base py-3 overflow-hidden select-none shadow-md border-y-2 border-brand-dark">
+    <div class="flex whitespace-nowrap animate-marquee">
+      <div class="flex items-center space-x-8 space-x-reverse mx-4">
+        <span class="flex items-center gap-2">✦ ADAM'S TEAM</span>
+        <span class="flex items-center gap-2 text-brand-pink">★ طباعة . أوت دور . دعاية وإعلان</span>
+        <span class="flex items-center gap-2">✦ منذ 2009 في شوارع المحلة</span>
+        <span class="flex items-center gap-2 text-brand-dark bg-white/40 px-2 rounded">★  الامتياز الإعلاني لحي أول المدينة</span>
+        <span class="flex items-center gap-2">✦ ADAM'S PACK للتغليف</span>
+        <span class="flex items-center gap-2 text-brand-pink">★ ADAM'S MEDIA للمحتوى والديجيتال</span>
+        <span class="flex items-center gap-2">✦ بنطبع صح وبنركب صح</span>
+      </div>
+      <div class="flex items-center space-x-8 space-x-reverse mx-4">
+        <span class="flex items-center gap-2">✦ ADAM'S TEAM</span>
+        <span class="flex items-center gap-2 text-brand-pink">★ طباعة . أوت دور . دعاية وإعلان</span>
+        <span class="flex items-center gap-2">✦ منذ 2009 في شوارع المحلة</span>
+        <span class="flex items-center gap-2 text-brand-dark bg-white/40 px-2 rounded">★  الامتياز الإعلاني لحي أول المدينة</span>
+        <span class="flex items-center gap-2">✦ ADAM'S PACK للتغليف</span>
+        <span class="flex items-center gap-2 text-brand-pink">★ ADAM'S MEDIA للمحتوى والديجيتال</span>
+        <span class="flex items-center gap-2">✦ بنطبع صح وبنركب صح</span>
+      </div>
+    </div>
+  </div>
+
+  <section id="about" class="py-24 bg-[#0F0F13] relative border-b border-brand-borderDark">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <span class="text-brand-pink font-black text-xs uppercase tracking-widest bg-brand-pink/10 px-3 py-1 rounded-full border border-brand-pink/20">
+           مين إحنا
+        </span>
+        <h2 class="text-3xl sm:text-5xl font-black mt-3 text-white">
+          من مطبعة فى المحلة لمجموعة من <span class="text-brand-yellow">3 علامات تجارية</span>
+        </h2>
+        <p class="text-gray-400 mt-4 text-base sm:text-lg">
+          رحلة بدأت في عام 2009 ككيان طباعة ودعاية بالمحلة، حتى أصبح الشارع ملكاً لنا مع الامتياز الإعلاني لحى أول، وتوسعت لتخدم الصناعة والمتاجر في الغربية وباقي المحافظات بالكامل.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
+        <div class="bg-brand-charcoal p-8 rounded-3xl border border-brand-borderDark hover:border-brand-yellow transition relative overflow-hidden group">
+          <div class="absolute -right-6 -bottom-6 w-24 h-24 bg-brand-yellow/10 rounded-full group-hover:scale-150 transition-transform"></div>
+          <div class="text-brand-yellow text-3xl font-black mb-3">2009</div>
+          <h3 class="text-xl font-bold text-white mb-2">سنة التأسيس والمقر</h3>
+          <p class="text-gray-400 text-sm leading-relaxed">
+            انطلقنا من قلب المحلة الكبرى عاصمة النسيج والتجارة، مستمرين في خدمة نفس العملاء والشركات لأكثر من 17 عاماً بثقة متجددة.
+          </p>
+        </div>
+
+        <div class="bg-brand-charcoal p-8 rounded-3xl border-2 border-brand-pink/50 hover:border-brand-pink transition relative overflow-hidden group shadow-lg">
+          <div class="absolute -right-6 -bottom-6 w-24 h-24 bg-brand-pink/10 rounded-full group-hover:scale-150 transition-transform"></div>
+          <div class="text-brand-pink text-3xl font-black mb-3">حي أول</div>
+          <h3 class="text-xl font-bold text-white mb-2">الامتياز الإعلاني الحصري</h3>
+          <p class="text-gray-400 text-sm leading-relaxed">
+            الشارع بقى بتاعنا! نمتلك أكبر وأبرز مساحات وبيلبوردات وإعلانات الطرق في أرقى وأهم شرايين حي أول المدينة .
+          </p>
+        </div>
+
+        <div class="bg-brand-charcoal p-8 rounded-3xl border border-brand-borderDark hover:border-brand-yellow transition relative overflow-hidden group">
+          <div class="absolute -right-6 -bottom-6 w-24 h-24 bg-brand-yellow/10 rounded-full group-hover:scale-150 transition-transform"></div>
+          <div class="text-brand-yellow text-3xl font-black mb-3">الوكالة الأم</div>
+          <h3 class="text-xl font-bold text-white mb-2">منظومة ثلاثية متكاملة</h3>
+          <p class="text-gray-400 text-sm leading-relaxed">
+            الوكالة الأم التي أطلقت adam's pack المتخصصة في التغليف والعلب، و adam's media للحلول الرقمية وتصوير المحتوى التسويقي.
+          </p>
+        </div>
+      </div>
+
+      <div class="mt-12 bg-black/40 p-8 sm:p-12 rounded-3xl border border-brand-borderDark">
+        <h3 class="text-2xl font-black text-white mb-8 text-center sm:text-right flex items-center gap-3">
+          <i class="fa-solid fa-route text-brand-yellow"></i>
+          محطات رحلتنا ومسيرتنا عبر السنوات
+        </h3>
+
+        <div class="relative border-r-2 border-brand-yellow/30 mr-4 sm:mr-6 space-y-10">
+          
+          <div class="relative pr-8 sm:pr-10">
+            <div class="absolute -right-[9px] top-1.5 w-4 h-4 rounded-full bg-brand-yellow border-4 border-brand-dark"></div>
+            <div class="flex items-center gap-2">
+              <span dir="ltr" class="inline-block text-xs font-black text-brand-dark bg-brand-yellow px-2 py-0.5 rounded font-en">2009 TO 2024</span>
+              <span dir="ltr" class="text-xs font-bold text-gray-400">First Branch</span>
+            </div>
+            <h4 class="text-lg font-black text-white mt-1">
+              تم إنشاء شركة آدمز للخدمات الإعلانية المتكاملة
+            </h4>
+            <p dir="ltr" class="text-xs text-brand-yellow font-en font-medium mt-0.5 text-right">
+              Adam's Integrated Advertising Services Company was established
+            </p>
+          </div>
+
+          <div class="relative pr-8 sm:pr-10">
+            <div class="absolute -right-[9px] top-1.5 w-4 h-4 rounded-full bg-brand-yellow border-4 border-brand-dark"></div>
+            <span dir="ltr" class="inline-block text-xs font-black text-brand-dark bg-brand-yellow px-2 py-0.5 rounded font-en">2009 TO 2014</span>
+            <h4 class="text-lg font-black text-white mt-1">
+              تم إكتساب ثقة الكثير من العملاء في مجال المطبوعات بأكمله
+            </h4>
+            <p dir="ltr" class="text-xs text-brand-yellow font-en font-medium mt-0.5 text-right">
+              We have gained the trust of many customers in the entire printing industry
+            </p>
+          </div>
+
+          <div class="relative pr-8 sm:pr-10">
+            <div class="absolute -right-[9px] top-1.5 w-4 h-4 rounded-full bg-brand-yellow border-4 border-brand-dark"></div>
+            <span dir="ltr" class="inline-block text-xs font-black text-brand-dark bg-brand-yellow px-2 py-0.5 rounded font-en">2014 TO 2024</span>
+            <h4 class="text-lg font-black text-white mt-1">
+              أصبحت شركة الدعاية صاحبة الأمتياز الإعلاني للمدينة
+            </h4>
+            <p dir="ltr" class="text-xs text-brand-yellow font-en font-medium mt-0.5 text-right">
+              The advertising company became the owner of outdoor advertising
+            </p>
+          </div>
+
+          <div class="relative pr-8 sm:pr-10">
+            <div class="absolute -right-[9px] top-1.5 w-4 h-4 rounded-full bg-brand-yellow border-4 border-brand-dark"></div>
+            <span dir="ltr" class="inline-block text-xs font-black text-brand-dark bg-brand-yellow px-2 py-0.5 rounded font-en">2021 TO 2024</span>
+            <h4 class="text-lg font-black text-white mt-1">
+              تم وضع الكثير من البصمات بالعاصمة الإدارية الجديدة
+            </h4>
+            <p dir="ltr" class="text-xs text-brand-yellow font-en font-medium mt-0.5 text-right">
+              Many fingerprints have been placed in the New Capital
+            </p>
+          </div>
+
+          <div class="relative pr-8 sm:pr-10">
+            <div class="absolute -right-[9px] top-1.5 w-4 h-4 rounded-full bg-brand-yellow border-4 border-brand-dark"></div>
+            <div class="flex items-center gap-2">
+              <span dir="ltr" class="inline-block text-xs font-black text-brand-dark bg-brand-yellow px-2 py-0.5 rounded font-en">2019 TO 2024</span>
+              <span dir="ltr" class="text-xs font-bold text-gray-400">New Branch</span>
+            </div>
+            <h4 class="text-lg font-black text-white mt-1">
+              تم إنشاء فرع آخر للشركة بالقاهرة والعمل على تطويره
+            </h4>
+            <p dir="ltr" class="text-xs text-brand-yellow font-en font-medium mt-0.5 text-right">
+              Another branch of the company was established in Cairo and work is being done to develop it
+            </p>
+          </div>
+
+          <div class="relative pr-8 sm:pr-10">
+            <div class="absolute -right-[11px] top-1.5 w-5 h-5 rounded-full bg-brand-pink border-4 border-brand-dark animate-pulse"></div>
+            <span dir="ltr" class="inline-block text-xs font-black text-white bg-brand-pink px-2.5 py-0.5 rounded font-en">2009 TO PRESENT</span>
+            <h4 class="text-lg font-black text-white mt-1">
+              نعمل دائماً على خدمتكم وإرضائكم ونأمل أن نكون دائماً ضمن أولوياتكم
+            </h4>
+            <p dir="ltr" class="text-xs text-gray-300 font-en font-medium mt-0.5 text-right">
+              We always work to serve you and satisfy you, and we hope to always be among your priorities
+            </p>
+          </div>
+
+        </div>
+      </div>
+  </section>
+
+  <section id="group" class="py-24 bg-[#0A0A0D] relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <span class="text-brand-yellow font-black text-xs uppercase tracking-widest bg-brand-yellow/10 px-3 py-1 rounded-full border border-yellow-500/20">
+          منظومة العمل المتكاملة
+        </span>
+        <h2 class="text-3xl sm:text-5xl font-black mt-3 text-white">
+          إحنا جزء من مجموعة أكبر .. <span class="text-brand-yellow">كل عميل بيكسب من الـ 3 علامات</span>
+        </h2>
+        <p class="text-gray-400 mt-4 text-base">
+          لا داعي للتعامل مع مطبعة هنا، وشركة سوشيال ميديا هناك، ومورد كراتين وتغليف ثالث. فريق عمل موحد ينسق كافة تفاصيل هويتك ومبيعاتك.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-16">
+        
+        <div class="bg-brand-charcoal rounded-3xl p-8 border-2 border-brand-yellow shadow-xl relative overflow-hidden flex flex-col justify-between">
+          <div class="space-y-4">
+            <div class="w-14 h-14 bg-brand-yellow text-brand-dark rounded-2xl flex items-center justify-center text-2xl font-black">
+              a°
+            </div>
+            <span class="inline-block text-xs font-black bg-brand-yellow/20 text-brand-yellow px-2.5 py-1 rounded-md">
+              الوكالة الأم - منذ 2009
+            </span>
+            <h3 class="text-2xl font-black text-white">adam's agency</h3>
+            <p class="text-gray-300 text-sm leading-relaxed">
+              الطباعة بجميع أنواعها (أوفست وديجيتال)، يافطات الشارع والواجهات، والامتياز الإعلاني الحصري في حي أول المحلة الكبرى.
+            </p>
+            <ul class="space-y-2 text-xs font-bold text-gray-300 pt-2">
+              <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-yellow"></i> واجهات كلادينج وحروف بارزة</li>
+              <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-yellow"></i> بيلبوردات ومساحات حي أول</li>
+              <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-yellow"></i> مطبوعات الشركات والأوراق الرسمية</li>
+            </ul>
+          </div>
+          <div class="mt-8 pt-4 border-t border-gray-800">
+            <span class="text-xs text-gray-400 block mb-2">الدور في الباقة:</span>
+            <span class="text-sm font-black text-brand-yellow">ظهور حقيقي ووجود مرئي في شوارع المدينة</span>
+          </div>
+        </div>
+
+        <div class="bg-brand-charcoal rounded-3xl p-8 border border-brand-borderDark hover:border-brand-pink transition-all duration-300 flex flex-col justify-between">
+          <div class="space-y-4">
+            <div class="w-14 h-14 bg-brand-pink text-white rounded-2xl flex items-center justify-center text-2xl font-black">
+              <i class="fa-solid fa-box-open"></i>
+            </div>
+            <span class="inline-block text-xs font-black bg-brand-pink/20 text-brand-pink px-2.5 py-1 rounded-md">
+              ذراع التغليف والعلب
+            </span>
+            <h3 class="text-2xl font-black text-white">adam's pack</h3>
+            <p class="text-gray-300 text-sm leading-relaxed">
+              علب الهدايا والتوزيع، أكياس ورقية وبلاستيكية، ليبلات المنسوجات، وتغليف الأطعمة والمشروبات المطبوع عليها البراند بجودة فائقة.
+            </p>
+            <ul class="space-y-2 text-xs font-bold text-gray-300 pt-2">
+              <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-pink"></i> علب كرتون فاخرة ومموجة</li>
+              <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-pink"></i> أكياس مطبوعة بجميع الخامات</li>
+              <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-pink"></i> أكواب ورقية وتغليف مطاعم وكافيهات</li>
+            </ul>
+          </div>
+          <div class="mt-8 pt-4 border-t border-gray-800">
+            <span class="text-xs text-gray-400 block mb-2">الدور في الباقة:</span>
+            <span class="text-sm font-black text-brand-pink">تجربة العميل وفخامة استلام المنتج</span>
+          </div>
+        </div>
+
+        <div class="bg-brand-charcoal rounded-3xl p-8 border border-brand-borderDark hover:border-blue-400 transition-all duration-300 flex flex-col justify-between">
+          <div class="space-y-4">
+            <div class="w-14 h-14 bg-blue-600 text-white rounded-2xl flex items-center justify-center text-2xl font-black">
+              <i class="fa-solid fa-camera"></i>
+            </div>
+            <span class="inline-block text-xs font-black bg-blue-400/20 text-blue-400 px-2.5 py-1 rounded-md">
+              الذراع الإبداعي والرقمي
+            </span>
+            <h3 class="text-2xl font-black text-white">adam's media</h3>
+            <p class="text-gray-300 text-sm leading-relaxed">
+              إدارة صفحات التواصل الاجتماعي، تصوير الفيديوهات والريلز الاحترافية، تصميمات الهوية البصرية، وإطلاق الحملات الإعلانية الممولة.
+            </p>
+            <ul class="space-y-2 text-xs font-bold text-gray-300 pt-2">
+              <li class="flex items-center gap-2"><i class="fa-solid fa-check text-blue-400"></i> ريلز وتغطية افتتاح المحلات</li>
+              <li class="flex items-center gap-2"><i class="fa-solid fa-check text-blue-400"></i> تصوير احترافي للأكلات والمنتجات</li>
+              <li class="flex items-center gap-2"><i class="fa-solid fa-check text-blue-400"></i> حملات ممولة موجهة لأهالي المحلة والغربية</li>
+            </ul>
+          </div>
+          <div class="mt-8 pt-4 border-t border-gray-800">
+            <span class="text-xs text-gray-400 block mb-2">الدور في الباقة:</span>
+            <span class="text-sm font-black text-blue-400">الوصول الرقمي وتحويل المتابعين لزبائن</span>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="bg-gradient-to-r from-brand-charcoal via-[#23232b] to-brand-charcoal p-8 sm:p-10 rounded-3xl border border-brand-yellow/40 shadow-2xl">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          <div class="lg:col-span-8 space-y-3">
+            <span class="inline-block bg-brand-pink text-white px-3 py-1 rounded-md text-xs font-black">سيناريو عملي واقعي</span>
+            <h4 class="text-2xl font-black text-white">
+              لو أنت كافيه أو مطعم أو محل جديد في المحلة، إيه اللي هتكسبه معانا؟
+            </h4>
+            <p class="text-gray-300 text-sm leading-relaxed">
+              طلبت يافطة من <span class="text-brand-yellow font-bold">adam's agency</span>؟ في نفس الجلسة نجهز لك أكوابك وأكياسك من <span class="text-brand-pink font-bold">adam's pack</span>، وفريق <span class="text-blue-400 font-bold">adam's media</span> يصور فيديو الافتتاح ويعمل إعلانات ممولة في نطاق شارعك. 
+              <strong>وفرت وقتك، وحدت ألوان هويتك، ووفرت ميزانيتك.</strong>
+            </p>
+          </div>
+          <div class="lg:col-span-4 text-center lg:text-left">
+            <button onclick="calculateStarterPack()" class="bg-brand-yellow hover:bg-brand-yellowHover text-brand-dark px-6 py-3.5 rounded-2xl font-black text-sm shadow-lg inline-flex items-center gap-2 transition transform hover:scale-105">
+              <i class="fa-solid fa-wand-magic-sparkles"></i>
+              <span>محاكاة باقة التأسيس المتكاملة</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="services" class="py-24 bg-[#121216] relative border-b border-brand-borderDark">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <span class="text-brand-pink font-black text-xs uppercase tracking-widest bg-brand-pink/10 px-3 py-1 rounded-full border border-brand-pink/20">
+           خدماتنا وعملاؤنا
+        </span>
+        <h2 class="text-3xl sm:text-5xl font-black mt-3 text-white">
+          كل حاجة مطبوعة أو <span class="text-brand-yellow">متعلقة في الشارع</span>
+        </h2>
+        <p class="text-gray-400 mt-4 text-base">
+          قدرات إنتاجية داخلية تضمن لك مطبوعات خالية من العيوب، بمقاسات دقيقة ومواد خام مطابقة للمواصفات.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        
+        <div class="bg-brand-charcoal p-8 rounded-3xl border border-brand-borderDark hover:border-brand-yellow transition group">
+          <div class="w-14 h-14 bg-brand-yellow/10 text-brand-yellow rounded-2xl flex items-center justify-center text-2xl font-black mb-6 group-hover:scale-110 transition-transform">
+            <i class="fa-solid fa-print"></i>
+          </div>
+          <h3 class="text-xl font-black text-white mb-3">طباعة أوفست للكميات الكبيرة</h3>
+          <p class="text-gray-400 text-sm leading-relaxed mb-4">
+            مثالية للمصانع والشركات ذات الاستهلاك المرتفع: بروشورات، كتالوجات منسوجات، علب كرتون فاخرة، وتغليف بجودة ألوان فائقة.
+          </p>
+          <div class="flex flex-wrap gap-2 text-[11px] font-bold text-gray-300">
+            <span class="bg-black/60 px-2.5 py-1 rounded-md">كتالوجات</span>
+            <span class="bg-black/60 px-2.5 py-1 rounded-md">علب أدوية وأقمشة</span>
+            <span class="bg-black/60 px-2.5 py-1 rounded-md">مطبوعات تجارية</span>
+          </div>
+        </div>
+
+        <div class="bg-brand-charcoal p-8 rounded-3xl border border-brand-borderDark hover:border-brand-yellow transition group">
+          <div class="w-14 h-14 bg-brand-yellow/10 text-brand-yellow rounded-2xl flex items-center justify-center text-2xl font-black mb-6 group-hover:scale-110 transition-transform">
+            <i class="fa-solid fa-bolt"></i>
+          </div>
+          <h3 class="text-xl font-black text-white mb-3">طباعة ديجيتال سريعة</h3>
+          <p class="text-gray-400 text-sm leading-relaxed mb-4">
+            للكميات المحدودة والمستعجلة بنفس اليوم: فلايرز ترويجية، كروت شخصية فاخرة، منيوهات مطاعم مضادة للماء، وشهادات تقدير.
+          </p>
+          <div class="flex flex-wrap gap-2 text-[11px] font-bold text-gray-300">
+            <span class="bg-black/60 px-2.5 py-1 rounded-md">تسليم خلال ساعات</span>
+            <span class="bg-black/60 px-2.5 py-1 rounded-md">منيوهات متينة</span>
+            <span class="bg-black/60 px-2.5 py-1 rounded-md">كروت شخصية</span>
+          </div>
+        </div>
+
+        <div class="bg-brand-charcoal p-8 rounded-3xl border-2 border-brand-yellow/80 hover:border-brand-yellow transition group relative">
+          <span class="absolute top-4 left-4 bg-brand-pink text-white text-[10px] font-black px-2 py-0.5 rounded">الأكثر طلباً</span>
+          <div class="w-14 h-14 bg-brand-yellow text-brand-dark rounded-2xl flex items-center justify-center text-2xl font-black mb-6 group-hover:scale-110 transition-transform">
+            <i class="fa-solid fa-store"></i>
+          </div>
+          <h3 class="text-xl font-black text-white mb-3">أوت دور ويافطات المحلات</h3>
+          <p class="text-gray-400 text-sm leading-relaxed mb-4">
+            واجهات كلادينج، حروف أكريليك بارزة ومضيئة، لايت بوكس، وبانرات فليكس متينة مقاومة للشمس والعوامل الجوية بالشارع.
+          </p>
+          <div class="flex flex-wrap gap-2 text-[11px] font-bold text-gray-300">
+            <span class="bg-black/60 px-2.5 py-1 rounded-md">كلادينج خليجي</span>
+            <span class="bg-black/60 px-2.5 py-1 rounded-md">أكريليك مضيء LED</span>
+            <span class="bg-black/60 px-2.5 py-1 rounded-md">معاينة وتركيب ميداني</span>
+          </div>
+        </div>
+
+        <div class="bg-brand-charcoal p-8 rounded-3xl border-2 border-brand-pink/60 hover:border-brand-pink transition group">
+          <div class="w-14 h-14 bg-brand-pink/20 text-brand-pink rounded-2xl flex items-center justify-center text-2xl font-black mb-6 group-hover:scale-110 transition-transform">
+            <i class="fa-solid fa-map-location-dot"></i>
+          </div>
+          <h3 class="text-xl font-black text-white mb-3">امتياز مساحات حي أول المحلة</h3>
+          <p class="text-gray-400 text-sm leading-relaxed mb-4">
+            نمتلك حصرياً المساحات الإعلانية في أنشط شوارع وميادين حي أول بالمحلة الكبرى. تضمن لعلامتك أعلى معدل مشاهدات يومية.
+          </p>
+          <div class="flex flex-wrap gap-2 text-[11px] font-bold text-gray-300">
+            <span class="bg-black/60 px-2.5 py-1 rounded-md">بيلبوردات ضخمة</span>
+            <span class="bg-black/60 px-2.5 py-1 rounded-md">أعمدة إنارة</span>
+            <span class="bg-black/60 px-2.5 py-1 rounded-md">ميادين استراتيجية</span>
+          </div>
+        </div>
+
+        <div class="bg-brand-charcoal p-8 rounded-3xl border border-brand-borderDark hover:border-brand-yellow transition group">
+          <div class="w-14 h-14 bg-brand-yellow/10 text-brand-yellow rounded-2xl flex items-center justify-center text-2xl font-black mb-6 group-hover:scale-110 transition-transform">
+            <i class="fa-solid fa-file-invoice"></i>
+          </div>
+          <h3 class="text-xl font-black text-white mb-3">مطبوعات ورقية وأوراق رسمية</h3>
+          <p class="text-gray-400 text-sm leading-relaxed mb-4">
+            ورق خطابات رسمي (Letterhead)، فواتير وسندات مكربنة، ظروف بجميع المقاسات، وفولدرات الشركات لتقديم العروض باحتراف.
+          </p>
+          <div class="flex flex-wrap gap-2 text-[11px] font-bold text-gray-300">
+            <span class="bg-black/60 px-2.5 py-1 rounded-md">فواتير مخصصة</span>
+            <span class="bg-black/60 px-2.5 py-1 rounded-md">فولدرات فاخرة</span>
+            <span class="bg-black/60 px-2.5 py-1 rounded-md">أختام ومستلزمات</span>
+          </div>
+        </div>
+
+        <div class="bg-brand-charcoal p-8 rounded-3xl border border-brand-borderDark hover:border-brand-yellow transition group">
+          <div class="w-14 h-14 bg-brand-yellow/10 text-brand-yellow rounded-2xl flex items-center justify-center text-2xl font-black mb-6 group-hover:scale-110 transition-transform">
+            <i class="fa-solid fa-bullhorn"></i>
+          </div>
+          <h3 class="text-xl font-black text-white mb-3">حملات دعاية متكاملة 360°</h3>
+          <p class="text-gray-400 text-sm leading-relaxed mb-4">
+            فكرة الحملة وكتابة محتواها، تصميم الهوية الإعلانية، إنتاج مطبوعاتها، حجز البيلبورد، وإطلاق الحملة الممولة عبر السوشيال ميديا معاً.
+          </p>
+          <div class="flex flex-wrap gap-2 text-[11px] font-bold text-gray-300">
+            <span class="bg-black/60 px-2.5 py-1 rounded-md">حملات مواسم</span>
+            <span class="bg-black/60 px-2.5 py-1 rounded-md">افتتاح مشاريع</span>
+            <span class="bg-black/60 px-2.5 py-1 rounded-md">إشهار البراند</span>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="mt-20">
+        <div class="text-center mb-8">
+          <h3 class="text-2xl font-black text-white">القطاعات التي نخدمها </h3>
+          <p class="text-gray-400 text-sm mt-1">حلول متخصصة لكل صناعة وتجارة في المحافظة</p>
+        </div>
+
+        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
+          <div class="bg-brand-charcoal p-4 rounded-2xl border border-gray-800 text-center hover:border-brand-yellow transition">
+            <i class="fa-solid fa-vest text-brand-yellow text-2xl mb-2"></i>
+            <h4 class="text-sm font-bold text-white">مصانع النسيج</h4>
+            <p class="text-[11px] text-gray-400 mt-1">كتالوجات، تيكيتات، يافطات معارض</p>
+          </div>
+          <div class="bg-brand-charcoal p-4 rounded-2xl border border-gray-800 text-center hover:border-brand-yellow transition">
+            <i class="fa-solid fa-bag-shopping text-brand-pink text-2xl mb-2"></i>
+            <h4 class="text-sm font-bold text-white">المحلات والمعارض</h4>
+            <p class="text-[11px] text-gray-400 mt-1">واجهات، لايت بوكس، تخفيضات</p>
+          </div>
+          <div class="bg-brand-charcoal p-4 rounded-2xl border border-gray-800 text-center hover:border-brand-yellow transition">
+            <i class="fa-solid fa-stethoscope text-brand-yellow text-2xl mb-2"></i>
+            <h4 class="text-sm font-bold text-white">العيادات والمراكز</h4>
+            <p class="text-[11px] text-gray-400 mt-1">يافطات، روشتات، كروت متابعة</p>
+          </div>
+          <div class="bg-brand-charcoal p-4 rounded-2xl border border-gray-800 text-center hover:border-brand-yellow transition">
+            <i class="fa-solid fa-graduation-cap text-brand-pink text-2xl mb-2"></i>
+            <h4 class="text-sm font-bold text-white">المدارس والسناتر</h4>
+            <p class="text-[11px] text-gray-400 mt-1">مطبوعات تقديم، بانرات مواسم</p>
+          </div>
+          <div class="bg-brand-charcoal p-4 rounded-2xl border border-gray-800 text-center hover:border-brand-yellow transition">
+            <i class="fa-solid fa-utensils text-brand-yellow text-2xl mb-2"></i>
+            <h4 class="text-sm font-bold text-white">المطاعم والكافيهات</h4>
+            <p class="text-[11px] text-gray-400 mt-1">منيوهات، تغليف، يافطات افتتاح</p>
+          </div>
+          <div class="bg-brand-charcoal p-4 rounded-2xl border border-gray-800 text-center hover:border-brand-yellow transition">
+            <i class="fa-solid fa-building text-brand-pink text-2xl mb-2"></i>
+            <h4 class="text-sm font-bold text-white">العقارات والمطورين</h4>
+            <p class="text-[11px] text-gray-400 mt-1">سواتر مواقع، بيلبوردات، بروشورات</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="workflow" class="py-24 bg-[#0A0A0D] relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <span class="text-brand-yellow font-black text-xs uppercase tracking-widest bg-brand-yellow/10 px-3 py-1 rounded-full border border-yellow-500/20">
+          الانضباط والاحتراف
+        </span>
+        <h2 class="text-3xl sm:text-5xl font-black mt-3 text-white">
+          الشغلانة بتمشي إزاي؟ <span class="text-brand-yellow">من أول رنة لحد التسليم</span>
+        </h2>
+        <p class="text-gray-400 mt-4 text-base">
+          خطوات واضحة ومنظمة تمنع المفاجآت وتضمن أن الشغل يطلع بمقاسه وموعده وخامته المتفق عليها.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 relative">
+        
+        <div class="bg-brand-charcoal p-8 rounded-3xl border border-brand-borderDark relative group hover:border-brand-yellow transition">
+          <div class="flex items-center justify-between mb-4">
+            <span class="text-3xl font-black text-brand-yellow">01</span>
+            <span class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-gray-400"><i class="fa-solid fa-phone-volume"></i></span>
+          </div>
+          <h3 class="text-xl font-bold text-white mb-2">استلام الطلب</h3>
+          <p class="text-gray-400 text-sm leading-relaxed">
+            نفهم الهدف من المطبوع أو اليافطة، الكمية المطلوبة، الميزانية المحددة، والميعاد الزمني الحاسم لتسليمك.
+          </p>
+        </div>
+
+        <div class="bg-brand-charcoal p-8 rounded-3xl border border-brand-borderDark relative group hover:border-brand-yellow transition">
+          <div class="flex items-center justify-between mb-4">
+            <span class="text-3xl font-black text-brand-yellow">02</span>
+            <span class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-gray-400"><i class="fa-solid fa-ruler-combined"></i></span>
+          </div>
+          <h3 class="text-xl font-bold text-white mb-2">المعاينة والمقاسات</h3>
+          <p class="text-gray-400 text-sm leading-relaxed">
+            للأوت دور واليافطات والواجهات: مهندس أو فني متخصص ينزل يعاين المكان بالمتر لضمان المقاس وزوايا الرؤية.
+          </p>
+        </div>
+
+        <div class="bg-brand-charcoal p-8 rounded-3xl border border-brand-borderDark relative group hover:border-brand-yellow transition">
+          <div class="flex items-center justify-between mb-4">
+            <span class="text-3xl font-black text-brand-yellow">03</span>
+            <span class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-gray-400"><i class="fa-solid fa-bezier-curve"></i></span>
+          </div>
+          <h3 class="text-xl font-bold text-white mb-2">التصميم والتجهيز</h3>
+          <p class="text-gray-400 text-sm leading-relaxed">
+            ابتكار تصميم جديد عصري أو تجهيز ومراجعة ملف الطباعة الخاص بك بأبعاد وألوان CMYK بدقة الماكينات.
+          </p>
+        </div>
+
+        <div class="bg-brand-charcoal p-8 rounded-3xl border-2 border-brand-pink relative group shadow-lg">
+          <div class="absolute -top-3 right-6 bg-brand-pink text-white text-[10px] font-black px-2.5 py-0.5 rounded-full uppercase">
+            القاعدة الذهبية الصارمة
+          </div>
+          <div class="flex items-center justify-between mb-4">
+            <span class="text-3xl font-black text-brand-pink">04</span>
+            <span class="w-10 h-10 rounded-full bg-brand-pink/20 text-brand-pink flex items-center justify-center"><i class="fa-solid fa-file-signature"></i></span>
+          </div>
+          <h3 class="text-xl font-bold text-white mb-2">موافقة العميل المكتوبة</h3>
+          <p class="text-gray-300 text-sm leading-relaxed">
+            بروفة نهائية ملونة وموافقة كتابية واضحة قبل دوران الماكينة: <strong>"مفيش طباعة من غير موافقة مكتوبة على البروفة".</strong>
+          </p>
+        </div>
+
+        <div class="bg-brand-charcoal p-8 rounded-3xl border border-brand-borderDark relative group hover:border-brand-yellow transition">
+          <div class="flex items-center justify-between mb-4">
+            <span class="text-3xl font-black text-brand-yellow">05</span>
+            <span class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-gray-400"><i class="fa-solid fa-gears"></i></span>
+          </div>
+          <h3 class="text-xl font-bold text-white mb-2">الطباعة والتنفيذ الداخلي</h3>
+          <p class="text-gray-400 text-sm leading-relaxed">
+            الإنتاج في ورشنا ومطابعنا، فحص وتدقيق الجودة، واختبار الإضاءة والألوان قبل خروج الشغل للشاحنة.
+          </p>
+        </div>
+
+        <div class="bg-brand-charcoal p-8 rounded-3xl border border-brand-borderDark relative group hover:border-brand-yellow transition">
+          <div class="flex items-center justify-between mb-4">
+            <span class="text-3xl font-black text-brand-yellow">06</span>
+            <span class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-gray-400"><i class="fa-solid fa-truck-ramp-box"></i></span>
+          </div>
+          <h3 class="text-xl font-bold text-white mb-2">التركيب والتسليم</h3>
+          <p class="text-gray-400 text-sm leading-relaxed">
+            فريق تركيبات محترف يركب في موقعك، صور توثيقية قبل وبعد، ومتابعة ما بعد التسليم لضمان الرضا الكامل.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section id="comparison" class="py-24 bg-[#121216] relative border-b border-brand-borderDark">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <span class="text-brand-yellow font-black text-xs uppercase tracking-widest bg-brand-yellow/10 px-3 py-1 rounded-full border border-yellow-500/20">
+          المقارنة الحاسمة
+        </span>
+        <h2 class="text-3xl sm:text-5xl font-black mt-3 text-white">
+          الفرق بينا وبين <span class="text-brand-yellow">أي مطبعة تانية</span>
+        </h2>
+        <p class="text-gray-400 mt-4 text-base">
+          إيه اللي بتاخده معانا أكثر من مجرد ورق مطبوع؟ مقارنة صريحة من واقع السوق.
+        </p>
+      </div>
+
+      <div class="bg-brand-charcoal rounded-3xl border border-brand-borderDark overflow-hidden shadow-2xl">
+        <div class="overflow-x-auto">
+          <table class="w-full text-right border-collapse">
+            <thead>
+              <tr class="bg-black/60 border-b border-gray-800">
+                <th class="p-5 sm:p-6 text-sm sm:text-base font-black text-gray-400">وجه المقارنة</th>
+                <th class="p-5 sm:p-6 text-base sm:text-xl font-black text-brand-yellow bg-yellow-400/5 border-x border-yellow-400/20">
+                  <div class="flex items-center gap-2">
+                    <span class="w-3 h-3 rounded-full bg-brand-yellow"></span>
+                    <span>adam's agency</span>
+                  </div>
+                </th>
+                <th class="p-5 sm:p-6 text-sm sm:text-base font-bold text-gray-400">أي مطبعة عادية</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-800 text-sm">
+              <tr class="hover:bg-white/[0.02] transition">
+                <td class="p-5 sm:p-6 font-bold text-white flex items-center gap-2">
+                  <i class="fa-solid fa-palette text-gray-400"></i> التصميم وتجهيز الملف
+                </td>
+                <td class="p-5 sm:p-6 font-bold text-brand-yellow bg-yellow-400/5 border-x border-yellow-400/20">
+                  تصميم داخلي مبتكر أو تجهيز هندسي مجاني للملف
+                </td>
+                <td class="p-5 sm:p-6 text-gray-400">
+                  لازم العميل يجيب ملفه جاهز ومفيش تعديل
+                </td>
+              </tr>
+
+              <tr class="hover:bg-white/[0.02] transition">
+                <td class="p-5 sm:p-6 font-bold text-white flex items-center gap-2">
+                  <i class="fa-solid fa-industry text-gray-400"></i> خطوط الإنتاج المتاحة
+                </td>
+                <td class="p-5 sm:p-6 font-bold text-brand-yellow bg-yellow-400/5 border-x border-yellow-400/20">
+                  أوفست + ديجيتال + أوت دور ويافطات تحت سقف واحد
+                </td>
+                <td class="p-5 sm:p-6 text-gray-400">
+                  نوع واحد غالباً، وباقي الشغل سمسرة بالخارج
+                </td>
+              </tr>
+
+              <tr class="hover:bg-white/[0.02] transition">
+                <td class="p-5 sm:p-6 font-bold text-white flex items-center gap-2">
+                  <i class="fa-solid fa-wrench text-gray-400"></i> المعاينة والتركيب
+                </td>
+                <td class="p-5 sm:p-6 font-bold text-brand-yellow bg-yellow-400/5 border-x border-yellow-400/20">
+                  معاينة بالمكان وتركيب احترافي بفريقنا
+                </td>
+                <td class="p-5 sm:p-6 text-gray-400">
+                  التركيب مسؤولية العميل يدور على صنايعي
+                </td>
+              </tr>
+
+              <tr class="hover:bg-white/[0.02] transition">
+                <td class="p-5 sm:p-6 font-bold text-white flex items-center gap-2">
+                  <i class="fa-solid fa-street-view text-gray-400"></i> الظهور في الشارع والميادين
+                </td>
+                <td class="p-5 sm:p-6 font-bold text-brand-pink bg-yellow-400/5 border-x border-yellow-400/20">
+                  مساحات إعلانية وبيلبوردات حصرية في حي أول
+                </td>
+                <td class="p-5 sm:p-6 text-gray-400">
+                  مش متاح إطلاقاً
+                </td>
+              </tr>
+
+              <tr class="hover:bg-white/[0.02] transition">
+                <td class="p-5 sm:p-6 font-bold text-white flex items-center gap-2">
+                  <i class="fa-solid fa-camera-retro text-gray-400"></i> خدمة ما بعد التسليم
+                </td>
+                <td class="p-5 sm:p-6 font-bold text-brand-yellow bg-yellow-400/5 border-x border-yellow-400/20">
+                  توثيق مصور قبل وبعد، ومتابعة مستمرة وضمان
+                </td>
+                <td class="p-5 sm:p-6 text-gray-400">
+                  بمجرد ما تستلم الكراتين علاقتهم بتنتهي
+                </td>
+              </tr>
+
+              <tr class="hover:bg-white/[0.02] transition">
+                <td class="p-5 sm:p-6 font-bold text-white flex items-center gap-2">
+                  <i class="fa-solid fa-cubes text-gray-400"></i> التغليف والسوشيال ميديا
+                </td>
+                <td class="p-5 sm:p-6 font-bold text-white bg-yellow-400/5 border-x border-yellow-400/20">
+                  متاح فوراً من خلال علامات المجموعة (Pack & Media)
+                </td>
+                <td class="p-5 sm:p-6 text-gray-400">
+                  مش متاح، لازم تتعاقد مع شركات تانية
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="leadership" class="py-24 bg-[#121216] relative border-b border-brand-borderDark">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <span class="text-brand-yellow font-black text-xs uppercase tracking-widest bg-brand-yellow/10 px-3 py-1 rounded-full border border-yellow-500/20">
+          القيادة والمسؤولية
+        </span>
+        <h2 class="text-3xl sm:text-5xl font-black mt-3 text-white">
+          مين بيقود <span class="text-brand-yellow">adam's agency؟</span>
+        </h2>
+        <p class="text-gray-400 mt-4 text-base">
+          توزيع اختصاصات واضح بين الرؤية الاستراتيجية والإشراف الميداني اليومي يضمن راحة كل عميل.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+        
+        <div class="bg-brand-charcoal p-8 sm:p-10 rounded-3xl border border-brand-borderDark hover:border-brand-yellow transition relative group">
+          <div class="flex items-center gap-4 mb-6">
+            <div class="w-16 h-16 rounded-2xl bg-brand-yellow text-brand-dark flex items-center justify-center font-black text-2xl shadow-lg">
+             
+            </div>
+            <div>
+              <h3 class="text-2xl font-black text-white">أحمد الموجى</h3>
+              <p class="text-sm font-bold text-brand-yellow">المدير التنفيذي</p>
+              <p class="text-xs text-gray-400">المالك الرئيسي لمجموعة adam's بالكامل</p>
+            </div>
+          </div>
+          
+          <div class="space-y-3 pt-4 border-t border-gray-800">
+            <span class="text-xs font-black text-brand-pink block">مسؤول عن:</span>
+            <ul class="space-y-2 text-sm text-gray-300">
+              <li class="flex items-center gap-2"><i class="fa-solid fa-angle-left text-brand-yellow"></i> رؤية الوكالة واتجاهها الاستراتيجي وتوسعها</li>
+              <li class="flex items-center gap-2"><i class="fa-solid fa-angle-left text-brand-yellow"></i> إدارة العملاء والتعاقدات السنوية الكبيرة</li>
+              <li class="flex items-center gap-2"><i class="fa-solid fa-angle-left text-brand-yellow"></i> الميزانيات واعتمادات الإنتاج والموافقات النهائية</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="bg-brand-charcoal p-8 sm:p-10 rounded-3xl border border-brand-borderDark hover:border-brand-pink transition relative group">
+          <div class="flex items-center gap-4 mb-6">
+            <div class="w-16 h-16 rounded-2xl bg-brand-pink text-white flex items-center justify-center font-black text-2xl shadow-lg">
+             
+            </div>
+            <div>
+              <h3 class="text-2xl font-black text-white">عبد الرحمن الموجى</h3>
+              <p class="text-sm font-bold text-brand-pink">المدير التنفيذي</p>
+              <p class="text-xs text-gray-400">مالك ومشغل adam's agency الميداني</p>
+            </div>
+          </div>
+
+          <div class="space-y-3 pt-4 border-t border-gray-800">
+            <span class="text-xs font-black text-brand-yellow block">مسؤول عن:</span>
+            <ul class="space-y-2 text-sm text-gray-300">
+              <li class="flex items-center gap-2"><i class="fa-solid fa-angle-left text-brand-pink"></i> تشغيل الوكالة يوماً بيوم ومتابعة الفنيين</li>
+              <li class="flex items-center gap-2"><i class="fa-solid fa-angle-left text-brand-pink"></i> خطوط الإنتاج والطباعة والتركيبات الميدانية</li>
+              <li class="flex items-center gap-2"><i class="fa-solid fa-angle-left text-brand-pink"></i> المتابعة الفورية لعملاء الطباعة والأوت دور بالشارع</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section id="estimator" class="py-24 bg-[#0A0A0D] relative">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="bg-gradient-to-b from-brand-charcoal to-[#16161c] p-8 sm:p-12 rounded-3xl border-2 border-brand-yellow/60 shadow-2xl yellow-glow">
+        
+        <div class="text-center mb-10">
+          <span class="text-brand-yellow font-black text-xs uppercase tracking-widest bg-brand-yellow/10 px-3 py-1 rounded-full border border-yellow-500/20">
+            حاسبة التكلفة المبدئية والطلب السريع
+          </span>
+          <h2 class="text-3xl sm:text-4xl font-black mt-3 text-white">
+            حدد طلبك واحصل على <span class="text-brand-yellow">عرض سعر واتساب فوري</span>
+          </h2>
+          <p class="text-gray-400 text-sm mt-2">
+            اختر نوع الخدمة والمواصفات وجهز رسالة استفسارك بضغطة زر واحدة إلى الإدارة مباشرة.
+          </p>
+        </div>
+
+        <form id="quoteForm" onsubmit="generateWhatsAppQuote(event)" class="space-y-6">
+          
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <div>
+              <label class="block text-xs font-bold text-gray-300 mb-2">نوع الخدمة الرئيسية *</label>
+              <select id="calcService" onchange="updateEstimatorPreview()" class="w-full bg-[#111114] border border-gray-700 rounded-xl px-4 py-3 text-white font-bold text-sm focus:border-brand-yellow focus:outline-none">
+                <option value="واجهة محل أو يافطة كلادينج وأكريليك">واجهة محل أو يافطة كلادينج وأكريليك</option>
+                <option value="طباعة أوفست (كميات كبيرة / كتالوجات / علب)">طباعة أوفست (كميات كبيرة / كتالوجات / علب)</option>
+                <option value="طباعة ديجيتال سريعة (كروت / منيوهات / فلايرز)">طباعة ديجيتال سريعة (كروت / منيوهات / فلايرز)</option>
+                <option value="حجز مساحات وبيلبوردات حي أول المحلة">حجز مساحات وبيلبوردات حي أول المحلة</option>
+                <option value="باقة تأسيس متكاملة (دعاية + تغليف + سوشيال)">باقة تأسيس متكاملة (دعاية + تغليف + سوشيال)</option>
+                <option value="مطبوعات ورقية ومستندات شركات">مطبوعات ورقية ومستندات شركات</option>
+              </select>
+            </div>
+
+            <div>
+              <label class="block text-xs font-bold text-gray-300 mb-2">نشاط المشروع أو القطاع *</label>
+              <select id="calcSector" class="w-full bg-[#111114] border border-gray-700 rounded-xl px-4 py-3 text-white font-bold text-sm focus:border-brand-yellow focus:outline-none">
+                <option value="مصنع أو شركة منسوجات">مصنع أو شركة منسوجات</option>
+                <option value="محل تجاري أو معرض">محل تجاري أو معرض</option>
+                <option value="مطعم أو كافيه">مطعم أو كافيه</option>
+                <option value="عيادة أو مركز طبي">عيادة أو مركز طبي</option>
+                <option value="مدرسة أو سنتر تعليمي">مدرسة أو سنتر تعليمي</option>
+                <option value="شركة عقارية أو مقاولات">شركة عقارية أو مقاولات</option>
+                <option value="نشاط آخر">نشاط آخر</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <div>
+              <label class="block text-xs font-bold text-gray-300 mb-2">المقاس التقريبي أو الكمية *</label>
+              <input type="text" id="calcSpecs" placeholder="مثلاً: يافطة 6 متر في 1.5 متر أو 1000 علبة" required class="w-full bg-[#111114] border border-gray-700 rounded-xl px-4 py-3 text-white font-bold text-sm focus:border-brand-yellow focus:outline-none">
+            </div>
+
+            <div>
+              <label class="block text-xs font-bold text-gray-300 mb-2">اسمك أو اسم المحل/المصنع *</label>
+              <input type="text" id="calcClientName" placeholder="الاسم والمكان بالمحلة/الغربية" required class="w-full bg-[#111114] border border-gray-700 rounded-xl px-4 py-3 text-white font-bold text-sm focus:border-brand-yellow focus:outline-none">
+            </div>
+          </div>
+
+          <div>
+            <label class="block text-xs font-bold text-gray-300 mb-2">ملاحظات إضافية أو ميعاد التسليم المفضل</label>
+            <textarea id="calcNotes" rows="2" placeholder="هل محتاج معاينة بالموقع؟ محتاج التصميم من عندنا ولا الملف جاهز؟" class="w-full bg-[#111114] border border-gray-700 rounded-xl px-4 py-3 text-white text-sm focus:border-brand-yellow focus:outline-none"></textarea>
+          </div>
+
+          <div id="estimatePreview" class="p-4 bg-black/50 rounded-2xl border border-yellow-500/30 flex items-center justify-between text-xs">
+            <div class="flex items-center gap-2">
+              <i class="fa-solid fa-clock-rotate-left text-brand-yellow text-base"></i>
+              <span class="text-gray-300">زمن تجهيز عرض السعر الرسمي والمعاينة: <strong class="text-white">أقل من 24 ساعة</strong></span>
+            </div>
+            <span class="text-brand-pink font-bold">مراجعة مباشرة من الإدارة</span>
+          </div>
+
+          <button type="submit" class="w-full bg-brand-yellow hover:bg-brand-yellowHover text-brand-dark py-4 rounded-2xl font-black text-base flex items-center justify-center gap-3 shadow-xl transition transform hover:-translate-y-0.5">
+            <i class="fa-brands fa-whatsapp text-2xl"></i>
+            <span>إرسال تفاصيل الطلب والحصول على السعر عبر واتساب</span>
+          </button>
+
+          <p class="text-center text-xs text-gray-400">
+            سيتم تحويلك مباشرة إلى محادثة واتساب الرسمية مع فريق آدم (+201229949595) مصحوباً ببيانات طلبك.
+          </p>
+
+        </form>
+
+      </div>
+
+    </div>
+  </section>
+
+  <footer class="bg-[#09090C] text-gray-400 pt-16 pb-24 border-t border-brand-borderDark">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 pb-16 border-b border-gray-800">
+        
+        <div class="lg:col-span-5 space-y-4">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 bg-brand-yellow rounded-xl flex items-center justify-center p-1 text-brand-dark font-black text-xl">
+              a°
+            </div>
+            <div>
+              <span class="text-xl font-black text-white">adam's</span>
+              <span class="text-xs font-bold text-gray-400 block -mt-1">advertising agency</span>
+            </div>
+          </div>
+          <p class="text-sm text-gray-400 leading-relaxed max-w-sm">
+            وكالة دعاية وإعلان وطباعة من المحلة الكبرى منذ 2009. بنطبع، وبنركب، وبنملك مساحات إعلانية في الشارع عشان تاخد كل اللي محتاجه من مكان واحد.
+          </p>
+          <div class="text-xs font-bold text-brand-yellow">
+            طباعة • أوت دور • دعاية وإعلان • تغليف • سوشيال ميديا
+          </div>
+        </div>
+
+        <div class="lg:col-span-3 space-y-3">
+          <h4 class="text-white font-bold text-sm">خدماتنا الرئيسية</h4>
+          <ul class="space-y-2 text-xs">
+            <li><a href="index.html" class="hover:text-brand-yellow transition">الرئيسية</a></li>
+            <li><a href="#services" class="hover:text-brand-yellow transition">طباعة أوفست وديجيتال</a></li>
+            <li><a href="#services" class="hover:text-brand-yellow transition">يافطات كلادينج وأكريليك</a></li>
+            <li><a href="#services" class="hover:text-brand-yellow transition">الامتياز الإعلاني بحي أول</a></li>
+            <li><a href="#group" class="hover:text-brand-yellow transition">التغليف والعلب (adam's pack)</a></li>
+            <li><a href="#group" class="hover:text-brand-yellow transition">الميديا والريلز (adam's media)</a></li>
+          </ul>
+        </div>
+
+        <div class="lg:col-span-4 space-y-3">
+          <h4 class="text-white font-bold text-sm">تواصل مباشر وسريع</h4>
+          <ul class="space-y-2.5 text-xs">
+            <li class="flex items-center gap-2">
+              <i class="fa-solid fa-location-dot text-brand-pink"></i>
+              <span>المحلة الكبرى - محافظة الغربية - مصر</span>
+            </li>
+            <li class="flex items-center gap-2">
+              <i class="fa-brands fa-whatsapp text-green-400 text-sm"></i>
+              <a href="https://wa.me/201229949595" target="_blank" class="hover:text-white font-bold tracking-wider underline">
+                +20 122 994 9595
+              </a>
+            </li>
+            <li class="flex items-center gap-2">
+              <i class="fa-solid fa-clock text-brand-yellow"></i>
+              <span>مواعيد العمل: يومياً من 10 صباحاً حتى 10 مساءً</span>
+            </li>
+            <li class="flex items-center gap-2">
+              <i class="fa-solid fa-bolt text-brand-yellow"></i>
+              <span>متوسط الرد على الاستفسارات: خلال ساعتين</span>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-gray-500 gap-4">
+        <div>
+          جميع الحقوق محفوظة  © مجموعة <strong class="text-gray-300"> adam's advertising agency</strong>
+        </div>
+        <div class="flex items-center gap-4">
+          <span class="text-brand-pink font-bold">#adams_team</span>
+
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+  <div class="fixed bottom-6 left-6 z-50 flex items-center gap-3">
+    <a href="https://wa.me/201229949595?text=Hello,%20I%20would%20like%20to%20inquire%20about%20your%20services" 
+       target="_blank" 
+       rel="noopener noreferrer"
+       class="hidden md:flex items-center gap-2 bg-brand-charcoal/90 backdrop-blur-md border border-brand-yellow/30 text-white text-xs py-2 px-3.5 rounded-full shadow-lg hover:border-brand-yellow transition-all group">
+      <span class="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+      <span class="font-medium">تواصل مباشر مع الفريق</span>
+      <i class="fa-solid fa-arrow-left text-[10px] text-brand-yellow transition-transform group-hover:-translate-x-1"></i>
+    </a>
+    
+    <a href="https://wa.me/201229949595?text=Hello,%20I%20would%20like%20to%20inquire%20about%20your%20services" 
+       target="_blank" 
+       rel="noopener noreferrer"
+       aria-label="تواصل معنا عبر واتساب"
+       class="relative flex items-center justify-center w-14 h-14 bg-[#25D366] text-white rounded-full shadow-2xl hover:scale-110 transition-transform duration-300 whatsapp-radar">
+      <i class="fa-brands fa-whatsapp text-3xl"></i>
+    </a>
+  </div>
+
+  <div class="fixed bottom-6 right-6 z-50 flex flex-col items-end">
+    <div id="chatbotWindow" class="hidden mb-4 w-80 sm:w-96 rounded-2xl bg-brand-charcoal/95 backdrop-blur-xl border border-brand-yellow/40 shadow-2xl flex-col overflow-hidden transition-all duration-300 yellow-glow">
+      <div class="p-4 bg-black/80 border-b border-brand-yellow/20 flex items-center justify-between">
+        <div class="flex items-center gap-3">
+          <div class="w-9 h-9 rounded-xl bg-brand-yellow/20 border border-brand-yellow/40 flex items-center justify-center text-brand-yellow">
+            <i class="fa-solid fa-headset text-sm"></i>
+          </div>
+          <div>
+            <h4 class="text-sm font-bold text-white flex items-center gap-2">
+              <span>مساعد adam's agency</span>
+              <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+            </h4>
+            <p class="text-[11px] text-brand-yellow">طباعة • أوت دور • يافطات</p>
+          </div>
+        </div>
+        <button onclick="toggleChatbot()" class="text-white/60 hover:text-white p-1 rounded-lg transition-colors" aria-label="إغلاق المحادثة">
+          <i class="fa-solid fa-xmark text-sm"></i>
+        </button>
+      </div>
+
+      <div id="chatMessages" class="p-4 space-y-3 h-72 overflow-y-auto text-xs leading-relaxed">
+        <div class="flex gap-2">
+          <div class="w-6 h-6 rounded-full bg-brand-yellow/20 flex items-center justify-center text-[10px] text-brand-yellow flex-shrink-0">
+            <i class="fa-solid fa-robot"></i>
+          </div>
+          <div class="bg-[#111114] border border-brand-yellow/20 rounded-2xl rounded-tr-none p-3 text-white/90 max-w-[85%]">
+            أهلاً بيك في adam's advertising agency! 👋<br>عايز تسأل عن طباعة، يافطات كلادينج، ولا مساحات بيلبورد حي أول؟
+          </div>
+        </div>
+      </div>
+
+      <div class="px-4 pb-2 flex gap-2 overflow-x-auto text-[11px] no-scrollbar">
+        <button onclick="sendQuickMessage('عايز استفسر عن اليافطات والكلادينج')" class="px-2.5 py-1 rounded-full bg-[#111114] border border-brand-yellow/30 text-brand-yellow hover:border-brand-yellow whitespace-nowrap transition-all">
+          يافطات وكلادينج
+        </button>
+        <button onclick="sendQuickMessage('مساحات بيلبورد حي أول')" class="px-2.5 py-1 rounded-full bg-[#111114] border border-brand-yellow/30 text-brand-yellow hover:border-brand-yellow whitespace-nowrap transition-all">
+          بيلبوردات حي أول
+        </button>
+        <button onclick="sendQuickMessage('طباعة أوفست وديجيتال')" class="px-2.5 py-1 rounded-full bg-[#111114] border border-brand-yellow/30 text-brand-yellow hover:border-brand-yellow whitespace-nowrap transition-all">
+          الطباعة
+        </button>
+      </div>
+
+      <form id="chatForm" onsubmit="handleChatMessage(event)" class="p-3 border-t border-gray-800 bg-black/60 flex items-center gap-2">
+        <input type="text" id="chatInput" placeholder="اكتب استفسارك هنا..." class="flex-1 bg-[#111114] border border-gray-700 rounded-xl px-3 py-2 text-xs text-white placeholder-gray-500 focus:outline-none focus:border-brand-yellow transition-all">
+        <button type="submit" class="w-8 h-8 rounded-xl bg-brand-yellow text-brand-dark flex items-center justify-center hover:opacity-90 transition-opacity flex-shrink-0 font-bold" aria-label="إرسال">
+          <i class="fa-solid fa-paper-plane text-xs"></i>
+        </button>
+      </form>
+    </div>
+
+    <button id="chatbotToggleBtn" onclick="toggleChatbot()" class="w-14 h-14 rounded-full bg-brand-charcoal border-2 border-brand-yellow text-brand-yellow hover:text-white shadow-2xl flex items-center justify-center text-xl hover:scale-110 transition-all duration-300 group yellow-glow" aria-label="فتح الدردشة">
+      <i class="fa-solid fa-comment-dots group-hover:scale-110 transition-transform"></i>
+    </button>
+  </div>
+
+  <div id="quoteModal" class="fixed inset-0 z-50 hidden bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="bg-brand-charcoal max-w-lg w-full rounded-3xl border-2 border-brand-yellow p-6 sm:p-8 relative shadow-2xl yellow-glow">
+      
+      <button onclick="closeQuoteModal()" class="absolute top-5 left-5 text-gray-400 hover:text-white text-xl">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+
+      <div class="text-right mb-6">
+        <span class="text-brand-pink font-bold text-xs">طلب مباشر وسريع</span>
+        <h3 class="text-2xl font-black text-white mt-1">طلب معاينة أو تسعير خلال 24 ساعة</h3>
+        <p class="text-xs text-gray-400 mt-1">املاً البيانات وسيتم فتح محادثة مخصصة على الواتساب فوراً</p>
+      </div>
+
+      <div class="space-y-4">
+        <div>
+          <label class="block text-xs font-bold text-gray-300 mb-1">الاسم أو اسم المنشأة</label>
+          <input type="text" id="modalName" placeholder="مثال: مطعم الشرق بالمحلة" class="w-full bg-[#111114] border border-gray-700 rounded-xl px-3 py-2.5 text-sm text-white focus:outline-none focus:border-brand-yellow">
+        </div>
+
+        <div>
+          <label class="block text-xs font-bold text-gray-300 mb-1">الخدمة المطلوبة</label>
+          <select id="modalService" class="w-full bg-[#111114] border border-gray-700 rounded-xl px-3 py-2.5 text-sm text-white focus:outline-none focus:border-brand-yellow">
+            <option>واجهة كلادينج أو يافطة حروف بارزة</option>
+            <option>مساحة إعلانية / بيلبورد حي أول</option>
+            <option>طباعة أوفست (كتالوجات / علب)</option>
+            <option>طباعة ديجيتال سريعة (كروت / منيوهات)</option>
+            <option>باقة تأسيس كاملة (دعاية + تغليف + سوشيال)</option>
+          </select>
+        </div>
+
+        <div>
+          <label class="block text-xs font-bold text-gray-300 mb-1">المقاس التقريبي أو التفاصيل</label>
+          <input type="text" id="modalDetails" placeholder="المقاس أو الكمية أو العنوان بالمدينة" class="w-full bg-[#111114] border border-gray-700 rounded-xl px-3 py-2.5 text-sm text-white focus:outline-none focus:border-brand-yellow">
+        </div>
+
+        <button onclick="submitModalQuote()" class="w-full bg-brand-yellow hover:bg-brand-yellowHover text-brand-dark py-3.5 rounded-xl font-black text-sm flex items-center justify-center gap-2 mt-4 transition">
+          <i class="fa-brands fa-whatsapp text-lg"></i>
+          <span>فتح المحادثة على واتساب الآن</span>
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    function scrollToId(id) {
+      const element = document.getElementById(id);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+
+    function toggleMobileMenu() {
+      const menu = document.getElementById('mobileMenu');
+      const icon = document.getElementById('mobileMenuIcon');
+      if (menu.classList.contains('hidden')) {
+        menu.classList.remove('hidden');
+        icon.classList.remove('fa-bars');
+        icon.classList.add('fa-xmark');
+      } else {
+        menu.classList.add('hidden');
+        icon.classList.remove('fa-xmark');
+        icon.classList.add('fa-bars');
+      }
+    }
+
+    const chatbotWindow = document.getElementById('chatbotWindow');
+    function toggleChatbot() {
+      const isClosed = chatbotWindow.classList.contains('hidden');
+      if (isClosed) {
+        chatbotWindow.classList.remove('hidden');
+        chatbotWindow.classList.add('flex');
+        document.getElementById('chatInput').focus();
+      } else {
+        chatbotWindow.classList.add('hidden');
+        chatbotWindow.classList.remove('flex');
+      }
+    }
+
+    function appendUserMessage(text) {
+      const chatMessages = document.getElementById('chatMessages');
+      const userBubble = document.createElement('div');
+      userBubble.className = 'flex justify-end';
+      userBubble.innerHTML = `
+        <div class="bg-brand-yellow text-brand-dark font-bold rounded-2xl rounded-tl-none p-3 max-w-[85%] shadow-sm">
+          ${text}
+        </div>
+      `;
+      chatMessages.appendChild(userBubble);
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+
+    function appendBotMessage(text) {
+      const chatMessages = document.getElementById('chatMessages');
+      const botBubble = document.createElement('div');
+      botBubble.className = 'flex gap-2';
+      botBubble.innerHTML = `
+        <div class="w-6 h-6 rounded-full bg-brand-yellow/20 flex items-center justify-center text-[10px] text-brand-yellow flex-shrink-0">
+          <i class="fa-solid fa-robot"></i>
+        </div>
+        <div class="bg-[#111114] border border-brand-yellow/20 rounded-2xl rounded-tr-none p-3 text-white/90 max-w-[85%]">
+          ${text}
+        </div>
+      `;
+      chatMessages.appendChild(botBubble);
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+
+    function handleChatMessage(event) {
+      event.preventDefault();
+      const input = document.getElementById('chatInput');
+      const query = input.value.trim();
+      if (!query) return;
+
+      appendUserMessage(query);
+      input.value = '';
+
+      setTimeout(() => {
+        respondToAgencyQuery(query);
+      }, 500);
+    }
+
+    function sendQuickMessage(text) {
+      appendUserMessage(text);
+      setTimeout(() => {
+        respondToAgencyQuery(text);
+      }, 500);
+    }
+
+    function respondToAgencyQuery(query) {
+      const lower = query.toLowerCase();
+      let reply = "شكراً لتواصلك مع وكالة آدم! فريقنا جاهز لمعاينة موقعك وتقديم مقايسة رسمية خلال 24 ساعة. تواصل معنا مباشرة عبر واتساب على 01229949595.";
+
+      if (lower.includes('يافط') || lower.includes('كلادينج') || lower.includes('أكريليك') || lower.includes('واجه')) {
+        reply = "نوفر واجهات كلادينج خليجي معتمد وحروف أكريليك بارزة ومضيئة LED بأعلى معايير الأمان وتحمل العوامل الجوية، مع معاينة ورفع مقاسات ميدانية بالمتر.";
+      } else if (lower.includes('حي أول') || lower.includes('بيلبورد') || lower.includes('شارع') || lower.includes('مساح')) {
+        reply = "وكالة آدم هي الوكيل الإعلاني الحصري لحي أول المحلة الكبرى! جميع المساحات والبيلبوردات متاحة مباشرة من المالك وبأفضل مواقع حيوية في المدينة.";
+      } else if (lower.includes('طبع') || lower.includes('أوفست') || lower.includes('ديجيتال') || lower.includes('كتالوج') || lower.includes('علب')) {
+        reply = "نمتلك خطوط إنتاج داخلية متكاملة لطباعة الأوفست للكميات الكبيرة والديجيتال الفوري مع ضمان البروفة المكتوبة قبل دوران الماكينات.";
+      }
+
+      appendBotMessage(reply);
+    }
+
+    function calculateStarterPack() {
+      const modal = document.getElementById('quoteModal');
+      document.getElementById('modalService').value = 'باقة تأسيس كاملة (دعاية + تغليف + سوشيال)';
+      document.getElementById('modalDetails').value = 'باقة متكاملة للمشروع الجديد تشمل اليافطة، التغليف، وتصوير الافتتاح';
+      modal.classList.remove('hidden');
+    }
+
+    function openQuoteModal() {
+      document.getElementById('quoteModal').classList.remove('hidden');
+    }
+
+    function closeQuoteModal() {
+      document.getElementById('quoteModal').classList.add('hidden');
+    }
+
+    function generateWhatsAppQuote(event) {
+      event.preventDefault();
+      const service = document.getElementById('calcService').value;
+      const sector = document.getElementById('calcSector').value;
+      const specs = document.getElementById('calcSpecs').value;
+      const clientName = document.getElementById('calcClientName').value;
+      const notes = document.getElementById('calcNotes').value || 'لا توجد ملاحظات إضافية';
+
+      const message = `مرحباً Adams Agency 👋%0Aأرغب في الحصول على عرض سعر ومعاينة:%0A• الاسم / النشاط: ${encodeURIComponent(clientName)}%0A• القطاع: ${encodeURIComponent(sector)}%0A• الخدمة المطلوبة: ${encodeURIComponent(service)}%0A• المقاس / الكمية: ${encodeURIComponent(specs)}%0A• تفاصيل إضافية: ${encodeURIComponent(notes)}%0A%0Aشكراً لكم!`;
+
+      window.open(`https://wa.me/201229949595?text=${message}`, '_blank');
+    }
+
+    function submitModalQuote() {
+      const name = document.getElementById('modalName').value || 'عميل محترم';
+      const service = document.getElementById('modalService').value;
+      const details = document.getElementById('modalDetails').value || 'طلب استفسار عام';
+
+      const message = `مرحباً فريق آدم للدعاية والإعلان 👋%0Aالاسم: ${encodeURIComponent(name)}%0Aالخدمة المطلوبة: ${encodeURIComponent(service)}%0Aالتفاصيل / المقاس: ${encodeURIComponent(details)}%0Aبرجاء الإفادة بالتكلفة والميعاد المناسب للمعاينة.`;
+
+      window.open(`https://wa.me/201229949595?text=${message}`, '_blank');
+      closeQuoteModal();
+    }
+
+    let isArabic = true;
+    function toggleLanguage() {
+      isArabic = !isArabic;
+      const html = document.documentElement;
+      const langLabel = document.getElementById('langLabel');
+
+      if (isArabic) {
+        html.setAttribute('dir', 'rtl');
+        html.setAttribute('lang', 'ar');
+        langLabel.textContent = 'English';
+      } else {
+        html.setAttribute('dir', 'ltr');
+        html.setAttribute('lang', 'en');
+        langLabel.textContent = 'العربية';
+      }
+    }
+
+    function updateEstimatorPreview() {
+      const service = document.getElementById('calcService').value;
+      const preview = document.getElementById('estimatePreview');
+      if (service.includes('حي أول')) {
+        preview.innerHTML = `
+          <div class="flex items-center gap-2">
+            <i class="fa-solid fa-star text-brand-pink text-base"></i>
+            <span class="text-gray-300">خدمة حصرية: <strong class="text-brand-pink">مساحات وبيلبوردات حي أول مباشرة من المالك</strong></span>
+          </div>
+          <span class="text-brand-yellow font-bold">خصومات تعاقد سنوي متاحة</span>
+        `;
+      } else {
+        preview.innerHTML = `
+          <div class="flex items-center gap-2">
+            <i class="fa-solid fa-clock-rotate-left text-brand-yellow text-base"></i>
+            <span class="text-gray-300">زمن تجهيز عرض السعر الرسمي والمعاينة: <strong class="text-white">أقل من 24 ساعة</strong></span>
+          </div>
+          <span class="text-brand-pink font-bold">مراجعة مباشرة من الإدارة</span>
+        `;
+      }
+    }
+  </script>
+</body>
+</html>

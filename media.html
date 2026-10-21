@@ -1,0 +1,1655 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>adam's media™ | Creative & Digital Solutions</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Alexandria:wght@300;400;500;600;700;800;900&family=Cairo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              darkest: '#140A28',
+              dark: '#1C0F38',
+              surface: '#241348',
+              card: '#2D1859',
+              lightPurple: '#4A288E',
+              accent: '#C4A8FF',
+              accentLight: '#EADDFE',
+              glow: '#9D6CFF',
+              emerald: '#10B981',
+              cream: '#FAF7FD'
+            }
+          },
+          fontFamily: {
+            alexandria: ['Alexandria', 'sans-serif'],
+            cairo: ['Cairo', 'sans-serif']
+          },
+          animation: {
+            'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+            'float': 'float 4s ease-in-out infinite',
+            'glow-pulse': 'glowPulse 2s ease-in-out infinite alternate',
+          },
+          keyframes: {
+            float: {
+              '0%, 100%': { transform: 'translateY(0px)' },
+              '50%': { transform: 'translateY(-8px)' },
+            },
+            glowPulse: {
+              '0%': { boxShadow: '0 0 15px rgba(196, 168, 255, 0.2)' },
+              '100%': { boxShadow: '0 0 30px rgba(196, 168, 255, 0.5)' }
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      font-family: 'Alexandria', 'Cairo', sans-serif;
+      background-color: #140A28;
+      color: #FAF7FD;
+      overflow-x: hidden;
+    }
+    
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #140A28;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #3B1D77;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #C4A8FF;
+    }
+
+    .gradient-text {
+      background: linear-gradient(135deg, #FFFFFF 20%, #EADDFE 60%, #C4A8FF 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .accent-gradient-text {
+      background: linear-gradient(135deg, #C4A8FF 0%, #EADDFE 50%, #FAF7FD 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .glass-nav {
+      background: rgba(28, 15, 56, 0.85);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(196, 168, 255, 0.12);
+    }
+
+    @media (min-width: 1280px) {
+      #mobileMenuBtn {
+        display: none;
+      }
+    }
+
+    .glass-card {
+      background: rgba(45, 24, 89, 0.45);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid rgba(196, 168, 255, 0.12);
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .glass-card:hover {
+      border-color: rgba(196, 168, 255, 0.35);
+      transform: translateY(-4px);
+      box-shadow: 0 16px 36px -10px rgba(157, 108, 255, 0.22);
+    }
+
+    .ambient-glow-1 {
+      position: absolute;
+      width: 550px;
+      height: 550px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(157, 108, 255, 0.16) 0%, rgba(20, 10, 40, 0) 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+    .ambient-glow-2 {
+      position: absolute;
+      width: 450px;
+      height: 450px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(196, 168, 255, 0.12) 0%, rgba(20, 10, 40, 0) 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    @keyframes radar-pulse {
+      0% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
+      }
+      70% {
+        transform: scale(1);
+        box-shadow: 0 0 0 20px rgba(37, 211, 102, 0);
+      }
+      100% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+      }
+    }
+    .whatsapp-radar {
+      animation: radar-pulse 2.2s infinite;
+    }
+
+    button:not(.uiverse-card button), .btn-glow {
+      --glow-color: rgb(217, 176, 255);
+      --btn-color: rgb(100, 61, 136);
+      border: 0.2em solid var(--glow-color);
+      padding: 0.8em 2em;
+      color: var(--glow-color);
+      font-size: 15px;
+      font-weight: bold;
+      background-color: var(--btn-color);
+      border-radius: 1em;
+      outline: none;
+      box-shadow: 0 0 0.8em rgba(217, 176, 255, 0.4),
+                  inset 0 0 0.5em rgba(217, 176, 255, 0.3);
+      text-shadow: 0 0 0.4em var(--glow-color);
+      position: relative;
+      transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+
+    button:not(.uiverse-card button):hover, .btn-glow:hover {
+      color: var(--btn-color);
+      background-color: var(--glow-color);
+      text-shadow: none;
+      box-shadow: 0 0 1.2em rgba(217, 176, 255, 0.8),
+                  inset 0 0 0.5em rgba(255, 255, 255, 0.5);
+    }
+
+    button:not(.uiverse-card button):active, .btn-glow:active {
+      transform: scale(0.98);
+      box-shadow: 0 0 0.5em rgba(217, 176, 255, 0.6);
+    }
+
+    .uiverse-card {
+      --white: hsl(0, 0%, 100%);
+      --black: hsl(240, 15%, 9%);
+      --paragraph: hsl(0, 0%, 83%);
+      --line: hsl(240, 9%, 17%);
+      --primary: hsl(266, 92%, 58%);
+
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      padding: 1.5rem;
+      width: 100%;
+      max-width: 22rem;
+      margin: 0 auto;
+      background-color: hsla(240, 15%, 9%, 1);
+      background-image: radial-gradient(
+          at 88% 40%,
+          hsla(240, 15%, 9%, 1) 0px,
+          transparent 85%
+        ),
+        radial-gradient(at 49% 30%, hsla(240, 15%, 9%, 1) 0px, transparent 85%),
+        radial-gradient(at 14% 26%, hsla(240, 15%, 9%, 1) 0px, transparent 85%),
+        radial-gradient(at 0% 64%, hsla(263, 93%, 56%, 1) 0px, transparent 85%),
+        radial-gradient(at 41% 94%, hsla(284, 100%, 84%, 1) 0px, transparent 85%),
+        radial-gradient(at 100% 99%, hsla(306, 100%, 57%, 1) 0px, transparent 85%);
+      border-radius: 1rem;
+      box-shadow: 0px -16px 24px 0px rgba(255, 255, 255, 0.25) inset;
+    }
+
+    .uiverse-card .card__border {
+      overflow: hidden;
+      pointer-events: none;
+      position: absolute;
+      z-index: -10;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: calc(100% + 2px);
+      height: calc(100% + 2px);
+      background-image: linear-gradient(
+        0deg,
+        hsl(0, 0%, 100%) -50%,
+        hsl(0, 0%, 40%) 100%
+      );
+      border-radius: 1rem;
+    }
+
+    .uiverse-card .card__border::before {
+      content: "";
+      pointer-events: none;
+      position: absolute;
+      z-index: 200;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) rotate(0deg);
+      transform-origin: left;
+      width: 200%;
+      height: 10rem;
+      background-image: linear-gradient(
+        0deg,
+        hsla(0, 0%, 100%, 0) 0%,
+        hsl(277, 95%, 60%) 40%,
+        hsl(277, 95%, 60%) 60%,
+        hsla(0, 0%, 40%, 0) 100%
+      );
+      animation: uiverse-rotate 8s linear infinite;
+    }
+
+    @keyframes uiverse-rotate {
+      to {
+        transform: translate(-50%, -50%) rotate(360deg);
+      }
+    }
+
+    .uiverse-card .card_title__container .card_title {
+      font-size: 1.25rem;
+      font-weight: 900;
+      color: var(--white);
+    }
+
+    .uiverse-card .card_title__container .card_paragraph {
+      margin-top: 0.25rem;
+      font-size: 0.75rem;
+      color: var(--paragraph);
+    }
+
+    .uiverse-card .line {
+      width: 100%;
+      height: 0.1rem;
+      background-color: var(--line);
+      border: none;
+    }
+
+    .uiverse-card .card__list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .uiverse-card .card__list .card__list_item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .uiverse-card .card__list .card__list_item .check {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 1.2rem;
+      height: 1.2rem;
+      background-color: var(--primary);
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .uiverse-card .card__list .card__list_item .check .check_svg {
+      width: 0.75rem;
+      height: 0.75rem;
+      fill: var(--black);
+    }
+
+    .uiverse-card .card__list .card__list_item .list_text {
+      font-size: 0.8rem;
+      color: var(--white);
+    }
+
+    .uiverse-card .button {
+      cursor: pointer;
+      padding: 0.75rem;
+      width: 100%;
+      background-image: linear-gradient(
+        0deg,
+        rgba(94, 58, 238, 1) 0%,
+        rgba(197, 107, 240, 1) 100%
+      );
+      font-size: 0.85rem;
+      font-weight: bold;
+      color: var(--white);
+      border: 0;
+      border-radius: 9999px;
+      box-shadow: inset 0 -2px 25px -4px var(--white);
+      text-align: center;
+      display: block;
+      transition: opacity 0.2s;
+      text-decoration: none;
+    }
+    .uiverse-card .button:hover {
+      opacity: 0.9;
+    }
+  </style>
+</head>
+<body class="bg-brand-darkest text-brand-cream relative selection:bg-brand-accent selection:text-brand-darkest">
+
+  <div class="fixed bottom-6 left-6 z-50 flex items-center gap-3">
+    <a href="https://wa.me/201557512789?text=Hello,%20I%20would%20like%20to%20inquire%20about%20your%20services" 
+       target="_blank" 
+       rel="noopener noreferrer"
+       class="hidden md:flex items-center gap-2 bg-brand-surface/90 backdrop-blur-md border border-brand-accent/30 text-white text-xs py-2 px-3.5 rounded-full shadow-lg hover:border-brand-accent transition-all group">
+      <span class="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+      <span class="font-medium">تواصل مباشر مع الفريق</span>
+      <i class="fa-solid fa-arrow-left text-[10px] text-brand-accent transition-transform group-hover:-translate-x-1"></i>
+    </a>
+    
+    <a href="https://wa.me/201557512789?text=Hello,%20I%20would%20like%20to%20inquire%20about%20your%20services" 
+       target="_blank" 
+       rel="noopener noreferrer"
+       aria-label="تواصل معنا عبر واتساب"
+       class="relative flex items-center justify-center w-14 h-14 bg-[#25D366] text-white rounded-full shadow-2xl hover:scale-110 transition-transform duration-300 whatsapp-radar">
+      <i class="fa-brands fa-whatsapp text-3xl"></i>
+    </a>
+  </div>
+
+  <div class="fixed bottom-6 right-6 z-50 flex flex-col items-end">
+    <div id="chatbotWindow" class="hidden mb-4 w-80 sm:w-96 rounded-2xl bg-brand-surface/95 backdrop-blur-xl border border-brand-accent/30 shadow-2xl flex-col overflow-hidden transition-all duration-300">
+      <div class="p-4 bg-brand-card/90 border-b border-brand-accent/20 flex items-center justify-between">
+        <div class="flex items-center gap-3">
+          <div class="w-9 h-9 rounded-xl bg-brand-accent/20 border border-brand-accent/40 flex items-center justify-center text-brand-accent">
+            <i class="fa-solid fa-headset text-sm"></i>
+          </div>
+          <div>
+            <h4 class="text-sm font-bold text-white flex items-center gap-2">
+              <span>مساعد adam's media</span>
+              <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+            </h4>
+            <p class="text-[11px] text-brand-accent">متواجدون لمساعدتك</p>
+          </div>
+        </div>
+        <button onclick="toggleChatbot()" class="!p-1 !border-none !shadow-none !bg-transparent text-white/60 hover:text-white transition-colors" aria-label="إغلاق المحادثة">
+          <i class="fa-solid fa-xmark text-sm"></i>
+        </button>
+      </div>
+
+      <div id="chatMessages" class="p-4 space-y-3 h-72 overflow-y-auto text-xs leading-relaxed">
+        <div class="flex gap-2">
+          <div class="w-6 h-6 rounded-full bg-brand-accent/30 flex items-center justify-center text-[10px] text-brand-accent flex-shrink-0">
+            <i class="fa-solid fa-robot"></i>
+          </div>
+          <div class="bg-brand-card/80 border border-brand-accent/20 rounded-2xl rounded-tr-none p-3 text-white/90 max-w-[85%]">
+            أهلاً بيك في adam's media! 👋<br>إزاي نقدر نساعد براندك النهاردة؟
+          </div>
+        </div>
+      </div>
+
+      <div class="px-4 pb-2 flex gap-2 overflow-x-auto text-[11px] no-scrollbar">
+        <button onclick="sendQuickMessage('عايز أعرف تفاصيل الباقات')" class="!py-1 !px-2.5 !text-xs !rounded-full !border-solid !border-brand-accent/20">
+          باقات الأسعار
+        </button>
+        <button onclick="sendQuickMessage('حجز جلسة تعارف')" class="!py-1 !px-2.5 !text-xs !rounded-full !border-solid !border-brand-accent/20">
+          حجز جلسة
+        </button>
+        <button onclick="sendQuickMessage('خدمات التصوير')" class="!py-1 !px-2.5 !text-xs !rounded-full !border-solid !border-brand-accent/20">
+          التصوير
+        </button>
+      </div>
+
+      <form id="chatForm" onsubmit="handleChatMessage(event)" class="p-3 border-t border-brand-accent/15 bg-brand-darkest/60 flex items-center gap-2">
+        <input type="text" id="chatInput" placeholder="اكتب استفسارك هنا..." class="flex-1 bg-brand-card/60 border border-brand-accent/30 rounded-xl px-3 py-2 text-xs text-white placeholder-white/40 focus:outline-none focus:border-brand-accent transition-all">
+        <button type="submit" class="!w-8 !h-8 !p-0 !rounded-xl !border-none flex items-center justify-center flex-shrink-0" aria-label="إرسال">
+          <i class="fa-solid fa-paper-plane text-xs"></i>
+        </button>
+      </form>
+    </div>
+
+    <button id="chatbotToggleBtn" onclick="toggleChatbot()" class="!w-14 !h-14 !p-0 !rounded-full text-xl flex items-center justify-center" aria-label="فتح الدردشة">
+      <i class="fa-solid fa-comment-dots"></i>
+    </button>
+  </div>
+
+  <header class="sticky top-0 z-40 glass-nav transition-all duration-300 w-full">
+    <div class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20 w-full">
+        
+        <a href="#hero" class="flex items-center gap-3 group shrink-0 focus:outline-none" aria-label="الصفحة الرئيسية">
+          <img src="https://i.ibb.co/DfZrT9nd/logo.png" alt="adams media" class="h-12 sm:h-16 w-auto object-contain transition-transform group-hover:scale-105">
+          <div class="hidden sm:flex flex-col text-right">
+            <span class="text-base sm:text-lg font-black tracking-tight text-[#C4A8FF] font-alexandria leading-none">
+              adam's media
+            </span>
+            <span class="text-[10px] text-white/60 font-medium mt-1">Creative & Digital Solutions</span>
+          </div>
+        </a>
+
+        <nav class="hidden xl:flex items-center gap-6 2xl:gap-8 text-xs 2xl:text-sm font-medium text-white/80 whitespace-nowrap mx-auto">
+          <a href="index.html" class="hover:text-brand-accent transition-colors">الرئيسية</a>
+          <a href="#about" class="hover:text-brand-accent transition-colors">من نحن</a>
+          <a href="#ecosystem" class="hover:text-brand-accent transition-colors">المجموعة</a>
+          <a href="#services" class="hover:text-brand-accent transition-colors">خدماتنا</a>
+          <a href="#framework" class="hover:text-brand-accent transition-colors">طريقتنا في المحتوى</a>
+          <a href="#sectors" class="hover:text-brand-accent transition-colors">القطاعات</a>
+          <a href="#packages" class="hover:text-brand-accent transition-colors">باقاتنا</a>
+        </nav>
+
+        <div class="flex items-center gap-3 shrink-0">
+          <a href="https://wa.me/201557512789?text=Hello,%20I%20would%20like%20to%20inquire%20about%20your%20services" 
+             target="_blank"
+             class="btn-glow hidden sm:inline-flex gap-2 font-bold text-xs sm:text-sm whitespace-nowrap">
+            <span>احجز جلسة تعارف</span>
+            <i class="fa-solid fa-calendar-check text-xs"></i>
+          </a>
+          
+          <button id="mobileMenuBtn" aria-label="القائمة" class="xl:hidden !p-2.5 !rounded-xl text-white">
+            <i class="fa-solid fa-bars-staggered text-lg"></i>
+          </button>
+        </div>
+
+      </div>
+    </div>
+
+    <div id="mobileMenu" class="hidden xl:hidden border-t border-brand-accent/10 bg-brand-dark/95 backdrop-blur-xl px-4 pt-3 pb-6 space-y-2">
+      <a href="index.html" class="block px-3 py-2 rounded-lg text-sm text-white/90 hover:bg-brand-surface hover:text-brand-accent">الرئيسية</a>
+      <a href="#about" class="block px-3 py-2 rounded-lg text-sm text-white/90 hover:bg-brand-surface hover:text-brand-accent">من نحن</a>
+      <a href="#ecosystem" class="block px-3 py-2 rounded-lg text-sm text-white/90 hover:bg-brand-surface hover:text-brand-accent">المجموعة المتكاملة</a>
+      <a href="#services" class="block px-3 py-2 rounded-lg text-sm text-white/90 hover:bg-brand-surface hover:text-brand-accent">خدماتنا</a>
+      <a href="#framework" class="block px-3 py-2 rounded-lg text-sm text-white/90 hover:bg-brand-surface hover:text-brand-accent">طريقتنا في المحتوى</a>
+      <a href="#sectors" class="block px-3 py-2 rounded-lg text-sm text-white/90 hover:bg-brand-surface hover:text-brand-accent">القطاعات التي نخدمها</a>
+      <a href="#packages" class="block px-3 py-2 rounded-lg text-sm text-white/90 hover:bg-brand-surface hover:text-brand-accent">باقاتنا</a>
+      <div class="pt-2">
+        <a href="https://wa.me/201557512789?text=Hello,%20I%20would%20like%20to%20inquire%20about%20your%20services" 
+           target="_blank" 
+           class="btn-glow w-full text-center font-bold text-sm block">
+          احجز جلسة تعارف الآن
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <section id="hero" class="relative pt-12 pb-24 md:pt-20 md:pb-32 overflow-hidden">
+    <div class="ambient-glow-1 -top-20 -right-20"></div>
+    <div class="ambient-glow-2 top-1/2 -left-32"></div>
+
+    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      
+      <div class="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-brand-card/70 border border-brand-accent/30 text-xs sm:text-sm text-brand-accentLight mb-8 backdrop-blur-sm animate-fade-in shadow-inner">
+        <span class="flex h-2 w-2 rounded-full bg-brand-accent animate-ping"></span>
+        <span class="font-medium">طاقة إبداعية جديدة، وراها خبرة من 2009 في السوق</span>
+      </div>
+
+      <h1 class="text-4xl sm:text-6xl lg:text-7xl font-black font-alexandria tracking-normal leading-[1.4] sm:leading-[1.45] max-w-5xl mx-auto mb-6">
+        <span class="block text-white pb-2">محتوى بيتشاف..</span>
+        <span class="block accent-gradient-text pt-1 pb-3">و براند بيكبر.</span>
+      </h1>
+
+      <p class="max-w-3xl mx-auto text-base sm:text-xl text-white/75 font-normal leading-relaxed mb-10">
+        الذراع الإبداعي والرقمي لمجموعة <span class="text-brand-accent font-semibold">adam's agency</span>. 
+        بنساعد البراندات تبني حضور قوي أونلاين: محتوى بيتشاف، تصوير بيبيع، وإعلانات بتجيب عملاء حقيقيين.
+      </p>
+
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 max-w-md mx-auto mb-16">
+        <a href="#consultation" 
+           class="btn-glow w-full sm:w-auto font-extrabold text-base flex items-center justify-center gap-3">
+          <span>ابدأ رحلة براندك دلوقتي</span>
+          <i class="fa-solid fa-arrow-left text-sm"></i>
+        </a>
+        <a href="#packages" 
+           class="btn-glow w-full sm:w-auto font-semibold text-base flex items-center justify-center gap-2">
+          <span>اكتشف باقاتنا</span>
+          <i class="fa-regular fa-compass text-sm"></i>
+        </a>
+      </div>
+
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-5xl mx-auto">
+        <div class="glass-card rounded-2xl p-6 text-center border-t-2 border-t-brand-accent">
+          <div class="text-3xl sm:text-4xl font-black text-brand-accentLight mb-1 font-alexandria">17</div>
+          <div class="text-xs sm:text-sm font-bold text-white mb-1">سنة خبرة للمجموعة</div>
+          <p class="text-[11px] text-white/60">من 2009 في السوق مع عملاء من كل القطاعات</p>
+        </div>
+
+        <div class="glass-card rounded-2xl p-6 text-center border-t-2 border-t-brand-accent">
+          <div class="text-3xl sm:text-4xl font-black text-brand-accentLight mb-1 font-alexandria">6</div>
+          <div class="text-xs sm:text-sm font-bold text-white mb-1">أقسام متخصصة</div>
+          <p class="text-[11px] text-white/60">من الاستراتيجية والإنتاج حتى الميديا باينج</p>
+        </div>
+
+        <div class="glass-card rounded-2xl p-6 text-center border-t-2 border-t-brand-accent">
+          <div class="text-3xl sm:text-4xl font-black text-brand-accentLight mb-1 font-alexandria">3</div>
+          <div class="text-xs sm:text-sm font-bold text-white mb-1">علامات في مجموعة واحدة</div>
+          <p class="text-[11px] text-white/60">ديجيتال، وطباعة وأوت دور، وركن تغليف</p>
+        </div>
+
+        <div class="glass-card rounded-2xl p-6 text-center border-t-2 border-t-brand-accent">
+          <div class="text-3xl sm:text-4xl font-black text-brand-accentLight mb-1 font-alexandria">1</div>
+          <div class="text-xs sm:text-sm font-bold text-white mb-1">نقطة تواصل موحدة</div>
+          <p class="text-[11px] text-white/60">فريق واحد متكامل مسؤول عن براندك بالكامل</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="ecosystem" class="py-20 bg-brand-dark/50 relative border-y border-brand-accent/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <span class="text-xs font-bold uppercase tracking-widest text-brand-accent bg-brand-surface px-3 py-1 rounded-full border border-brand-accent/20">
+          قوة المجموعة الشاملة
+        </span>
+        <h2 class="text-3xl sm:text-4xl font-black text-white mt-3 font-alexandria">
+          مجموعة واحدة لكل اللى البراند محتاجه
+        </h2>
+        <p class="text-white/70 text-sm sm:text-base mt-3">
+          البراند بتاعك ممكن ياخد حملته على السوشيال، ويافطته فى الشارع، وتغليف منتجه من مجموعة واحدة وبرؤية واحدة متناسقة بدون تشتت.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 relative">
+        
+        <div class="glass-card rounded-3xl p-8 relative overflow-hidden border-2 border-brand-accent/60 bg-gradient-to-b from-brand-card/80 to-brand-surface/90 shadow-2xl">
+          <div class="w-14 h-14 rounded-2xl bg-brand-accent/20 border border-brand-accent/40 flex items-center justify-center text-brand-accentLight text-2xl mb-6">
+            <i class="fa-solid fa-wand-magic-sparkles"></i>
+          </div>
+          <div class="flex items-center gap-2 mb-2">
+            <h3 class="text-2xl font-black text-white font-alexandria">adam's media</h3>
+            <span class="text-[10px] text-brand-accent font-bold bg-brand-card px-1.5 py-0.5 rounded">TM</span>
+          </div>
+          <div class="text-xs text-brand-accent mb-4 font-semibold">Creative & Digital Solutions</div>
+          <p class="text-white/80 text-sm leading-relaxed mb-6">
+            سوشيال ميديا، استراتيجيات محتوى، تصوير فوتوغرافي وسينمائي، هوية بصرية متميزة، وإعلانات ممولة بأعلى عائد.
+          </p>
+          <div class="space-y-2.5 pt-4 border-t border-brand-accent/15 text-xs text-white/70">
+            <div class="flex items-center gap-2">
+              <i class="fa-solid fa-check text-brand-accent text-[11px]"></i>
+              <span>إنتاج محتوى فيديو وريلز احترافي</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <i class="fa-solid fa-check text-brand-accent text-[11px]"></i>
+              <span>إدارة ميزانيات الإعلانات وحملات الاستهداف</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="glass-card rounded-3xl p-8 relative">
+          <div class="w-14 h-14 rounded-2xl bg-white/10 border border-white/20 flex items-center justify-center text-white text-2xl mb-6">
+            <i class="fa-solid fa-billboard"></i>
+          </div>
+          <div class="flex items-center gap-2 mb-2">
+            <h3 class="text-2xl font-black text-white font-alexandria">adam's agency</h3>
+          </div>
+          <div class="text-xs text-white/60 mb-4 font-semibold">منذ عام 2009 م</div>
+          <p class="text-white/80 text-sm leading-relaxed mb-6">
+            طباعة تجارية وصناعية، تصنيع وتركيب يافطات المحلات والشركات، إعلانات أوت دور ومساحات إعلانية مميزة في الشارع.
+          </p>
+          <div class="space-y-2.5 pt-4 border-t border-white/10 text-xs text-white/70">
+            <div class="flex items-center gap-2">
+              <i class="fa-solid fa-check text-brand-accent text-[11px]"></i>
+              <span>واجهات كلادينج ويافطات مضيئة</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <i class="fa-solid fa-check text-brand-accent text-[11px]"></i>
+              <span>حملات الأوت دور والبيلبورد</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="glass-card rounded-3xl p-8 relative">
+          <div class="w-14 h-14 rounded-2xl bg-white/10 border border-white/20 flex items-center justify-center text-white text-2xl mb-6">
+            <i class="fa-solid fa-box-open"></i>
+          </div>
+          <div class="flex items-center gap-2 mb-2">
+            <h3 class="text-2xl font-black text-white font-alexandria">adam's pack</h3>
+          </div>
+          <div class="text-xs text-white/60 mb-4 font-semibold">ركن التغليف الفاخر</div>
+          <p class="text-white/80 text-sm leading-relaxed mb-6">
+            علب، أكياس ورقية وبلاستيكية، ليبلات، وتغليف كامل مطبوع عليه هوية البراند بدقة لضمان أفضل تجربة تسليم لعميلك.
+          </p>
+          <div class="space-y-2.5 pt-4 border-t border-white/10 text-xs text-white/70">
+            <div class="flex items-center gap-2">
+              <i class="fa-solid fa-check text-brand-accent text-[11px]"></i>
+              <span>تغليف كافيهات ومطاعم وبراندات ملابس</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <i class="fa-solid fa-check text-brand-accent text-[11px]"></i>
+              <span>أعلى خامات طباعة وتكسير الكراتين</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="mt-12 rounded-3xl p-8 bg-gradient-to-r from-brand-card via-brand-surface to-brand-card border border-brand-accent/25 relative overflow-hidden">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          <div class="lg:col-span-4">
+            <span class="text-xs font-bold text-brand-accent bg-brand-darkest/70 px-3 py-1 rounded-full">مثال عملي حي</span>
+            <h4 class="text-2xl font-bold text-white mt-2 mb-2">كافيه جديد بيفتح في المحلة الكبرى</h4>
+            <p class="text-white/75 text-sm">
+              شوف إزاي بتشتغل العلامات التلاتة مع بعض علشان يظهر البراند بتاعك بصورة واحدة متطابقة في كل مكان يشوفك فيه الزبون:
+            </p>
+          </div>
+          <div class="lg:col-span-8 grid grid-cols-1 sm:grid-cols-3 gap-4">
+            <div class="bg-brand-darkest/60 p-4 rounded-2xl border border-brand-accent/20">
+              <div class="text-xs font-bold text-brand-accent mb-2 flex items-center gap-2">
+                <i class="fa-solid fa-laptop-code"></i> adam's media
+              </div>
+              <ul class="text-xs text-white/75 space-y-1.5 list-disc list-inside">
+                <li>تصوير المنيو والمكان باحترافية</li>
+                <li>ريل الافتتاح وحملات إعلانية ممولة</li>
+                <li>تجهيز وإدارة الصفحات</li>
+              </ul>
+            </div>
+            <div class="bg-brand-darkest/60 p-4 rounded-2xl border border-white/10">
+              <div class="text-xs font-bold text-white mb-2 flex items-center gap-2">
+                <i class="fa-solid fa-print"></i> adam's agency
+              </div>
+              <ul class="text-xs text-white/75 space-y-1.5 list-disc list-inside">
+                <li>يافطة المحل والواجهة الخارجية</li>
+                <li>طباعة منيوهات وفلايرز الافتتاح</li>
+                <li>بيلبورد في الشارع الرئيسي</li>
+              </ul>
+            </div>
+            <div class="bg-brand-darkest/60 p-4 rounded-2xl border border-white/10">
+              <div class="text-xs font-bold text-white mb-2 flex items-center gap-2">
+                <i class="fa-solid fa-bag-shopping"></i> adam's pack
+              </div>
+              <ul class="text-xs text-white/75 space-y-1.5 list-disc list-inside">
+                <li>أكواب قهوة مطبوعة باللوجو</li>
+                <li>علب وأكياس تيك أواي مميزة</li>
+                <li>استيكرز وتغليف الهدايا</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="about" class="py-24 relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+        <div>
+          <span class="text-xs font-bold text-brand-accent uppercase tracking-wider bg-brand-surface px-3.5 py-1.5 rounded-full border border-brand-accent/20">
+            01 | مين إحنا
+          </span>
+          <h2 class="text-3xl sm:text-5xl font-black text-white mt-4 font-alexandria">
+            طاقة إبداعية جديدة، وراها خبرة سنين
+          </h2>
+        </div>
+        <p class="max-w-md text-white/70 text-sm sm:text-base">
+          نخلى كل براند نشتغل معاه أوضح، وأقرب لعملائه، وأقوى في السوق من خلال رؤية واضحة وتنفيذ دقيق.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
+        <div class="glass-card rounded-3xl p-8 relative">
+          <div class="w-12 h-12 rounded-xl bg-brand-accent/20 text-brand-accent flex items-center justify-center text-xl mb-6">
+            <i class="fa-solid fa-bullseye"></i>
+          </div>
+          <h3 class="text-xl font-bold text-white mb-3">رسالتنا</h3>
+          <p class="text-white/75 text-sm leading-relaxed">
+            مساعدة البراندات تبني حضور قوي أونلاين بمحتوى بيتشاف، وتصوير بيبيع، وإعلانات بتجيب عملاء حقيقيين وتخلق تأثيراً مباشراً.
+          </p>
+        </div>
+
+        <div class="glass-card rounded-3xl p-8 relative">
+          <div class="w-12 h-12 rounded-xl bg-brand-accent/20 text-brand-accent flex items-center justify-center text-xl mb-6">
+            <i class="fa-solid fa-compass"></i>
+          </div>
+          <h3 class="text-xl font-bold text-white mb-3">رؤيتنا</h3>
+          <p class="text-white/75 text-sm leading-relaxed">
+            نكون الشريك الإبداعي والرقمي الأول للبراندات في الدلتا. ولأننا جزء من مجموعة في السوق من 2009، براندك بياخد طاقة فريق جديد ومعاها ثقة وتجربة عميقة.
+          </p>
+        </div>
+
+        <div class="glass-card rounded-3xl p-8 relative">
+          <div class="w-12 h-12 rounded-xl bg-brand-accent/20 text-brand-accent flex items-center justify-center text-xl mb-6">
+            <i class="fa-solid fa-handshake"></i>
+          </div>
+          <h3 class="text-xl font-bold text-white mb-3">وعدنا</h3>
+          <p class="text-white/75 text-sm leading-relaxed">
+            شغل بجودة عالية، مواعيد تسليم واضحة وصارمة، وتقارير أداء دورية بالأرقام والنتائج الفعلية.
+          </p>
+        </div>
+      </div>
+
+      <div class="rounded-3xl p-8 md:p-10 bg-gradient-to-br from-brand-card/90 to-brand-surface/90 border border-brand-accent/30 shadow-xl mb-16">
+        <div class="flex flex-col md:flex-row items-center gap-8">
+          <div class="w-28 h-28 sm:w-32 sm:h-32 rounded-3xl bg-gradient-to-tr from-brand-accent via-brand-lightPurple to-white p-1 flex-shrink-0 shadow-lg">
+            <div class="w-full h-full rounded-[22px] bg-brand-darkest flex items-center justify-center text-center">
+              <span class="text-3xl font-black text-brand-accent font-alexandria"></span>
+            </div>
+          </div>
+          <div class="flex-1 text-center md:text-right">
+            <div class="inline-block text-xs font-bold text-brand-accent bg-brand-surface px-3 py-1 rounded-md mb-2">
+              القيادة التنفيذية
+            </div>
+            <h3 class="text-2xl sm:text-3xl font-black text-white font-alexandria">أحمد المهدى</h3>
+            <p class="text-sm font-semibold text-brand-accentLight mt-1 mb-3">المدير التنفيذي ل Adam's media</p>
+            <p class="text-white/80 text-sm sm:text-base leading-relaxed max-w-3xl">
+              بيقود الإدارة الإبداعية والرقمية في adam's media، وبيتابع شخصياً أدق تفاصيل شغل الفريق مع كل براند لضمان أعلى معايير الجودة والالتزام.
+            </p>
+          </div>
+          <div class="flex-shrink-0">
+            <a href="https://wa.me/201557512789?text=Hello,%20I%20would%20like%20to%20inquire%20about%20your%20services" 
+               target="_blank"
+               class="btn-glow inline-flex items-center gap-2 font-bold text-xs sm:text-sm">
+              <span>تحدث مع القيادة</span>
+              <i class="fa-brands fa-whatsapp text-sm"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="text-center mb-10">
+          <h3 class="text-2xl sm:text-3xl font-black text-white font-alexandria">
+            ستة أقسام متخصصة تحت سقف واحد
+          </h3>
+          <p class="text-white/60 text-sm mt-2">كل قسم يقوده متخصصون يضمنون احترافية كل تفصيلة في براندك</p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div class="glass-card rounded-2xl p-6">
+            <div class="flex items-center gap-3 mb-3">
+              <div class="w-10 h-10 rounded-xl bg-brand-surface flex items-center justify-center text-brand-accent">
+                <i class="fa-solid fa-chess-knight"></i>
+              </div>
+              <h4 class="text-base font-bold text-white">الاستراتيجية والحسابات</h4>
+            </div>
+            <p class="text-xs text-white/70">استراتيجي براند، مخطط ميديا، وأكاونت مانجر مخصص لمتابعة كل صغيرة وكبيرة.</p>
+          </div>
+
+          <div class="glass-card rounded-2xl p-6">
+            <div class="flex items-center gap-3 mb-3">
+              <div class="w-10 h-10 rounded-xl bg-brand-surface flex items-center justify-center text-brand-accent">
+                <i class="fa-solid fa-bezier-curve"></i>
+              </div>
+              <h4 class="text-base font-bold text-white">الإبداع والتصميم</h4>
+            </div>
+            <p class="text-xs text-white/70">مدير فني، مصممو جرافيك مبدعون، موشن ديزاينرز، ومصممو واجهات UI/UX حديثة.</p>
+          </div>
+
+          <div class="glass-card rounded-2xl p-6">
+            <div class="flex items-center gap-3 mb-3">
+              <div class="w-10 h-10 rounded-xl bg-brand-surface flex items-center justify-center text-brand-accent">
+                <i class="fa-solid fa-pen-nib"></i>
+              </div>
+              <h4 class="text-base font-bold text-white">المحتوى والكتابة</h4>
+            </div>
+            <p class="text-xs text-white/70">كوبي رايترز متخصصون، كتاب سكريبتات إعلانية، واستراتيجي محتوى يفهم سيكولوجية العميل.</p>
+          </div>
+
+          <div class="glass-card rounded-2xl p-6">
+            <div class="flex items-center gap-3 mb-3">
+              <div class="w-10 h-10 rounded-xl bg-brand-surface flex items-center justify-center text-brand-accent">
+                <i class="fa-solid fa-video"></i>
+              </div>
+              <h4 class="text-base font-bold text-white">الإنتاج الإعلامي</h4>
+            </div>
+            <p class="text-xs text-white/70">مصور فوتوغرافي، مصور سينمائي، مخرج ومونتير محترف، ومهندس اضاءة ذو خبرة عالية.</p>
+          </div>
+
+          <div class="glass-card rounded-2xl p-6">
+            <div class="flex items-center gap-3 mb-3">
+              <div class="w-10 h-10 rounded-xl bg-brand-surface flex items-center justify-center text-brand-accent">
+                <i class="fa-solid fa-share-nodes"></i>
+              </div>
+              <h4 class="text-base font-bold text-white">السوشيال ميديا</h4>
+            </div>
+            <p class="text-xs text-white/70">سوشيال ميديا مانجر، كوميونيتي مانجر للتفاعل السريع والرد، وصناع محتوى عصريين.</p>
+          </div>
+
+          <div class="glass-card rounded-2xl p-6">
+            <div class="flex items-center gap-3 mb-3">
+              <div class="w-10 h-10 rounded-xl bg-brand-surface flex items-center justify-center text-brand-accent">
+                <i class="fa-solid fa-chart-line"></i>
+              </div>
+              <h4 class="text-base font-bold text-white">الديجيتال والإعلانات</h4>
+            </div>
+            <p class="text-xs text-white/70">ميديا باير متخصص في الحملات الممولة، أخصائي SEO، ومحلل بيانات رقمية لتحسين العائد.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="services" class="py-24 bg-brand-dark/40 border-t border-brand-accent/10 relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <span class="text-xs font-bold text-brand-accent bg-brand-surface px-3.5 py-1.5 rounded-full border border-brand-accent/20">
+          02 | خدماتنا الشاملة
+        </span>
+        <h2 class="text-3xl sm:text-5xl font-black text-white mt-4 font-alexandria">
+          كل اللى البراند بتاعك محتاجه أونلاين
+        </h2>
+        <p class="text-white/70 text-sm sm:text-base mt-3">
+          حلول متكاملة تضمن ظهور علامتك التجارية بصورة احترافية وتحقيق مبيعات ملموسة
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+        <div class="glass-card rounded-3xl p-8 group">
+          <div class="w-14 h-14 rounded-2xl bg-brand-surface border border-brand-accent/30 text-brand-accent flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform">
+            <i class="fa-solid fa-hashtag"></i>
+          </div>
+          <h3 class="text-xl font-bold text-white mb-2">إدارة السوشيال ميديا</h3>
+          <p class="text-white/70 text-sm leading-relaxed mb-4">
+            استراتيجية مخصصة، خطط نشر شهرية متسقة، جدولة احترافية، إدارة المجتمع والمحادثات، وتقارير أداء دورية.
+          </p>
+          <div class="text-xs text-brand-accent font-semibold flex items-center gap-1.5">
+            <span>حضور يومي وتفاعل مستمر</span>
+            <i class="fa-solid fa-angle-left"></i>
+          </div>
+        </div>
+
+        <div class="glass-card rounded-3xl p-8 group">
+          <div class="w-14 h-14 rounded-2xl bg-brand-surface border border-brand-accent/30 text-brand-accent flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform">
+            <i class="fa-solid fa-feather"></i>
+          </div>
+          <h3 class="text-xl font-bold text-white mb-2">المحتوى والكتابة الإبداعية</h3>
+          <p class="text-white/70 text-sm leading-relaxed mb-4">
+            ابتكار أفكار جذابة، كابشنز تحفز التفاعل، سكريبتات ريلز مشوقة، وكتابة إعلانية (Copywriting) بالعامية المصرية والإنجليزي.
+          </p>
+          <div class="text-xs text-brand-accent font-semibold flex items-center gap-1.5">
+            <span>كلام بيخاطب قلب وعقل العميل</span>
+            <i class="fa-solid fa-angle-left"></i>
+          </div>
+        </div>
+
+        <div class="glass-card rounded-3xl p-8 group">
+          <div class="w-14 h-14 rounded-2xl bg-brand-surface border border-brand-accent/30 text-brand-accent flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform">
+            <i class="fa-solid fa-camera-retro"></i>
+          </div>
+          <h3 class="text-xl font-bold text-white mb-2">تصوير فوتو وفيديو</h3>
+          <p class="text-white/70 text-sm leading-relaxed mb-4">
+            تصوير منتجات جذاب، فيديوهات ريلز عصرية، إعلانات مصورة، تغطية فعاليات وافتتاحات، وأفلام براند تسرد قصتك.
+          </p>
+          <div class="text-xs text-brand-accent font-semibold flex items-center gap-1.5">
+            <span>كاميرات وسينماتوجرافي احترافي</span>
+            <i class="fa-solid fa-angle-left"></i>
+          </div>
+        </div>
+
+        <div class="glass-card rounded-3xl p-8 group">
+          <div class="w-14 h-14 rounded-2xl bg-brand-surface border border-brand-accent/30 text-brand-accent flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform">
+            <i class="fa-solid fa-palette"></i>
+          </div>
+          <h3 class="text-xl font-bold text-white mb-2">الهوية البصرية المتكاملة</h3>
+          <p class="text-white/70 text-sm leading-relaxed mb-4">
+            تصميم لوجو فريد، بناء هوية بصرية كاملة، قوالب سوشيال ميديا مخصصة لبراندك، ودليل استخدام العلامة (Brand Guidelines).
+          </p>
+          <div class="text-xs text-brand-accent font-semibold flex items-center gap-1.5">
+            <span>طابع بصري ثابت لا يُنسى</span>
+            <i class="fa-solid fa-angle-left"></i>
+          </div>
+        </div>
+
+        <div class="glass-card rounded-3xl p-8 group">
+          <div class="w-14 h-14 rounded-2xl bg-brand-surface border border-brand-accent/30 text-brand-accent flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform">
+            <i class="fa-solid fa-bullhorn"></i>
+          </div>
+          <h3 class="text-xl font-bold text-white mb-2">الإعلانات الممولة (Media Buying)</h3>
+          <p class="text-white/70 text-sm leading-relaxed mb-4">
+            إدارة الحملات الاستهدافية على منصات Meta (فيسبوك وإنستجرام)، TikTok، وGoogle Ads، مع اختبار A/B وتقارير بالعائد.
+          </p>
+          <div class="text-xs text-brand-accent font-semibold flex items-center gap-1.5">
+            <span>أعلى عائد على كل جنيه يُصرف</span>
+            <i class="fa-solid fa-angle-left"></i>
+          </div>
+        </div>
+
+        <div class="glass-card rounded-3xl p-8 group">
+          <div class="w-14 h-14 rounded-2xl bg-brand-surface border border-brand-accent/30 text-brand-accent flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform">
+            <i class="fa-solid fa-globe"></i>
+          </div>
+          <h3 class="text-xl font-bold text-white mb-2">المواقع والحلول الرقمية</h3>
+          <p class="text-white/70 text-sm leading-relaxed mb-4">
+            تطوير صفحات هبوط سريعة وموجهة للتحويل (Landing Pages)، مواقع شركات تعريفية، ومتاجر إلكترونية جاهزة لاستقبال الطلبات.
+          </p>
+          <div class="text-xs text-brand-accent font-semibold flex items-center gap-1.5">
+            <span>تجربة مستخدم سريعة ومتجاوبة</span>
+            <i class="fa-solid fa-angle-left"></i>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-brand-surface/60 rounded-3xl p-8 border border-brand-accent/20">
+        <div class="flex flex-col md:flex-row items-center justify-between mb-8 gap-4">
+          <div>
+            <h4 class="text-2xl font-bold text-white font-alexandria">خدمات إضافية مميزة</h4>
+            <p class="text-white/60 text-xs sm:text-sm mt-1">تقدر تضيفها لأي باقة من الباقات الشهرية أو تطلبها كخدمة مستقلة</p>
+          </div>
+          <span class="text-xs bg-brand-accent/20 text-brand-accent px-3 py-1 rounded-full font-bold">حسب رغبتك واحتياجك</span>
+        </div>
+
+        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
+          <div class="glass-card p-4 rounded-2xl text-center">
+            <div class="w-10 h-10 mx-auto rounded-xl bg-brand-card flex items-center justify-center text-brand-accent mb-2.5">
+              <i class="fa-solid fa-camera"></i>
+            </div>
+            <div class="font-bold text-white text-xs sm:text-sm">يوم تصوير إضافي</div>
+            <p class="text-[10px] text-white/50 mt-1">منتجات، مكان، أو فريق</p>
+          </div>
+
+          <div class="glass-card p-4 rounded-2xl text-center">
+            <div class="w-10 h-10 mx-auto rounded-xl bg-brand-card flex items-center justify-center text-brand-accent mb-2.5">
+              <i class="fa-solid fa-clapperboard"></i>
+            </div>
+            <div class="font-bold text-white text-xs sm:text-sm">فيلم براند وثائقي</div>
+            <p class="text-[10px] text-white/50 mt-1">قصة براندك سينمائياً</p>
+          </div>
+
+          <div class="glass-card p-4 rounded-2xl text-center">
+            <div class="w-10 h-10 mx-auto rounded-xl bg-brand-card flex items-center justify-center text-brand-accent mb-2.5">
+              <i class="fa-solid fa-id-card"></i>
+            </div>
+            <div class="font-bold text-white text-xs sm:text-sm">هوية بصرية كاملة</div>
+            <p class="text-[10px] text-white/50 mt-1">لوجو وألوان ودليل كامل</p>
+          </div>
+
+          <div class="glass-card p-4 rounded-2xl text-center">
+            <div class="w-10 h-10 mx-auto rounded-xl bg-brand-card flex items-center justify-center text-brand-accent mb-2.5">
+              <i class="fa-solid fa-store"></i>
+            </div>
+            <div class="font-bold text-white text-xs sm:text-sm">موقع أو متجر</div>
+            <p class="text-[10px] text-white/50 mt-1">تعريفي أو جاهز للبيع</p>
+          </div>
+
+          <div class="glass-card p-4 rounded-2xl text-center">
+            <div class="w-10 h-10 mx-auto rounded-xl bg-brand-card flex items-center justify-center text-brand-accent mb-2.5">
+              <i class="fa-solid fa-users-viewfinder"></i>
+            </div>
+            <div class="font-bold text-white text-xs sm:text-sm">حملات إنفلونسرز</div>
+            <p class="text-[10px] text-white/50 mt-1">اختيار وإدارة المؤثرين</p>
+          </div>
+
+          <div class="glass-card p-4 rounded-2xl text-center">
+            <div class="w-10 h-10 mx-auto rounded-xl bg-brand-card flex items-center justify-center text-brand-accent mb-2.5">
+              <i class="fa-solid fa-champagne-glasses"></i>
+            </div>
+            <div class="font-bold text-white text-xs sm:text-sm">تغطية فعاليات</div>
+            <p class="text-[10px] text-white/50 mt-1">تصوير ونشر لحظي للحدث</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="sectors" class="py-24 relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <span class="text-xs font-bold text-brand-accent bg-brand-surface px-3.5 py-1.5 rounded-full border border-brand-accent/20">
+          خبرات قطاعية 
+        </span>
+        <h2 class="text-3xl sm:text-5xl font-black text-white mt-4 font-alexandria">
+          قطاعات بنفهم لغتها وتحدياتها
+        </h2>
+        <p class="text-white/70 text-sm sm:text-base mt-3">
+          مش بس بنعمل إعلانات، إحنا فاهمين سلوك عميل كل مجال ونقاط قوته
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="glass-card rounded-3xl p-7 border-r-4 border-r-brand-accent">
+          <div class="flex items-center gap-4 mb-4">
+            <div class="w-12 h-12 rounded-2xl bg-brand-card flex items-center justify-center text-brand-accent text-xl">
+              <i class="fa-solid fa-mug-saucer"></i>
+            </div>
+            <div>
+              <h3 class="text-lg font-bold text-white">المطاعم والكافيهات</h3>
+              <span class="text-[11px] text-brand-accent">Food & Beverage</span>
+            </div>
+          </div>
+          <p class="text-white/75 text-xs sm:text-sm leading-relaxed">
+            محتوى أكل يفتح النفس، تصوير ريلز شهي، عروض مواسم، وحملات افتتاح مدروسة.
+          </p>
+        </div>
+
+        <div class="glass-card rounded-3xl p-7 border-r-4 border-r-brand-accent">
+          <div class="flex items-center gap-4 mb-4">
+            <div class="w-12 h-12 rounded-2xl bg-brand-card flex items-center justify-center text-brand-accent text-xl">
+              <i class="fa-solid fa-shirt"></i>
+            </div>
+            <div>
+              <h3 class="text-lg font-bold text-white">براندات الملابس والنسيج</h3>
+              <span class="text-[11px] text-brand-accent">Fashion & Apparel</span>
+            </div>
+          </div>
+          <p class="text-white/75 text-xs sm:text-sm leading-relaxed">
+            من المصنع للعميل مباشرة: جلسات تصوير موديلز، هوية بصرية أنيقة، وتوجيه الحملات لمتاجر أونلاين سريعة.
+          </p>
+        </div>
+
+        <div class="glass-card rounded-3xl p-7 border-r-4 border-r-brand-accent">
+          <div class="flex items-center gap-4 mb-4">
+            <div class="w-12 h-12 rounded-2xl bg-brand-card flex items-center justify-center text-brand-accent text-xl">
+              <i class="fa-solid fa-stethoscope"></i>
+            </div>
+            <div>
+              <h3 class="text-lg font-bold text-white">العيادات والبيوتي</h3>
+              <span class="text-[11px] text-brand-accent">Medical & Aesthetic</span>
+            </div>
+          </div>
+          <p class="text-white/75 text-xs sm:text-sm leading-relaxed">
+            محتوى علمي بيبني ثقة عالية ويزيل المخاوف، تصوير حالات قبل وبعد بدقة، وإعلانات استهداف بتجيب حجوزات مؤكدة.
+          </p>
+        </div>
+
+        <div class="glass-card rounded-3xl p-7 border-r-4 border-r-brand-accent">
+          <div class="flex items-center gap-4 mb-4">
+            <div class="w-12 h-12 rounded-2xl bg-brand-card flex items-center justify-center text-brand-accent text-xl">
+              <i class="fa-solid fa-cart-shopping"></i>
+            </div>
+            <div>
+              <h3 class="text-lg font-bold text-white">المتاجر الأونلاين</h3>
+              <span class="text-[11px] text-brand-accent">E-Commerce</span>
+            </div>
+          </div>
+          <p class="text-white/75 text-xs sm:text-sm leading-relaxed">
+            محتوى مخصص للمنتجات وإعلانات تحويل مباشر (Conversion Ads) بتحول المتابع لمشتري مع قياس دقيق لتكلفة الطلب.
+          </p>
+        </div>
+
+        <div class="glass-card rounded-3xl p-7 border-r-4 border-r-brand-accent">
+          <div class="flex items-center gap-4 mb-4">
+            <div class="w-12 h-12 rounded-2xl bg-brand-card flex items-center justify-center text-brand-accent text-xl">
+              <i class="fa-solid fa-building"></i>
+            </div>
+            <div>
+              <h3 class="text-lg font-bold text-white">العقارات والشركات</h3>
+              <span class="text-[11px] text-brand-accent">Real Estate & B2B</span>
+            </div>
+          </div>
+          <p class="text-white/75 text-xs sm:text-sm leading-relaxed">
+            أفلام مشاريع فاخرة، تصوير درونز جوي، هوية مؤسسية، وحملات تجميع عملاء مهتمين ومستثمرين (Lead Generation).
+          </p>
+        </div>
+
+        <div class="glass-card rounded-3xl p-7 border-r-4 border-r-brand-accent">
+          <div class="flex items-center gap-4 mb-4">
+            <div class="w-12 h-12 rounded-2xl bg-brand-card flex items-center justify-center text-brand-accent text-xl">
+              <i class="fa-solid fa-graduation-cap"></i>
+            </div>
+            <div>
+              <h3 class="text-lg font-bold text-white">التعليم والأكاديميات</h3>
+              <span class="text-[11px] text-brand-accent">Education & Centers</span>
+            </div>
+          </div>
+          <p class="text-white/75 text-xs sm:text-sm leading-relaxed">
+            مدارس، سناتر، وكورسات تدريبية؛ حملات مواسم التقديم والتسجيل، وتوصيل قيمة البرامج الدراسية لأولياء الأمور والطلاب.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="framework" class="py-24 bg-brand-dark/50 border-y border-brand-accent/10 relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <span class="text-xs font-bold text-brand-accent bg-brand-surface px-3.5 py-1.5 rounded-full border border-brand-accent/20">
+          03 | طريقتنا في المحتوى
+        </span>
+        <h2 class="text-3xl sm:text-5xl font-black text-white mt-4 font-alexandria">
+          "كل بوست ليه هدف، وكل هدف ليه رقم."
+        </h2>
+        <p class="text-white/70 text-sm sm:text-base mt-3">
+          مبنعلمش بوستات وخلاص؛ بنبني منظومة محتوى متوازنة بـ 5 محاور تقنع العميل وتدفعه للشراء
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-5 gap-4 mb-16">
+        <div class="glass-card rounded-2xl p-5 text-center border-t-4 border-t-brand-accent">
+          <div class="text-3xl font-black text-brand-accent mb-2 font-alexandria">25%</div>
+          <div class="font-bold text-white text-sm mb-1">المنتج والخدمة</div>
+          <p class="text-[11px] text-white/60">نورّي اللي بتبيعه بأحسن وأجمل شكل يفتح النفس للشراء.</p>
+        </div>
+
+        <div class="glass-card rounded-2xl p-5 text-center border-t-4 border-t-brand-accent">
+          <div class="text-3xl font-black text-brand-accent mb-2 font-alexandria">25%</div>
+          <div class="font-bold text-white text-sm mb-1">قيمة ومعلومة</div>
+          <p class="text-[11px] text-white/60">محتوى مفيد ونصائح حقيقية بتخلي الناس تتابعك وتثق فيك.</p>
+        </div>
+
+        <div class="glass-card rounded-2xl p-5 text-center border-t-4 border-t-brand-glow">
+          <div class="text-3xl font-black text-brand-glow mb-2 font-alexandria">20%</div>
+          <div class="font-bold text-white text-sm mb-1">ثقة وآراء</div>
+          <p class="text-[11px] text-white/60">آراء عملاء حقيقيين، تقييمات، وتجارب ناجحة تكسر التردد.</p>
+        </div>
+
+        <div class="glass-card rounded-2xl p-5 text-center border-t-4 border-t-brand-accentLight">
+          <div class="text-3xl font-black text-brand-accentLight mb-2 font-alexandria">15%</div>
+          <div class="font-bold text-white text-sm mb-1">كواليس البراند</div>
+          <p class="text-[11px] text-white/60">الناس والمكان والجهد ورا الشغل؛ إنسانية البراند بتخلق انتماء.</p>
+        </div>
+
+        <div class="glass-card rounded-2xl p-5 text-center border-t-4 border-t-brand-accentLight">
+          <div class="text-3xl font-black text-brand-accentLight mb-2 font-alexandria">15%</div>
+          <div class="font-bold text-white text-sm mb-1">تريند وتفاعل</div>
+          <p class="text-[11px] text-white/60">مواكبة اللي الناس بتتكلم فيه بلغة البراند لكسب وصول مجاني.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div class="rounded-3xl p-8 md:p-12 bg-gradient-to-b from-brand-card/70 to-brand-surface/70 border border-brand-accent/25">
+      <div class="text-center max-w-2xl mx-auto mb-10">
+        <span class="text-xs font-bold text-brand-accent bg-brand-card px-3 py-1 rounded-md">شفافية تامة</span>
+        <h3 class="text-2xl sm:text-3xl font-black text-white mt-2 font-alexandria">إزاي بنقيس النجاح معاك؟</h3>
+        <p class="text-white/60 text-xs sm:text-sm mt-1">تقرير شهري مفصل بالأرقام واجتماع مراجعة دوري لمناقشة المؤشرات الستة:</p>
+      </div>
+
+      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
+        <div class="glass-card p-5 rounded-2xl text-center">
+          <div class="w-10 h-10 mx-auto rounded-xl bg-brand-surface flex items-center justify-center text-brand-accent mb-3">
+            <i class="fa-solid fa-eye"></i>
+          </div>
+          <div class="font-bold text-white text-sm mb-1">الوصول</div>
+          <p class="text-[11px] text-white/60">عدد الأشخاص اللي شافوا براندك</p>
+        </div>
+
+        <div class="glass-card p-5 rounded-2xl text-center">
+          <div class="w-10 h-10 mx-auto rounded-xl bg-brand-surface flex items-center justify-center text-brand-accent mb-3">
+            <i class="fa-solid fa-heart"></i>
+          </div>
+          <div class="font-bold text-white text-sm mb-1">التفاعل</div>
+          <p class="text-[11px] text-white/60">لايكات، كومنتات، حفظ ومشاركات</p>
+        </div>
+
+        <div class="glass-card p-5 rounded-2xl text-center">
+          <div class="w-10 h-10 mx-auto rounded-xl bg-brand-surface flex items-center justify-center text-brand-accent mb-3">
+            <i class="fa-solid fa-user-plus"></i>
+          </div>
+          <div class="font-bold text-white text-sm mb-1">نمو المتابعين</div>
+          <p class="text-[11px] text-white/60">جمهور حقيقي ومهتم بالمجال</p>
+        </div>
+
+        <div class="glass-card p-5 rounded-2xl text-center">
+          <div class="w-10 h-10 mx-auto rounded-xl bg-brand-surface flex items-center justify-center text-brand-accent mb-3">
+            <i class="fa-solid fa-comments"></i>
+          </div>
+          <div class="font-bold text-white text-sm mb-1">الرسائل والعملاء</div>
+          <p class="text-[11px] text-white/60">استفسارات وطلبات شراء فعلية</p>
+        </div>
+
+        <div class="glass-card p-5 rounded-2xl text-center">
+          <div class="w-10 h-10 mx-auto rounded-xl bg-brand-surface flex items-center justify-center text-brand-accent mb-3">
+            <i class="fa-solid fa-coins"></i>
+          </div>
+          <div class="font-bold text-white text-sm mb-1">تكلفة العميل (CAC)</div>
+          <p class="text-[11px] text-white/60">كل عميل كلف كام من الإعلانات</p>
+        </div>
+
+        <div class="glass-card p-5 rounded-2xl text-center">
+          <div class="w-10 h-10 mx-auto rounded-xl bg-brand-surface flex items-center justify-center text-brand-accent mb-3">
+            <i class="fa-solid fa-chart-pie"></i>
+          </div>
+          <div class="font-bold text-white text-sm mb-1">المبيعات</div>
+          <p class="text-[11px] text-white/60">أثر المحتوى والإعلانات على البيع</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section id="packages" class="py-24 bg-brand-dark/40 border-t border-brand-accent/10 relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <span class="text-xs font-bold text-brand-accent bg-brand-surface px-3.5 py-1.5 rounded-full border border-brand-accent/20">
+          خطط الاستثمار الرقمي
+        </span>
+        <h2 class="text-3xl sm:text-5xl font-black text-white mt-4 font-alexandria">
+          اختار البداية اللى تناسبك
+        </h2>
+        <p class="text-white/70 text-sm sm:text-base mt-3">
+          باقات مصممة لتناسب مختلف مراحل نمو مشروعك، من البداية وحتى قيادة السوق
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch mb-12">
+        
+        <div class="uiverse-card">
+          <div class="card__border"></div>
+          <div class="card_title__container">
+            <span class="text-xs font-bold text-brand-accentLight bg-brand-surface px-2.5 py-1 rounded-md inline-block mb-2">للبراند اللى لسه بادئ</span>
+            <p class="card_title">باقة البداية</p>
+            <p class="card_paragraph">مثالية للشركات الناشئة والمشاريع التي ترغب في تأسيس حضور رسمي ومنتظم على السوشيال ميديا.</p>
+          </div>
+          <hr class="line">
+          <div class="card__list">
+            <div class="card__list_item">
+              <div class="check">
+                <svg class="check_svg" viewBox="0 0 16 16"><path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/></svg>
+              </div>
+              <span class="list_text"><strong>4 بوست مصمم</strong> في الشهر</span>
+            </div>
+            <div class="card__list_item">
+              <div class="check">
+                <svg class="check_svg" viewBox="0 0 16 16"><path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/></svg>
+              </div>
+              <span class="list_text"><strong>2 ريلز</strong> قصيرة وجذابة</span>
+            </div>
+            <div class="card__list_item">
+              <div class="check">
+                <svg class="check_svg" viewBox="0 0 16 16"><path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/></svg>
+              </div>
+              <span class="list_text">تجهيز وإدارة الصفحة الأساسية</span>
+            </div>
+            <div class="card__list_item">
+              <div class="check">
+                <svg class="check_svg" viewBox="0 0 16 16"><path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/></svg>
+              </div>
+              <span class="list_text">تقرير شهري بالأداء والتفاعل</span>
+            </div>
+          </div>
+          <a href="https://wa.me/201557512789?text=Hello,%20I%20am%20interested%20in%20the%20Starter%20Package" target="_blank" class="button mt-auto">طلب استشارة لباقة البداية</a>
+        </div>
+
+        <div class="uiverse-card scale-105 z-10 border-2 border-brand-accent">
+          <div class="absolute -top-3.5 right-1/2 translate-x-1/2 bg-gradient-to-r from-brand-accent to-brand-glow text-brand-darkest text-xs font-black px-4 py-1 rounded-full uppercase tracking-wider shadow-md">
+            الأكثر طلباً
+          </div>
+          <div class="card__border"></div>
+          <div class="card_title__container">
+            <span class="text-xs font-bold text-brand-accent bg-brand-darkest/70 px-2.5 py-1 rounded-md inline-block mb-2">للبراند اللى عايز عملاء أكثر</span>
+            <p class="card_title">باقة النمو</p>
+            <p class="card_paragraph">الحل الأمثل لمضاعفة المبيعات، وجلب استفسارات وحجوزات جديدة باستمرار مع تصوير احترافي.</p>
+          </div>
+          <hr class="line">
+          <div class="card__list">
+            <div class="card__list_item">
+              <div class="check">
+                <svg class="check_svg" viewBox="0 0 16 16"><path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/></svg>
+              </div>
+              <span class="list_text"><strong>8 بوست مصمم</strong> في الشهر</span>
+            </div>
+            <div class="card__list_item">
+              <div class="check">
+                <svg class="check_svg" viewBox="0 0 16 16"><path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/></svg>
+              </div>
+              <span class="list_text"><strong>4 ريلز + يوم تصوير كامل</strong></span>
+            </div>
+            <div class="card__list_item">
+              <div class="check">
+                <svg class="check_svg" viewBox="0 0 16 16"><path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/></svg>
+              </div>
+              <span class="list_text">إدارة الإعلانات الممولة والاستهداف</span>
+            </div>
+            <div class="card__list_item">
+              <div class="check">
+                <svg class="check_svg" viewBox="0 0 16 16"><path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/></svg>
+              </div>
+              <span class="list_text">تقرير أداء كل أسبوعين وتحديث الخطط</span>
+            </div>
+          </div>
+          <a href="https://wa.me/201557512789?text=Hello,%20I%20am%20interested%20in%20the%20Growth%20Package" target="_blank" class="button mt-auto">ابدأ مع باقة النمو الآن</a>
+        </div>
+
+        <div class="uiverse-card">
+          <div class="card__border"></div>
+          <div class="card_title__container">
+            <span class="text-xs font-bold text-brand-accentLight bg-brand-surface px-2.5 py-1 rounded-md inline-block mb-2">للبراند اللى عايز يقود السوق</span>
+            <p class="card_title">باقة بريميوم</p>
+            <p class="card_paragraph">تغطية إبداعية ورقمية كاملة وهيمنة تسويقية تضع علامتك التجارية في الصدارة بمرافقة فريق مخصص.</p>
+          </div>
+          <hr class="line">
+          <div class="card__list">
+            <div class="card__list_item">
+              <div class="check">
+                <svg class="check_svg" viewBox="0 0 16 16"><path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/></svg>
+              </div>
+              <span class="list_text"><strong>12 بوست مصمم</strong> + خطة محتوى</span>
+            </div>
+            <div class="card__list_item">
+              <div class="check">
+                <svg class="check_svg" viewBox="0 0 16 16"><path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/></svg>
+              </div>
+              <span class="list_text"><strong>8 ريلز احترافية + يومين تصوير</strong></span>
+            </div>
+            <div class="card__list_item">
+              <div class="check">
+                <svg class="check_svg" viewBox="0 0 16 16"><path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/></svg>
+              </div>
+              <span class="list_text">إعلانات وإنفلونسرز وحملات إطلاق</span>
+            </div>
+            <div class="card__list_item">
+              <div class="check">
+                <svg class="check_svg" viewBox="0 0 16 16"><path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/></svg>
+              </div>
+              <span class="list_text">أكاونت مانجر مخصص وتقارير أسبوعية</span>
+            </div>
+          </div>
+          <a href="https://wa.me/201557512789?text=Hello,%20I%20am%20interested%20in%20the%20Premium%20Package" target="_blank" class="button mt-auto">طلب استشارة لباقة بريميوم</a>
+        </div>
+
+      </div>
+
+      <div class="max-w-2xl mx-auto text-center bg-brand-surface/60 border border-brand-accent/20 rounded-2xl p-5 text-xs text-white/75 leading-relaxed">
+        <i class="fa-solid fa-circle-info text-brand-accent ml-1"></i>
+        <span>السعر بيتحدد بدقة حسب احتياج البراند الفعلي بعد جلسة التعارف. ميزانية الإعلانات الممولة منفصلة تماماً وبتتدفع للمنصات (Meta / Google / TikTok) مباشرة لضمان أعلى درجات الشفافية.</span>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="py-20 relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <span class="text-xs font-bold text-brand-accent bg-brand-surface px-3.5 py-1.5 rounded-full border border-brand-accent/20">
+          رحلة سهلة وسريعة
+        </span>
+        <h2 class="text-3xl sm:text-5xl font-black text-white mt-4 font-alexandria">
+          تلات خطوات بس ونبدأ مع بعض
+        </h2>
+        <p class="text-white/70 text-sm sm:text-base mt-3">
+          إجراءات واضحة ومنظمة تحول فكرة براندك لواقع ملموس في السوق
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="glass-card rounded-3xl p-8 relative">
+          <div class="text-5xl font-black text-brand-accent/20 mb-4 font-alexandria">01</div>
+          <h3 class="text-2xl font-bold text-white mb-2 font-alexandria">نتقابل</h3>
+          <p class="text-white/75 text-sm leading-relaxed">
+            جلسة تعارف (أونلاين أو في مقرنا) نسمع فيها عن البراند بتاعك، أهدافك البيعية، والتحديات اللي قدامك في السوق.
+          </p>
+        </div>
+
+        <div class="glass-card rounded-3xl p-8 relative">
+          <div class="text-5xl font-black text-brand-accent/20 mb-4 font-alexandria">02</div>
+          <h3 class="text-2xl font-bold text-white mb-2 font-alexandria">نقترح</h3>
+          <p class="text-white/75 text-sm leading-relaxed">
+            بنبعتلك استراتيجية مبدئية وعرض مفصل بالباقة المناسبة والأنسب لحجم شغلك وميزانيتك الاستثمارية.
+          </p>
+        </div>
+
+        <div class="glass-card rounded-3xl p-8 relative">
+          <div class="text-5xl font-black text-brand-accent/20 mb-4 font-alexandria">03</div>
+          <h3 class="text-2xl font-bold text-white mb-2 font-alexandria">نبدأ</h3>
+          <p class="text-white/75 text-sm leading-relaxed">
+            بنتفق ونوقع، ونبدأ أول شهر فوراً بخطة محتوى واضحة ومواعيد تصوير وتسليم محددة بالأيام.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="consultation" class="py-24 relative overflow-hidden">
+    <div class="ambient-glow-1 bottom-0 left-1/3"></div>
+
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="rounded-3xl p-8 sm:p-14 bg-gradient-to-br from-brand-card via-brand-dark to-brand-surface border-2 border-brand-accent/40 shadow-2xl text-center">
+        
+        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brand-accent/20 text-brand-accent text-xs font-bold mb-6">
+          <i class="fa-solid fa-bolt"></i> جاهز للنقلة الجاية لبراندك؟
+        </div>
+
+        <h2 class="text-4xl sm:text-6xl font-black text-white font-alexandria leading-tight mb-4">
+          يلا نكبر البراند بتاعك سوا.
+        </h2>
+
+        <p class="max-w-2xl mx-auto text-white/80 text-sm sm:text-base mb-10">
+          احجز جلسة تعارف سريعة مع فريق adam's media لمناقشة أهدافك ووضع خطة انطلاق مخصصة تسيب أثر في السوق.
+        </p>
+
+        <form id="consultForm" onsubmit="handleLeadSubmit(event)" class="max-w-xl mx-auto space-y-4 text-right mb-8">
+          <div>
+            <label class="block text-xs font-bold text-white/80 mb-1.5" for="clientName">اسمك الكريم</label>
+            <input type="text" id="clientName" required placeholder="مثال: محمد أحمد" class="w-full bg-brand-darkest/80 border border-brand-accent/30 rounded-xl px-4 py-3 text-sm text-white placeholder-white/30 focus:outline-none focus:border-brand-accent transition-all">
+          </div>
+          
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-xs font-bold text-white/80 mb-1.5" for="brandName">اسم البراند / النشاط</label>
+              <input type="text" id="brandName" required placeholder="مثال: مطعم أو متجر..." class="w-full bg-brand-darkest/80 border border-brand-accent/30 rounded-xl px-4 py-3 text-sm text-white placeholder-white/30 focus:outline-none focus:border-brand-accent transition-all">
+            </div>
+            <div>
+              <label class="block text-xs font-bold text-white/80 mb-1.5" for="serviceSelect">الخدمة المطلوبة</label>
+              <select id="serviceSelect" class="w-full bg-brand-darkest/80 border border-brand-accent/30 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-brand-accent transition-all">
+                <option value="باقة سوشيال ميديا متكاملة">باقة سوشيال ميديا متكاملة</option>
+                <option value="تصوير فوتو وفيديو">تصوير فوتو وفيديو</option>
+                <option value="إعلانات ممولة وميديا باينج">إعلانات ممولة وميديا باينج</option>
+                <option value="هوية بصرية كاملة">هوية بصرية كاملة</option>
+                <option value="حملة شاملة (ديجيتال + طباعة وتغليف)">حملة شاملة (ديجيتال + طباعة وتغليف)</option>
+              </select>
+            </div>
+          </div>
+
+          <button type="submit" class="btn-glow w-full font-black text-base flex items-center justify-center gap-2 mt-4">
+            <span>تأكيد وحجز جلسة التعارف عبر واتساب</span>
+            <i class="fa-brands fa-whatsapp text-lg"></i>
+          </button>
+        </form>
+
+        <div class="flex flex-wrap items-center justify-center gap-6 text-xs text-white/60">
+          <span class="flex items-center gap-1.5">
+            <i class="fa-solid fa-lock text-brand-accent"></i> خصوصية تامة لمعلوماتك
+          </span>
+          <span class="flex items-center gap-1.5">
+            <i class="fa-solid fa-clock text-brand-accent"></i> رد فوري خلال ساعات العمل
+          </span>
+          <span class="flex items-center gap-1.5">
+            <i class="fa-solid fa-phone text-brand-accent"></i> هاتف مباشر: 01557512789
+          </span>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <footer class="bg-brand-darkest border-t border-brand-accent/15 pt-16 pb-12 relative text-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
+        <div class="md:col-span-1 space-y-4">
+          <div class="flex items-center gap-2.5">
+            <div class="w-9 h-9 rounded-xl bg-brand-accent flex items-center justify-center text-brand-darkest font-black text-lg">
+              a
+            </div>
+            <span class="text-xl font-black text-white font-alexandria">adam's media</span>
+            <span class="text-[10px] text-brand-accent bg-brand-surface px-1.5 py-0.5 rounded">TM</span>
+          </div>
+          <p class="text-xs text-white/60 leading-relaxed">
+            الذراع الإبداعي والرقمي لمجموعة adam's agency. بنساعد البراندات تبني حضور قوي ومبيعات مستمرة بأحدث معايير التسويق.
+          </p>
+          <div class="inline-block px-3 py-1 bg-brand-surface rounded-full text-[11px] text-brand-accent font-semibold">
+            part of adam's agency Group
+          </div>
+        </div>
+
+        <div>
+          <h4 class="font-bold text-white mb-4 text-sm">أقسام الموقع</h4>
+          <ul class="space-y-2 text-xs text-white/70">
+            <li><a href="index.html" class="hover:text-brand-accent transition-colors">الرئيسية</a></li>
+            <li><a href="#about" class="hover:text-brand-accent transition-colors">عن المجموعة</a></li>
+            <li><a href="#services" class="hover:text-brand-accent transition-colors">خدمات السوشيال والتصوير</a></li>
+            <li><a href="#framework" class="hover:text-brand-accent transition-colors">استراتيجية توزيع المحتوى</a></li>
+            <li><a href="#packages" class="hover:text-brand-accent transition-colors">الباقات والأسعار</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="font-bold text-white mb-4 text-sm">علامات المجموعة</h4>
+          <ul class="space-y-2 text-xs text-white/70">
+            <li class="flex items-center gap-2">
+              <i class="fa-solid fa-angle-left text-brand-accent text-[10px]"></i>
+              <span class="font-semibold text-white">adam's media:</span> ديجيتال ومحتوى وتصوير
+            </li>
+            <li class="flex items-center gap-2">
+              <i class="fa-solid fa-angle-left text-brand-accent text-[10px]"></i>
+              <span class="font-semibold text-white">adam's agency:</span> طباعة ويافطات وأوت دور
+            </li>
+            <li class="flex items-center gap-2">
+              <i class="fa-solid fa-angle-left text-brand-accent text-[10px]"></i>
+              <span class="font-semibold text-white">adam's pack:</span> ركن علب وتغليف البراند
+            </li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="font-bold text-white mb-4 text-sm">تواصل مباشر</h4>
+          <div class="space-y-3 text-xs text-white/75">
+            <div class="flex items-center gap-3">
+              <i class="fa-brands fa-whatsapp text-emerald-400 text-sm"></i>
+              <a href="https://wa.me/201557512789" class="hover:text-white dir-ltr font-mono">+20 155 751 2789</a>
+            </div>
+            <div class="flex items-center gap-3">
+              <i class="fa-brands fa-facebook text-brand-accent text-sm"></i>
+              <span>تابعنا على فيسبوك: <strong class="text-white">adam's media</strong></span>
+            </div>
+            <div class="flex items-center gap-3">
+              <i class="fa-solid fa-location-dot text-brand-accent text-sm"></i>
+              <span>جمهورية مصر العربية - الدلتا</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between text-xs text-white/50 gap-4">
+        <div>
+          جميع الحقوق محفوظة &copy; <span id="year">2026</span> adam's media™ - part of adam's agency Group
+        </div>
+        <div class="flex items-center gap-4">
+          <span>شغل بجودة عالية</span>
+          <span>•</span>
+          <span>مواعيد واضحة</span>
+          <span>•</span>
+          <span>تقارير بالأرقام</span>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+
+    mobileMenuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+
+    mobileMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+      });
+    });
+
+    const chatbotWindow = document.getElementById('chatbotWindow');
+    function toggleChatbot() {
+      const isClosed = chatbotWindow.classList.contains('hidden');
+      if (isClosed) {
+        chatbotWindow.classList.remove('hidden');
+        chatbotWindow.classList.add('flex');
+        document.getElementById('chatInput').focus();
+      } else {
+        chatbotWindow.classList.add('hidden');
+        chatbotWindow.classList.remove('flex');
+      }
+    }
+
+    function appendUserMessage(text) {
+      const chatMessages = document.getElementById('chatMessages');
+      const userBubble = document.createElement('div');
+      userBubble.className = 'flex justify-end';
+      userBubble.innerHTML = `
+        <div class="bg-brand-accent text-brand-darkest font-medium rounded-2xl rounded-tl-none p-3 max-w-[85%] shadow-sm">
+          ${text}
+        </div>
+      `;
+      chatMessages.appendChild(userBubble);
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+
+    function appendBotMessage(text) {
+      const chatMessages = document.getElementById('chatMessages');
+      const botBubble = document.createElement('div');
+      botBubble.className = 'flex gap-2';
+      botBubble.innerHTML = `
+        <div class="w-6 h-6 rounded-full bg-brand-accent/30 flex items-center justify-center text-[10px] text-brand-accent flex-shrink-0">
+          <i class="fa-solid fa-robot"></i>
+        </div>
+        <div class="bg-brand-card/80 border border-brand-accent/20 rounded-2xl rounded-tr-none p-3 text-white/90 max-w-[85%]">
+          ${text}
+        </div>
+      `;
+      chatMessages.appendChild(botBubble);
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+
+    function handleChatMessage(event) {
+      event.preventDefault();
+      const input = document.getElementById('chatInput');
+      const query = input.value.trim();
+      if (!query) return;
+
+      appendUserMessage(query);
+      input.value = '';
+
+      setTimeout(() => {
+        respondToQuery(query);
+      }, 500);
+    }
+
+    function sendQuickMessage(text) {
+      appendUserMessage(text);
+      setTimeout(() => {
+        respondToQuery(text);
+      }, 500);
+    }
+
+    function respondToQuery(query) {
+      const lower = query.toLowerCase();
+      let reply = "شكراً لتواصلك معنا! هاتفنا متاح دائماً على 01557512789 أو يمكنك حجز جلسة تعارف مباشرة عبر النموذج أسفل الصفحة.";
+
+      if (lower.includes('باق') || lower.includes('سعر') || lower.includes('اسعار')) {
+        reply = "لدينا 3 باقات رئيسية: باقة البداية، باقة النمو، وباقة بريميوم. يمكنك مراجعة قسم الباقات أو الضغط على زر الواتساب للتفاصيل الكاملة.";
+      } else if (lower.includes('حجز') || lower.includes('جلسة') || lower.includes('مقابلة')) {
+        reply = "تقدر تحجز جلسة تعارف سريعة أونلاين أو بمقرنا من خلال نموذج الحجز بالأسفل، أو بالتواصل المباشر مع فريقنا عبر واتساب!";
+      } else if (lower.includes('تصوير') || lower.includes('فيديو') || lower.includes('ريلز')) {
+        reply = "خدمات التصوير تشمل جلسات تصوير المنتجات، تصوير سينمائي ومونتاج ريلز، وتغطية الفعاليات بأعلى دقة احترافية.";
+      }
+
+      appendBotMessage(reply);
+    }
+
+    function handleLeadSubmit(event) {
+      event.preventDefault();
+      const name = document.getElementById('clientName').value.trim();
+      const brand = document.getElementById('brandName').value.trim();
+      const service = document.getElementById('serviceSelect').value;
+
+      if (!name || !brand) return;
+
+      const message = `مرحباً adam's media، أرغب في حجز جلسة تعارف لبراندي:%0A%0A` +
+                      `👤 الاسم: ${encodeURIComponent(name)}%0A` +
+                      `🏢 اسم البراند: ${encodeURIComponent(brand)}%0A` +
+                      `🎯 الخدمة المهتم بها: ${encodeURIComponent(service)}%0A%0A` +
+                      `يرجى التنسيق لتحديد موعد الجلسة.`;
+
+      const whatsappUrl = `https://wa.me/201557512789?text=${message}`;
+      window.open(whatsappUrl, '_blank');
+    }
+  </script>
+</body>
+</html>
